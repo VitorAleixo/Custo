@@ -64,14 +64,14 @@ namespace Custo
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='Pedido' and type='table'";
             if (cmd.ExecuteScalar() == null)
             {
-                cmd.CommandText = "CREATE TABLE Pedido ([Id] INTEGER PRIMARY KEY, [IdCliente] INTEGER , [Data] DATE(15), [Status] VARCHAR(10);";
+                cmd.CommandText = "CREATE TABLE Pedido ([Id] INTEGER PRIMARY KEY, [IdCliente] INTEGER , [Data] DATE(15), [Status] VARCHAR(10),[QtdPedido] FLOAT);";
                 cmd.ExecuteNonQuery();
             }
 
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='PedidoItem' and type='table'";
             if (cmd.ExecuteScalar() == null)
             {
-                cmd.CommandText = "CREATE TABLE PedidoItem ([Id] INTEGER PRIMARY KEY, [IdPedido] INTEGER , [IdProduto] INTEGER,  [Quantidade] FLOAT, [Observacoes] VARCHAR(1000), [IdCliente] INTEGER);";
+                cmd.CommandText = "CREATE TABLE PedidoItem ([Id] INTEGER PRIMARY KEY, [IdPedido] INTEGER , [IdProduto] INTEGER,  [Quantidade] FLOAT, [Observacoes] VARCHAR(1000), [IdCliente] INTEGER)";
                 cmd.ExecuteNonQuery();
             }
 
@@ -93,6 +93,20 @@ namespace Custo
             if (cmd.ExecuteScalar() == null)
             {
                 cmd.CommandText = "INSERT INTO ContaCliente (Usuario, Senha, Nome, CPF, Email, Telefone, Endereco, TipoCOnta, Status) VALUES ('ADMIN', '8f7957e71c2b39d1ee8d93cf9eaf44b09f7cd207711f5c0273951b358713efda', 'Vitor Aleixo', 'ADMIN', 'ADMIN', 'ADMIN', 'ADMIN', 'ADMIN', '0'); ";
+                cmd.ExecuteNonQuery();
+            }
+
+            cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='RankingProduto' and type='table'";
+            if (cmd.ExecuteScalar() == null)
+            {
+                cmd.CommandText = "CREATE TABLE RankingProduto ([IdProduto] INTEGER, [Quantidade] FLOAT, [Ranking] INTEGER);";
+                cmd.ExecuteNonQuery();
+            }
+
+            cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='RankingCliente' and type='table'";
+            if (cmd.ExecuteScalar() == null)
+            {
+                cmd.CommandText = "CREATE TABLE RankingCliente ([IdCliente] INTEGER, [QtdPedidos] FLOAT, [Ranking] INTEGER);";
                 cmd.ExecuteNonQuery();
             }
 

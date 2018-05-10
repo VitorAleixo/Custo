@@ -50,14 +50,17 @@ namespace Custo
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
+    
+            
             frmPedidoNovo f = new frmPedidoNovo();
             f.CarregarCombos();
-            this.Close();
+
 
             f.ShowDialog();
 
-            frmPedidos p = new frmPedidos();
-            p.ShowDialog();
+            CarregarItens();
+
+  
         }
 
 

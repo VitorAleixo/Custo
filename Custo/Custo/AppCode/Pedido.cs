@@ -57,10 +57,11 @@ namespace Custo.AppCode
                 var sql = new StringBuilder();
 
                 sql.AppendLine("INSERT INTO Pedido ");
-                sql.AppendLine("(IdCliente, Data, Status) VALUES ");
+                sql.AppendLine("(IdCliente, Data, Status, QtdPedido) VALUES ");
                 sql.AppendLine($"({this.IdCliente}");
-                sql.AppendLine($",'{this.Data}'");
-                sql.AppendLine($",'{this.Status}')");
+                sql.AppendLine($" ,'{this.Data}'");
+                sql.AppendLine($" ,'{this.Status}'");
+                sql.AppendLine($" , '0')");
 
                 using (var cmd = conn.CreateCommand())
                 {
@@ -69,6 +70,20 @@ namespace Custo.AppCode
                     cmd.Dispose();
                     sql.Clear();
                 }
+
+                sql.AppendLine("UPDATE Pedido ");
+                sql.AppendLine("SET QtdPedido = ");
+                sql.AppendLine($"(SELECT COUNT(IdCliente) FROM PEDIDO WHERE IdCliente = '{this.IdCliente}')");
+                sql.AppendLine($"WHERE IdCliente = '{this.IdCliente}'");
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = sql.ToString();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    sql.Clear();
+                }
+                
 
                 sql.AppendLine("UPDATE Pedido ");
                 sql.AppendLine($"SET DATA = substr(DATA, 7, 4) || '-' || substr(DATA, 4, 2) || '-' || substr(DATA, 1, 2) ");
@@ -226,6 +241,7 @@ namespace Custo.AppCode
                 {
                     cmd.CommandText = sql.ToString();
                     cmd.ExecuteNonQuery();
+                    sql.Clear();
                     cmd.Dispose();
                 }
 
@@ -235,7 +251,21 @@ namespace Custo.AppCode
                 {
                     cmd.CommandText = sql.ToString();
                     cmd.ExecuteNonQuery();
+                    sql.Clear();
                     cmd.Dispose();
+                }
+
+                sql.AppendLine("UPDATE Pedido ");
+                sql.AppendLine("SET QtdPedido = ");
+                sql.AppendLine($"(SELECT COUNT(IdCliente) FROM PEDIDO WHERE IdCliente = '{this.IdCliente}')");
+                sql.AppendLine($"WHERE IdCliente = '{this.IdCliente}'");
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = sql.ToString();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    sql.Clear();
                 }
                 conn.Close();
             }

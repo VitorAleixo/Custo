@@ -12,7 +12,7 @@ namespace Custo
 {
     public partial class frmComposicao : Form
     {
-        
+
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
@@ -32,10 +32,10 @@ namespace Custo
             cmbComposicao.Enabled = true;
             Verificacao = "Ok";
             cmbComposicao.SelectedIndex = -1;
-            
+
             cmbProduto.DataSource = null;
             cmbProduto.DataSource = Produto.BuscarTodos().Where(p => p.Tipo == "Matéria Prima").ToList();
-            cmbProduto.DisplayMember = "Descricao";            
+            cmbProduto.DisplayMember = "Descricao";
         }
 
         void CarregarItens()
@@ -49,7 +49,7 @@ namespace Custo
             lblCustoTotal.Text = $"Custo Total: R$";
             lblCustoTotalProduto.Text = $"0,00";
             lblCustoProduto.Text = $"Custo de Mercado: R$ 0,00";
-            lblEconomia.Text =  $"Economia: R$ 0,00";
+            lblEconomia.Text = $"Economia: R$ 0,00";
 
             lblPrecoVenda.Text = $"Preço de Venda: R$ 0,00";
             lblLucroTotal.Text = $"Lucro: R$";
@@ -78,7 +78,7 @@ namespace Custo
 
                 var precoVenda = c.CustoVenda;
                 lblPrecoVenda.Text = $"Preço de Venda: R$ {precoVenda.ToString("N2") }";
-                
+
 
                 var lucro = economia + (precoVenda - custoProduto);
                 lblLucroTotal.Text = $"Lucro: R$";
@@ -88,7 +88,7 @@ namespace Custo
             }
 
             grdDados.Show();
-            
+
         }
 
         public frmComposicao()
@@ -101,13 +101,15 @@ namespace Custo
             try
             {
                 CarregarCombos();
+                txtValorVenda.Enabled = false;
+                btnInserirVenda.Enabled = false;
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void cmbComposicao_SelectedIndexChanged(object sender, EventArgs e)
@@ -148,7 +150,7 @@ namespace Custo
                     item.Inserir();
 
                     MessageBox.Show("Item inserido com sucesso!", "Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                 
+
                     LimparCampos();
 
                     CarregarItens();
@@ -161,6 +163,9 @@ namespace Custo
 
                     com.Lucro = Double.Parse(lblLucro.Text.Replace(".", ","));
                     com.GravarLucro();
+
+                    btnInserirVenda.Enabled = true;
+                    txtValorVenda.Enabled = true;
                 }
                 else
                 {
@@ -197,6 +202,14 @@ namespace Custo
 
                         CarregarItens();
 
+                        Composicao com = new Composicao();
+                        com.CustoTotal = Double.Parse(lblCustoTotalProduto.Text.Replace(".", ","));
+                        com.IdProduto = ((Produto)cmbComposicao.SelectedItem).Id;
+                        com.GravarCusto();
+
+                        com.Lucro = Double.Parse(lblLucro.Text.Replace(".", ","));
+                        com.GravarLucro();
+
                         MessageBox.Show("Item excluído com sucesso!", "Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -219,7 +232,8 @@ namespace Custo
                     c.VerificarVenda();
                     if (c.CustoVenda != 0)
                     {
-
+                        btnInserirVenda.Enabled = false;
+                        txtValorVenda.Enabled = false;
                         c.Lucro = Double.Parse(lblLucro.Text.Replace(".", ","));
                         c.GravarLucro();
                         this.Close();
@@ -233,7 +247,7 @@ namespace Custo
                 {
                     this.Close();
                 }
-             
+
             }
             catch (Exception ex)
             {
@@ -245,17 +259,24 @@ namespace Custo
         {
             try
             {
-                Composicao c = new Composicao();
-                c.CustoVenda = Double.Parse(txtValorVenda.Text.Replace(".",","));
-                c.IdProduto = ((Produto)cmbComposicao.SelectedItem).Id;
-               
-                c.GravarVenda();
+                if (cmbComposicao.Text == "")
+                {
+                    DialogResult dialogResult = MessageBox.Show("Produto não Preenchido!", "Confirmação", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    Composicao c = new Composicao();
+                    c.CustoVenda = Double.Parse(txtValorVenda.Text.Replace(".", ","));
+                    c.IdProduto = ((Produto)cmbComposicao.SelectedItem).Id;
 
-                MessageBox.Show("Valor de VENDA Incluido!", "Confirmação", MessageBoxButtons.OK);
-                CarregarItens();
+                    c.GravarVenda();
 
-                c.Lucro = Double.Parse(lblLucro.Text.Replace(".", ","));
-                c.GravarLucro();
+                    MessageBox.Show("Valor de VENDA Incluido!", "Confirmação", MessageBoxButtons.OK);
+                    CarregarItens();
+
+                    c.Lucro = Double.Parse(lblLucro.Text.Replace(".", ","));
+                    c.GravarLucro();
+                }
             }
             catch (Exception ex)
             {
@@ -280,20 +301,30 @@ namespace Custo
         {
             try
             {
-                Composicao c = new Composicao();
-                c.IdProduto = ((Produto)cmbComposicao.SelectedItem).Id;
-                c.VerificarVenda();
-                if (c.CustoVenda != 0)
+                if (cmbComposicao.Text == "")
                 {
-                    cmbComposicao.Enabled = true;
-                    c.Lucro = Double.Parse(lblLucro.Text.Replace(".", ","));
-                    c.GravarLucro();
-                    txtValorVenda.Text = "";
-                    MessageBox.Show("Produto para selecionar Desbloqueado!", "Confirmação", MessageBoxButtons.OK);
+                    DialogResult dialogResult = MessageBox.Show("Produto não Preenchido!", "Confirmação", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    MessageBox.Show("Valor de VENDA Não inserido! Favor adicionar!", "Confirmação", MessageBoxButtons.OK);
+                    Composicao c = new Composicao();
+                    c.IdProduto = ((Produto)cmbComposicao.SelectedItem).Id;
+                    c.VerificarVenda();
+                    if (c.CustoVenda != 0)
+                    {
+                        cmbComposicao.Enabled = true;
+                        c.Lucro = Double.Parse(lblLucro.Text.Replace(".", ","));
+                        c.GravarLucro();
+                        txtValorVenda.Text = "";
+                        txtValorVenda.Enabled = false;
+                        btnInserirVenda.Enabled = false;
+                        MessageBox.Show("Produto para selecionar Desbloqueado!", "Confirmação", MessageBoxButtons.OK);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Valor de VENDA Não inserido! Favor adicionar!", "Confirmação", MessageBoxButtons.OK);
+                    }
                 }
             }
             catch (Exception ex)

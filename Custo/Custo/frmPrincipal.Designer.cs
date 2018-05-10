@@ -52,6 +52,7 @@ namespace Custo
             this.txtHora = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnSair = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.rankingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.barraStatus.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +63,7 @@ namespace Custo
             this.cadastrosToolStripMenuItem,
             this.produtoToolStripMenuItem,
             this.lucrosToolStripMenuItem,
+            this.rankingToolStripMenuItem,
             this.ajudaToolStripMenuItem,
             this.cadastroDeUsuariosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -222,6 +224,13 @@ namespace Custo
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // rankingToolStripMenuItem
+            // 
+            this.rankingToolStripMenuItem.Name = "rankingToolStripMenuItem";
+            this.rankingToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.rankingToolStripMenuItem.Text = "Ranking";
+            this.rankingToolStripMenuItem.Click += new System.EventHandler(this.rankingToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,5 +280,6 @@ namespace Custo
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private System.Windows.Forms.ToolStripStatusLabel txtHora;
         private System.Windows.Forms.ToolStripMenuItem lucrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rankingToolStripMenuItem;
     }
 }

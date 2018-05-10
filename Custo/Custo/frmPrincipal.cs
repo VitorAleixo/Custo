@@ -31,33 +31,33 @@ namespace Custo
 
         private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmProduto { MdiParent = this, StartPosition = FormStartPosition.CenterScreen }.Show();
+            new frmProduto { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmClientes { MdiParent = this, StartPosition = FormStartPosition.CenterScreen }.Show();
+            new frmClientes { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
 
         }
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmPedidos { MdiParent = this, StartPosition = FormStartPosition.CenterScreen }.Show();
+            new frmPedidos { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
 
         private void composiçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmComposicao { MdiParent = this, StartPosition = FormStartPosition.CenterScreen }.Show();
+            new frmComposicao { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
 
         private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmAjuda { MdiParent = this, StartPosition = FormStartPosition.CenterScreen }.Show();
+            new frmAjuda { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
 
         private void cadastroDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmCadastroUsuarios { MdiParent = this, StartPosition = FormStartPosition.CenterScreen }.Show();
+            new frmCadastroUsuarios { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
 
         public frmPrincipal()
@@ -67,7 +67,7 @@ namespace Custo
 
         private void lucrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmLucros { MdiParent = this, StartPosition = FormStartPosition.CenterScreen }.Show();
+            new frmLucros { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -116,6 +116,11 @@ namespace Custo
         {
             txtData.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtHora.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void rankingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmRanking { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
     }
 }

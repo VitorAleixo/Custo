@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppCode\CadastroUsuario.cs" />
+    <Compile Include="AppCode\Ranking.cs" />
     <Compile Include="AppCode\Cliente.cs" />
     <Compile Include="AppCode\ComposicaoItem.cs" />
     <Compile Include="AppCode\Composicao.cs" />
@@ -107,6 +108,24 @@
     </Compile>
     <Compile Include="frmCadastroUsuarios.Designer.cs">
       <DependentUpon>frmCadastroUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRanking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRanking.Designer.cs">
+      <DependentUpon>frmRanking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRankingClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRankingClientes.Designer.cs">
+      <DependentUpon>frmRankingClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRankingProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRankingProdutos.Designer.cs">
+      <DependentUpon>frmRankingProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmVendas.cs">
       <SubType>Form</SubType>
@@ -170,6 +189,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCadastroUsuarios.resx">
       <DependentUpon>frmCadastroUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRanking.resx">
+      <DependentUpon>frmRanking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRankingClientes.resx">
+      <DependentUpon>frmRankingClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRankingProdutos.resx">
+      <DependentUpon>frmRankingProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVendas.resx">
       <DependentUpon>frmVendas.cs</DependentUpon>

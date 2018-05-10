@@ -101,7 +101,7 @@ namespace Custo
         {
             try
             {
-                cmbProduto.SelectedIndex = 0;
+                cmbProduto.SelectedIndex = -1;
 
                 CarregarItensEditar();
             }
