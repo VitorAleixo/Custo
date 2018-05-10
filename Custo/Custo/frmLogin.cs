@@ -55,5 +55,20 @@ namespace Custo
                 MessageBox.Show("Usuário ou Senha incorretos ou Inexistente!", "ContaCliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void txtSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
+        }
+        private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
+        }
     }
 }

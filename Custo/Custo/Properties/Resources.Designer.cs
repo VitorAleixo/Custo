@@ -63,9 +63,69 @@ namespace Custo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_document_edit_icon {
+        internal static System.Drawing.Bitmap Background {
             get {
-                object obj = ResourceManager.GetObject("Actions-document-edit-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Background1 {
+            get {
+                object obj = ResourceManager.GetObject("Background1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnAjuda {
+            get {
+                object obj = ResourceManager.GetObject("btnAjuda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnAplicar {
+            get {
+                object obj = ResourceManager.GetObject("btnAplicar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnBuscar {
+            get {
+                object obj = ResourceManager.GetObject("btnBuscar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnCalendario {
+            get {
+                object obj = ResourceManager.GetObject("btnCalendario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnEditar {
+            get {
+                object obj = ResourceManager.GetObject("btnEditar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +143,9 @@ namespace Custo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_add_16x16_9712 {
+        internal static System.Drawing.Bitmap btnFiltro {
             get {
-                object obj = ResourceManager.GetObject("if_add_16x16_9712", resourceCulture);
+                object obj = ResourceManager.GetObject("btnFiltro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +153,9 @@ namespace Custo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_add_16x16_97121 {
+        internal static System.Drawing.Bitmap btnIncluir {
             get {
-                object obj = ResourceManager.GetObject("if_add_16x16_97121", resourceCulture);
+                object obj = ResourceManager.GetObject("btnIncluir", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,29 +163,9 @@ namespace Custo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_button_ok_3207 {
+        internal static System.Drawing.Bitmap btnSair_Cancelar {
             get {
-                object obj = ResourceManager.GetObject("if_button_ok_3207", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap if_cross_16189 {
-            get {
-                object obj = ResourceManager.GetObject("if_cross_16189", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap if_help_browser_118806 {
-            get {
-                object obj = ResourceManager.GetObject("if_help-browser_118806", resourceCulture);
+                object obj = ResourceManager.GetObject("btnSair-Cancelar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

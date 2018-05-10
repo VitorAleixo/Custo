@@ -1,4 +1,5 @@
-﻿namespace Custo
+﻿using System.Windows.Forms;
+namespace Custo
 {
     partial class frmProduto
     {
@@ -32,7 +33,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProduto));
             this.tabControlProduto = new System.Windows.Forms.TabControl();
             this.tabPageFormulario = new System.Windows.Forms.TabPage();
-            this.btnNovo = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbTipoFiltro = new System.Windows.Forms.ComboBox();
+            this.txtDescricaoFiltro = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtCodigoProdutoFiltro = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.grdDados = new System.Windows.Forms.DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,8 +52,6 @@
             this.cmbUnidadeMedida = new System.Windows.Forms.ComboBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnSalvar = new System.Windows.Forms.Button();
             this.txtPrecoCompra = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,9 +60,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnFiltro = new System.Windows.Forms.Button();
+            this.btnNoFiltro = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.tabControlProduto.SuspendLayout();
             this.tabPageFormulario.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDados)).BeginInit();
             this.tabPageLista.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +88,7 @@
             // 
             // tabPageFormulario
             // 
+            this.tabPageFormulario.Controls.Add(this.groupBox1);
             this.tabPageFormulario.Controls.Add(this.btnSair);
             this.tabPageFormulario.Controls.Add(this.btnNovo);
             this.tabPageFormulario.Controls.Add(this.grdDados);
@@ -90,19 +102,85 @@
             this.tabPageFormulario.Text = "Lista";
             this.tabPageFormulario.UseVisualStyleBackColor = true;
             // 
-            // btnNovo
+            // groupBox1
             // 
-            this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNovo.Image = global::Custo.Properties.Resources.if_add_16x16_9712;
-            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(655, 355);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(62, 27);
-            this.btnNovo.TabIndex = 11;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnFiltro);
+            this.groupBox1.Controls.Add(this.btnNoFiltro);
+            this.groupBox1.Controls.Add(this.cmbTipoFiltro);
+            this.groupBox1.Controls.Add(this.txtDescricaoFiltro);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.txtCodigoProdutoFiltro);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(711, 45);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtro";
+            // 
+            // cmbTipoFiltro
+            // 
+            this.cmbTipoFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.cmbTipoFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoFiltro.FormattingEnabled = true;
+            this.cmbTipoFiltro.Items.AddRange(new object[] {
+            "Matéria Prima",
+            "Produto Final"});
+            this.cmbTipoFiltro.Location = new System.Drawing.Point(477, 16);
+            this.cmbTipoFiltro.Name = "cmbTipoFiltro";
+            this.cmbTipoFiltro.Size = new System.Drawing.Size(127, 21);
+            this.cmbTipoFiltro.TabIndex = 20;
+            // 
+            // txtDescricaoFiltro
+            // 
+            this.txtDescricaoFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtDescricaoFiltro.Location = new System.Drawing.Point(298, 16);
+            this.txtDescricaoFiltro.Name = "txtDescricaoFiltro";
+            this.txtDescricaoFiltro.Size = new System.Drawing.Size(136, 20);
+            this.txtDescricaoFiltro.TabIndex = 19;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(440, 19);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 13);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Tipo:";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(234, 19);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Descrição:";
+            // 
+            // txtCodigoProdutoFiltro
+            // 
+            this.txtCodigoProdutoFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodigoProdutoFiltro.Location = new System.Drawing.Point(110, 16);
+            this.txtCodigoProdutoFiltro.Name = "txtCodigoProdutoFiltro";
+            this.txtCodigoProdutoFiltro.Size = new System.Drawing.Size(118, 20);
+            this.txtCodigoProdutoFiltro.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(98, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Código do Produto:";
             // 
             // grdDados
             // 
@@ -119,10 +197,10 @@
             this.UM,
             this.Tipo,
             this.PrecoCompra});
-            this.grdDados.Location = new System.Drawing.Point(6, 6);
+            this.grdDados.Location = new System.Drawing.Point(6, 57);
             this.grdDados.Name = "grdDados";
             this.grdDados.ReadOnly = true;
-            this.grdDados.Size = new System.Drawing.Size(711, 343);
+            this.grdDados.Size = new System.Drawing.Size(711, 292);
             this.grdDados.TabIndex = 0;
             this.grdDados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDados_CellDoubleClick);
             this.grdDados.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.grdDados_PreviewKeyDown);
@@ -172,8 +250,6 @@
             this.tabPageLista.Controls.Add(this.cmbUnidadeMedida);
             this.tabPageLista.Controls.Add(this.txtId);
             this.tabPageLista.Controls.Add(this.label6);
-            this.tabPageLista.Controls.Add(this.btnCancelar);
-            this.tabPageLista.Controls.Add(this.btnSalvar);
             this.tabPageLista.Controls.Add(this.txtPrecoCompra);
             this.tabPageLista.Controls.Add(this.label5);
             this.tabPageLista.Controls.Add(this.label4);
@@ -182,6 +258,8 @@
             this.tabPageLista.Controls.Add(this.label2);
             this.tabPageLista.Controls.Add(this.txtCodigo);
             this.tabPageLista.Controls.Add(this.label1);
+            this.tabPageLista.Controls.Add(this.btnCancelar);
+            this.tabPageLista.Controls.Add(this.btnSalvar);
             this.tabPageLista.Location = new System.Drawing.Point(4, 22);
             this.tabPageLista.Name = "tabPageLista";
             this.tabPageLista.Padding = new System.Windows.Forms.Padding(3);
@@ -203,6 +281,7 @@
             // 
             this.cmbTipo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipo.FormattingEnabled = true;
             this.cmbTipo.Items.AddRange(new object[] {
             "Matéria Prima",
@@ -216,6 +295,7 @@
             // 
             this.cmbUnidadeMedida.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbUnidadeMedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUnidadeMedida.FormattingEnabled = true;
             this.cmbUnidadeMedida.Items.AddRange(new object[] {
             "KG",
@@ -248,34 +328,6 @@
             this.label6.Size = new System.Drawing.Size(19, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "Id:";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Image = global::Custo.Properties.Resources.if_cross_16189;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(560, 355);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 7;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
-            this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvar.Location = new System.Drawing.Point(641, 355);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 6;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // txtPrecoCompra
             // 
@@ -349,10 +401,32 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Código do Produto:";
             // 
+            // btnFiltro
+            // 
+            this.btnFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnFiltro.Image = global::Custo.Properties.Resources.btnFiltro;
+            this.btnFiltro.Location = new System.Drawing.Point(643, 13);
+            this.btnFiltro.Name = "btnFiltro";
+            this.btnFiltro.Size = new System.Drawing.Size(30, 25);
+            this.btnFiltro.TabIndex = 48;
+            this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
+            // 
+            // btnNoFiltro
+            // 
+            this.btnNoFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnNoFiltro.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
+            this.btnNoFiltro.Location = new System.Drawing.Point(675, 13);
+            this.btnNoFiltro.Name = "btnNoFiltro";
+            this.btnNoFiltro.Size = new System.Drawing.Size(30, 25);
+            this.btnNoFiltro.TabIndex = 47;
+            this.btnNoFiltro.UseVisualStyleBackColor = true;
+            this.btnNoFiltro.Click += new System.EventHandler(this.btnNoFiltro_Click);
+            // 
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.Image = global::Custo.Properties.Resources.if_cross_16189;
+            this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSair.Location = new System.Drawing.Point(587, 355);
             this.btnSair.Name = "btnSair";
@@ -363,18 +437,66 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // btnNovo
+            // 
+            this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNovo.Image = global::Custo.Properties.Resources.btnIncluir;
+            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNovo.Location = new System.Drawing.Point(655, 355);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(62, 27);
+            this.btnNovo.TabIndex = 11;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelar.Location = new System.Drawing.Point(560, 355);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
+            this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalvar.Location = new System.Drawing.Point(641, 355);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 6;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
             // frmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(755, 432);
             this.Controls.Add(this.tabControlProduto);
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmProduto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Produtos";
             this.Load += new System.EventHandler(this.frmProduto_Load);
             this.tabControlProduto.ResumeLayout(false);
             this.tabPageFormulario.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDados)).EndInit();
             this.tabPageLista.ResumeLayout(false);
             this.tabPageLista.PerformLayout();
@@ -410,5 +532,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecoCompra;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cmbTipoFiltro;
+        private System.Windows.Forms.TextBox txtDescricaoFiltro;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtCodigoProdutoFiltro;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnFiltro;
+        private System.Windows.Forms.Button btnNoFiltro;
     }
 }

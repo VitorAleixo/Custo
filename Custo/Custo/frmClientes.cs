@@ -87,7 +87,7 @@ namespace Custo
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show("Nome e Endereço são obrigatórios!", "Confirmacão", MessageBoxButtons.OK);
+                    DialogResult dialogResult = MessageBox.Show("Nome e Endereço são obrigatórios!", "Confirmação", MessageBoxButtons.OK);
                 }
             }
             catch (Exception ex)
@@ -95,6 +95,10 @@ namespace Custo
 
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        void LimparItens()
+        {
+            txtClienteFiltro.Text = "";
         }
         void LimparCampos()
         {
@@ -177,6 +181,46 @@ namespace Custo
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtClienteFiltro.Text != "")
+                {
+                    Filtro.Nome = txtClienteFiltro.Text;
+
+                    grdDados2.AutoGenerateColumns = false;
+                    grdDados2.DataSource = null;
+                    grdDados2.DataSource = Filtro.clienteBuscarPorNome();
+                    grdDados2.Show();
+                }
+                else
+                {
+                    DialogResult dialogresult = MessageBox.Show("Cliente não preenchido!", "Filtro", MessageBoxButtons.OK);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnNoFiltro_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                grdDados2.AutoGenerateColumns = false;
+                grdDados2.DataSource = null;
+                grdDados2.DataSource = Cliente.BuscarTodos();
+                grdDados2.Show();
+                LimparItens();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

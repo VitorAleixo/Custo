@@ -1,4 +1,5 @@
-﻿namespace Custo
+﻿using System.Windows.Forms;
+namespace Custo
 {
     partial class frmComposicao
     {
@@ -29,9 +30,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComposicao));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbComposicao = new System.Windows.Forms.ComboBox();
@@ -84,6 +85,7 @@
             // 
             this.cmbComposicao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbComposicao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbComposicao.FormattingEnabled = true;
             this.cmbComposicao.Location = new System.Drawing.Point(6, 35);
             this.cmbComposicao.Name = "cmbComposicao";
@@ -140,6 +142,7 @@
             // 
             // cmbProduto
             // 
+            this.cmbProduto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProduto.FormattingEnabled = true;
             this.cmbProduto.Location = new System.Drawing.Point(9, 41);
             this.cmbProduto.Name = "cmbProduto";
@@ -194,9 +197,9 @@
             // Quantidade
             // 
             this.Quantidade.DataPropertyName = "Quantidade";
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle1;
             this.Quantidade.HeaderText = "Quantidade";
             this.Quantidade.Name = "Quantidade";
             this.Quantidade.ReadOnly = true;
@@ -204,9 +207,9 @@
             // PrecoUnitario
             // 
             this.PrecoUnitario.DataPropertyName = "PrecoUnitario";
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.PrecoUnitario.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.PrecoUnitario.DefaultCellStyle = dataGridViewCellStyle2;
             this.PrecoUnitario.HeaderText = "Preço Unitário";
             this.PrecoUnitario.Name = "PrecoUnitario";
             this.PrecoUnitario.ReadOnly = true;
@@ -214,9 +217,9 @@
             // Custo
             // 
             this.Custo.DataPropertyName = "Custo";
-            dataGridViewCellStyle6.Format = "C2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.Custo.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Custo.DefaultCellStyle = dataGridViewCellStyle3;
             this.Custo.HeaderText = "Custo";
             this.Custo.Name = "Custo";
             this.Custo.ReadOnly = true;
@@ -257,7 +260,7 @@
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.Image = global::Custo.Properties.Resources.if_cross_16189;
+            this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSair.Location = new System.Drawing.Point(688, 68);
             this.btnSair.Name = "btnSair";
@@ -292,8 +295,13 @@
             this.Controls.Add(this.grdDados);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Name = "frmComposicao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Composição";
             this.Load += new System.EventHandler(this.frmProduto_Load);
             this.groupBox1.ResumeLayout(false);

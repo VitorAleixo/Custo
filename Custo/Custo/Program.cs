@@ -35,7 +35,6 @@ namespace Custo
             { 
                 cmd.CommandText = "CREATE TABLE Produto ([Id] INTEGER PRIMARY KEY, [Codigo] VARCHAR(100),[Descricao] VARCHAR(100), [UM] VARCHAR(100), [Tipo] VARCHAR(100), [PrecoCompra] FLOAT);";
                 cmd.ExecuteNonQuery();
-                cmd.Dispose();
             }
 
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='Composicao' and type='table'";
@@ -43,7 +42,6 @@ namespace Custo
             {
                 cmd.CommandText = "CREATE TABLE Composicao ([Id] INTEGER PRIMARY KEY, [IdProduto] INTEGER, [CustoTotal] FLOAT);";
                 cmd.ExecuteNonQuery();
-                cmd.Dispose();
             }
 
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='ComposicaoItem' and type='table'";
@@ -51,7 +49,6 @@ namespace Custo
             {
                 cmd.CommandText = "CREATE TABLE ComposicaoItem ([Id] INTEGER PRIMARY KEY, [IdComposicao] INTEGER, [IdProduto] INT, [Quantidade] FLOAT);";
                 cmd.ExecuteNonQuery();
-                cmd.Dispose();
             }
 
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='Clientes' and type='table'";
@@ -59,15 +56,13 @@ namespace Custo
             {
                 cmd.CommandText = "CREATE TABLE Clientes ([Id] INTEGER PRIMARY KEY, [Nome] VARCHAR(100), [CPF] VARCHAR(20), [Telefone] VARCHAR(100),[Email] VARCHAR(100), [Endereco] VARCHAR(1000));";
                 cmd.ExecuteNonQuery();
-                cmd.Dispose();
             }
 
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='Pedido' and type='table'";
             if (cmd.ExecuteScalar() == null)
             {
-                cmd.CommandText = "CREATE TABLE Pedido ([Id] INTEGER PRIMARY KEY, [IdCliente] INTEGER , [Data] VARCHAR(15));";
+                cmd.CommandText = "CREATE TABLE Pedido ([Id] INTEGER PRIMARY KEY, [IdCliente] INTEGER , [Data] DATE(15), [Status] VARCHAR(10);";
                 cmd.ExecuteNonQuery();
-                cmd.Dispose();
             }
 
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='PedidoItem' and type='table'";
@@ -75,7 +70,6 @@ namespace Custo
             {
                 cmd.CommandText = "CREATE TABLE PedidoItem ([Id] INTEGER PRIMARY KEY, [IdPedido] INTEGER , [IdProduto] INTEGER,  [Quantidade] FLOAT, [Observacoes] VARCHAR(1000));";
                 cmd.ExecuteNonQuery();
-                cmd.Dispose();
             }
 
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='TabelaPedidoItem' and type='table'";
@@ -83,7 +77,6 @@ namespace Custo
             {
                 cmd.CommandText = "CREATE TABLE TabelaPedidoItem ([Id] INTEGER PRIMARY KEY AUTOINCREMENT, [IdPedido] INTEGER , [IdProduto] INTEGER,  [Quantidade] FLOAT, [Observacoes] VARCHAR(1000));";
                 cmd.ExecuteNonQuery();
-                cmd.Dispose();
             }
 
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='ContaCliente' and type='table'";
@@ -91,7 +84,6 @@ namespace Custo
             {
                 cmd.CommandText = "CREATE TABLE ContaCliente ([Id] INTEGER PRIMARY KEY AUTOINCREMENT, [Usuario] VARCHAR(50), [Senha] VARCHAR(50), [Nome] VARCHAR(50),[Cpf] VARCHAR(20), [Email] VARCHAR(50), [Telefone] VARCHAR(100), [Endereco] VARCHAR(1000), [TipoConta] VARCHAR(20), [Status] VARCHAR(10));";
                 cmd.ExecuteNonQuery();
-                cmd.Dispose();
             }
 
             cmd.CommandText = "SELECT * FROM ContaCliente WHERE Usuario='ADMIN';";
@@ -99,7 +91,6 @@ namespace Custo
             {
                 cmd.CommandText = "INSERT INTO ContaCliente (Usuario, Senha, Nome, CPF, Email, Telefone, Endereco, TipoCOnta, Status) VALUES ('ADMIN', '12qw!@QW', 'Vitor Aleixo', 'ADMIN', 'ADMIN', 'ADMIN', 'ADMIN', 'ADMIN', '0'); ";
                 cmd.ExecuteNonQuery();
-                cmd.Dispose();
             }
 
             cmd.Dispose();

@@ -43,6 +43,8 @@ namespace Custo
             var produto = Produto.BuscarTodos().Where(f => f.Id == ((Produto)cmbComposicao.SelectedItem).Id).FirstOrDefault();
 
             lblCustoTotal.Text = $"Custo Total: R$ 0,00";
+            lblCustoProduto.Text = $"Custo do Produto: R$ 0,00";
+            lblLucro.Text =  $"Lucro: R$ 0,00";
 
             if (composicao != null)
             {
@@ -138,7 +140,7 @@ namespace Custo
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show("Produto ou Matéria-Prima não Preenchidos!", "Confirmacão", MessageBoxButtons.OK);
+                    DialogResult dialogResult = MessageBox.Show("Produto ou Matéria-Prima não Preenchidos!", "Confirmação", MessageBoxButtons.OK);
                 }
             }
             catch (Exception ex)

@@ -14,7 +14,9 @@ namespace Custo.AppCode
         public string Data { get; set; }
         public string Cliente2 { get; set; }
         public double ValorTotal { get; set; }
+        public string Status{ get; set; }
 
+        public string nomeCliente { get; set; }
         public Pedido()
         {
 
@@ -41,7 +43,7 @@ namespace Custo.AppCode
                 conn.Close();
             }
         }
-
+     
         public void Inserir()
         {
             using (var conn =
@@ -52,9 +54,10 @@ namespace Custo.AppCode
                 var sql = new StringBuilder();
 
                 sql.AppendLine("INSERT INTO Pedido ");
-                sql.AppendLine("(IdCliente, Data) VALUES ");
+                sql.AppendLine("(IdCliente, Data, Status) VALUES ");
                 sql.AppendLine($"({this.IdCliente}");
-                sql.AppendLine($",'{this.Data}')");
+                sql.AppendLine($",'{this.Data}'");
+                sql.AppendLine($",'{this.Status}')");
 
                 using (var cmd = conn.CreateCommand())
                 {
@@ -64,7 +67,21 @@ namespace Custo.AppCode
                     sql.Clear();
                 }
 
-                sql.AppendLine("UPDATE TabelaPedidoItem SET IdPedido = (Select Count(Id) from Pedido)");
+                sql.AppendLine("UPDATE Pedido ");
+                sql.AppendLine($"SET DATA = substr(DATA, 7, 4) || '-' || substr(DATA, 4, 2) || '-' || substr(DATA, 1, 2) ");
+                sql.AppendLine($"WHERE Id = (SELECT MAX(id) FROM Pedido);");
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = sql.ToString();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    sql.Clear();
+                }
+
+
+
+                sql.AppendLine("UPDATE TabelaPedidoItem SET IdPedido = (Select MAX(Id) from Pedido)");
 
                 using (var cmd = conn.CreateCommand())
                 {
@@ -110,6 +127,7 @@ namespace Custo.AppCode
                 sql.AppendLine("UPDATE Pedido ");
                 sql.AppendLine($"SET IdCliente = {this.IdCliente} ");
                 sql.AppendLine($", Data = '{this.Data}' ");
+                sql.AppendLine($", Status = '{this.Status}' ");
                 sql.AppendLine($"WHERE Id = {this.Id};");
 
                 using (var cmd = conn.CreateCommand())
@@ -120,7 +138,20 @@ namespace Custo.AppCode
                     sql.Clear();
                 }
 
-                //furo
+                sql.AppendLine("UPDATE Pedido ");
+                sql.AppendLine($"SET DATA = substr(DATA, 7, 4) || '-' || substr(DATA, 4, 2) || '-' || substr(DATA, 1, 2) ");
+                sql.AppendLine($"WHERE Id = {this.Id};");
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = sql.ToString();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    sql.Clear();
+                }
+
+               
+
+
                 sql.AppendLine("UPDATE TabelaPedidoItem ");
                 sql.AppendLine($"SET IdPedido = {this.Id};");
 
@@ -191,7 +222,7 @@ namespace Custo.AppCode
         public static List<Pedido> BuscarTodos()
         {
             var lst = new List<Pedido>();
-
+ 
             using (var conn =
                 new SQLiteConnection("Data Source=DB.sqlite"))
             {
@@ -213,7 +244,8 @@ namespace Custo.AppCode
                             {
                                 Id = dr.GetInt32(0),
                                 IdCliente = dr.GetInt32(1),
-                                Data = dr.GetString(2),
+                                Data = dr.GetDateTime(2).ToString("dd/MM/yyyy"),
+                                Status = dr.GetString(3),
                                 Cliente2 = cliente.Nome,
                                 ValorTotal = valorTotal
 

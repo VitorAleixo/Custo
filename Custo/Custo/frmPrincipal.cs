@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Custo
 {
-   
+
 
     public partial class frmPrincipal : Form
     {
@@ -37,7 +37,7 @@ namespace Custo
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new frmClientes { MdiParent = this, StartPosition = FormStartPosition.CenterParent }.Show();
-          
+
         }
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace Custo
 
         private void cadastroDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmCadastroUsuarios { MdiParent = this, StartPosition = FormStartPosition.CenterParent }.Show();          
+            new frmCadastroUsuarios { MdiParent = this, StartPosition = FormStartPosition.CenterParent }.Show();
         }
 
         public frmPrincipal()
@@ -65,8 +65,14 @@ namespace Custo
             InitializeComponent();
         }
 
+        private void lucrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmLucros { MdiParent = this, StartPosition = FormStartPosition.CenterParent }.Show();
+        }
+
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Maximized;
             DateTime dataHora = new DateTime();
             var obj = new Login();
             obj.User = txtUsuario.Text;
@@ -80,20 +86,20 @@ namespace Custo
 
             //VALIDACAO DE ADMIN
             var obj2 = new CadastroUsuario();
-           
+
             obj2.Usuario = txtUsuario.Text;
             obj2.CheckAdmin();
 
             if (obj2.Checar == true)
             {
                 cadastroDeUsuariosToolStripMenuItem.Visible = true;
-                DialogResult dialogResult = MessageBox.Show("Bem Vindo: "+NomeUsuario+"! \nSeus direitos de ADMIN foram desbloqueados!", "Confirmacão", MessageBoxButtons.OK);
+                DialogResult dialogResult = MessageBox.Show("Bem Vindo: " + NomeUsuario + "! \nSeus direitos de ADMIN foram desbloqueados!", "Confirmacão", MessageBoxButtons.OK);
 
             }
             else
             {
                 cadastroDeUsuariosToolStripMenuItem.Visible = false;
-                DialogResult dialogResult = MessageBox.Show("Bem Vindo: "+NomeUsuario, "Confirmacão", MessageBoxButtons.OK);
+                DialogResult dialogResult = MessageBox.Show("Bem Vindo: " + NomeUsuario, "Confirmacão", MessageBoxButtons.OK);
             }
         }
 
@@ -109,5 +115,7 @@ namespace Custo
             txtData.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtHora.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
+       
     }
 }

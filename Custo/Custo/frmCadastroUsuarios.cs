@@ -96,7 +96,7 @@ namespace Custo
                         }
                         else
                         {
-                            DialogResult dialogResult = MessageBox.Show("Este Usuario já Existe!", "Confirmacão", MessageBoxButtons.OK);
+                            DialogResult dialogResult = MessageBox.Show("Este Usuario já Existe!", "Confirmação", MessageBoxButtons.OK);
                         }
                     }
                     else
@@ -114,13 +114,13 @@ namespace Custo
                         }
                         else
                         {
-                            DialogResult dialogResult = MessageBox.Show("Este Usuario já Existe!", "Confirmacão", MessageBoxButtons.OK);
+                            DialogResult dialogResult = MessageBox.Show("Este Usuario já Existe!", "Confirmação", MessageBoxButtons.OK);
                         }
                     }
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show("Algum dado está faltando!!!", "Confirmacão", MessageBoxButtons.OK);
+                    DialogResult dialogResult = MessageBox.Show("Algum dado está faltando!!!", "Confirmação", MessageBoxButtons.OK);
                 }
             }
             catch (Exception ex)
@@ -201,9 +201,64 @@ namespace Custo
             }
         }
 
+        void LimparItens()
+        {
+            txtUsuarioFiltro.Text = "";
+            cmbTipoContaFiltro.SelectedIndex = -1;
+        }
+
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnNoFiltro_Click(object sender, EventArgs e)
+        {
+            grdClientes.AutoGenerateColumns = false;
+            grdClientes.DataSource = null;
+            grdClientes.DataSource = CadastroUsuario.BuscarTodos();
+            grdClientes.Show();
+            LimparItens();
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtUsuarioFiltro.Text != "" && cmbTipoContaFiltro.Text != "")
+                {
+                    Filtro.Usuario = txtUsuarioFiltro.Text;
+                    Filtro.TipoConta = cmbTipoContaFiltro.SelectedItem.ToString();
+                    grdClientes.AutoGenerateColumns = false;
+                    grdClientes.DataSource = null;
+                    grdClientes.DataSource = Filtro.clienteadminBuscarPorUsuarioTipoConta();
+                    grdClientes.Show();
+                }
+                else if (txtUsuarioFiltro.Text != "" && cmbTipoContaFiltro.Text == "")
+                {
+                    Filtro.Usuario = txtUsuarioFiltro.Text;
+                    grdClientes.AutoGenerateColumns = false;
+                    grdClientes.DataSource = null;
+                    grdClientes.DataSource = Filtro.clienteadminBuscarPorUsuario();
+                    grdClientes.Show();
+                }
+                else if (txtUsuarioFiltro.Text == "" && cmbTipoContaFiltro.Text != "")
+                {
+                    Filtro.TipoConta = cmbTipoContaFiltro.SelectedItem.ToString();
+                    grdClientes.AutoGenerateColumns = false;
+                    grdClientes.DataSource = null;
+                    grdClientes.DataSource = Filtro.clienteadminBuscarPorTipoConta();
+                    grdClientes.Show();
+                }
+                else if (txtUsuarioFiltro.Text == "" && cmbTipoConta.Text == "")
+                {
+                    DialogResult dialogresult = MessageBox.Show("Não se pode fazer filtro com dados Nulos!", "Filtro", MessageBoxButtons.OK);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

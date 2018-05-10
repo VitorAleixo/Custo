@@ -89,6 +89,7 @@
     <Compile Include="AppCode\Cliente.cs" />
     <Compile Include="AppCode\ComposicaoItem.cs" />
     <Compile Include="AppCode\Composicao.cs" />
+    <Compile Include="AppCode\Filtro.cs" />
     <Compile Include="AppCode\Login.cs" />
     <Compile Include="AppCode\Pedido.cs" />
     <Compile Include="AppCode\PedidoItem.cs" />
@@ -104,6 +105,12 @@
     <Compile Include="frmCadastroUsuarios.Designer.cs">
       <DependentUpon>frmCadastroUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLucros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLucros.Designer.cs">
+      <DependentUpon>frmLucros.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,17 +124,17 @@
     <Compile Include="frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPrincipal.Designer.cs">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmComposicao.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmComposicao.Designer.cs">
       <DependentUpon>frmComposicao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="frmProduto.cs">
       <SubType>Form</SubType>
@@ -147,6 +154,12 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTotalLucros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTotalLucros.Designer.cs">
+      <DependentUpon>frmTotalLucros.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAjuda.resx">
@@ -155,20 +168,20 @@
     <EmbeddedResource Include="frmCadastroUsuarios.resx">
       <DependentUpon>frmCadastroUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLucros.resx">
+      <DependentUpon>frmLucros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPedidos.resx">
       <DependentUpon>frmPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrincipal.pt-BR.resx">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="frmComposicao.resx">
+      <DependentUpon>frmComposicao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmComposicao.resx">
-      <DependentUpon>frmComposicao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProduto.resx">
       <DependentUpon>frmProduto.cs</DependentUpon>
@@ -179,22 +192,25 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTotalLucros.resx">
+      <DependentUpon>frmTotalLucros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -203,12 +219,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Custo.ico" />
+    <None Include="Resources\Background.jpg" />
+    <None Include="Resources\btnBuscar.png" />
+    <None Include="Resources\btnFiltro.ico" />
+    <None Include="Resources\btnCalendario.ico" />
+    <None Include="Resources\btnAplicar.ico" />
     <None Include="Resources\btnExcluir.png" />
-    <None Include="Resources\Actions-document-edit-icon.png" />
-    <None Include="Resources\if_add_16x16_97121.ico" />
-    <None Include="Resources\if_button_ok_3207.ico" />
-    <None Include="Resources\if_add_16x16_9712.ico" />
-    <None Include="Resources\if_cross_16189.png" />
+    <None Include="Resources\btnEditar.png" />
+    <None Include="Resources\btnIncluir.ico" />
+    <None Include="Resources\btnSair-Cancelar.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

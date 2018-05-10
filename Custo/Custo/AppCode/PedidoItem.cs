@@ -83,6 +83,16 @@ namespace Custo.AppCode
 
                 var sql = new StringBuilder();
 
+                sql.AppendLine("DELETE FROM TabelaPedidoItem ");
+                sql.AppendLine($"WHERE Id = {this.Id};");
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = sql.ToString();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                }
+
                 sql.AppendLine("DELETE FROM PedidoItem ");
                 sql.AppendLine($"WHERE Id = {this.Id};");
 

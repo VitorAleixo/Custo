@@ -89,12 +89,12 @@ namespace Custo
                     }
                     else
                     {
-                        DialogResult dialogResult = MessageBox.Show("Algum dado está faltando!", "Confirmacão", MessageBoxButtons.OK);
+                        DialogResult dialogResult = MessageBox.Show("Algum dado está faltando!", "Confirmação", MessageBoxButtons.OK);
                     }
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show("Algum dado está Faltando!", "Confirmacão", MessageBoxButtons.OK);
+                    DialogResult dialogResult = MessageBox.Show("Algum dado está Faltando!", "Confirmação", MessageBoxButtons.OK);
                 }
             }
 
@@ -151,6 +151,13 @@ namespace Custo
             }
         }
 
+        void LimparItens()
+        {
+            txtDescricaoFiltro.Text = "";
+            txtCodigoProdutoFiltro.Text = "";
+            cmbTipoFiltro.SelectedIndex = -1;
+        }
+
         private void grdDados_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             try
@@ -185,6 +192,107 @@ namespace Custo
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnNoFiltro_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                grdDados.AutoGenerateColumns = false;
+                grdDados.DataSource = null;
+                grdDados.DataSource = Produto.BuscarTodos();
+                grdDados.Show();
+                LimparItens();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtCodigoProdutoFiltro.Text != "" && txtDescricaoFiltro.Text != "" && cmbTipoFiltro.Text != "")
+                {
+                    // BUSCA COD, DESC, TIPO;
+                    Filtro.Cod = txtCodigoProdutoFiltro.Text;
+                    Filtro.Desc = txtDescricaoFiltro.Text;
+                    Filtro.Tipo = cmbTipoFiltro.SelectedItem.ToString();
+                    grdDados.AutoGenerateColumns = false;
+                    grdDados.DataSource = null;
+                    grdDados.DataSource = Filtro.produtoFiltrarPorCodDescTipo();
+                    grdDados.Show();
+                }
+                else if (txtCodigoProdutoFiltro.Text != "" && txtDescricaoFiltro.Text != "" && cmbTipoFiltro.Text == "")
+                {
+                    //BUSCA COD, DESC;
+                    Filtro.Cod = txtCodigoProdutoFiltro.Text;
+                    Filtro.Desc = txtDescricaoFiltro.Text;
+                    grdDados.AutoGenerateColumns = false;
+                    grdDados.DataSource = null;
+                    grdDados.DataSource = Filtro.produtoFiltrarPorCodDesc();
+                    grdDados.Show();
+                }
+                else if (txtCodigoProdutoFiltro.Text != "" && txtDescricaoFiltro.Text == "" && cmbTipoFiltro.Text != "")
+                {
+                    // BUSCA COD TIPO;
+                    Filtro.Cod = txtCodigoProdutoFiltro.Text;
+                    Filtro.Tipo = cmbTipoFiltro.SelectedItem.ToString();
+                    grdDados.AutoGenerateColumns = false;
+                    grdDados.DataSource = null;
+                    grdDados.DataSource = Filtro.produtoFiltrarPorCodTipo();
+                    grdDados.Show();
+                }
+                else if (txtCodigoProdutoFiltro.Text != "" && txtDescricaoFiltro.Text == "" && cmbTipoFiltro.Text == "")
+                {
+                    //  BUSCA COD;  
+                    Filtro.Cod = txtCodigoProdutoFiltro.Text;
+                    grdDados.AutoGenerateColumns = false;
+                    grdDados.DataSource = null;
+                    grdDados.DataSource = Filtro.produtoFiltrarPorCod();
+                    grdDados.Show();
+                }
+                else if (txtCodigoProdutoFiltro.Text == "" && txtDescricaoFiltro.Text != "" && cmbTipoFiltro.Text != "")
+                {
+                    // BUSCA DESC TIPO;
+                    Filtro.Desc = txtDescricaoFiltro.Text;
+                    Filtro.Tipo = cmbTipoFiltro.SelectedItem.ToString();
+                    grdDados.AutoGenerateColumns = false;
+                    grdDados.DataSource = null;
+                    grdDados.DataSource = Filtro.produtoFiltrarPorDescTipo();
+                    grdDados.Show();
+                }
+                else if (txtCodigoProdutoFiltro.Text == "" && txtDescricaoFiltro.Text != "" && cmbTipoFiltro.Text == "")
+                {
+                    // BUSCA DESC;
+                    Filtro.Desc = txtDescricaoFiltro.Text;
+                    grdDados.AutoGenerateColumns = false;
+                    grdDados.DataSource = null;
+                    grdDados.DataSource = Filtro.produtoFiltrarPorDesc();
+                    grdDados.Show();
+                }
+                else if (txtCodigoProdutoFiltro.Text == "" && txtDescricaoFiltro.Text == "" && cmbTipoFiltro.Text != "")
+                {
+                    // BUSCA TIPO;
+                    Filtro.Tipo = cmbTipoFiltro.SelectedItem.ToString();
+                    grdDados.AutoGenerateColumns = false;
+                    grdDados.DataSource = null;
+                    grdDados.DataSource = Filtro.produtoFiltrarPorTipo();
+                    grdDados.Show();
+                }
+                else if (txtCodigoProdutoFiltro.Text == "" && txtDescricaoFiltro.Text == "" && cmbTipoFiltro.Text == "")
+                {
+                    //BUSCA NULA
+                    DialogResult dialogresult = MessageBox.Show("Não se pode fazer filtro com dados NULOS!", "Filtro", MessageBoxButtons.OK);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

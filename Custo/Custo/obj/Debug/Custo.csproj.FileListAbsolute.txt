@@ -63,9 +63,6 @@ C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\obj\Debug\Cust
 C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\obj\Debug\Custo.exe
 C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\obj\Debug\Custo.pdb
 C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\obj\Debug\Custo.frmPedidos.resources
-C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\bin\Debug\pt-BR\Custo.resources.dll
-C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\obj\Debug\Custo.frmPrincipal.pt-BR.resources
-C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\obj\Debug\pt-BR\Custo.resources.dll
 C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\obj\Debug\Custo.frmPedidoNovo.resources
 C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\obj\Debug\Custo.frmLogin.resources
 C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\obj\Debug\Custo.frmAjuda.resources
@@ -106,3 +103,5 @@ C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\bin\Debug\de\D
 C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\bin\Debug\es\DevExpress.Pdf.v17.1.Core.resources.dll
 C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\bin\Debug\ja\DevExpress.Pdf.v17.1.Core.resources.dll
 C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\bin\Debug\ru\DevExpress.Pdf.v17.1.Core.resources.dll
+C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\obj\Debug\Custo.frmLucros.resources
+C:\Users\estagio.ti\Desktop\Custo Produtos de Limpeza\Custo\Custo\obj\Debug\Custo.frmTotalLucros.resources

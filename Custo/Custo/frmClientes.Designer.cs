@@ -1,4 +1,5 @@
-﻿namespace Custo
+﻿using System.Windows.Forms;
+namespace Custo
 {
     partial class frmClientes
     {
@@ -28,10 +29,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlCliente = new System.Windows.Forms.TabControl();
             this.tabPageFormulario = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtClienteFiltro = new System.Windows.Forms.TextBox();
+            this.btnFiltro = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnNoFiltro = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
             this.btnNovoCliente = new System.Windows.Forms.Button();
             this.grdDados2 = new System.Windows.Forms.DataGridView();
             this.NomeCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,9 +61,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSair = new System.Windows.Forms.Button();
             this.tabControlCliente.SuspendLayout();
             this.tabPageFormulario.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDados2)).BeginInit();
             this.tabPageLista.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +83,7 @@
             // 
             // tabPageFormulario
             // 
+            this.tabPageFormulario.Controls.Add(this.groupBox1);
             this.tabPageFormulario.Controls.Add(this.btnSair);
             this.tabPageFormulario.Controls.Add(this.btnNovoCliente);
             this.tabPageFormulario.Controls.Add(this.grdDados2);
@@ -88,6 +96,74 @@
             this.tabPageFormulario.TabIndex = 0;
             this.tabPageFormulario.Text = "Lista";
             this.tabPageFormulario.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtClienteFiltro);
+            this.groupBox1.Controls.Add(this.btnFiltro);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.btnNoFiltro);
+            this.groupBox1.Location = new System.Drawing.Point(3, 7);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(714, 48);
+            this.groupBox1.TabIndex = 48;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtro";
+            // 
+            // txtClienteFiltro
+            // 
+            this.txtClienteFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtClienteFiltro.Location = new System.Drawing.Point(51, 19);
+            this.txtClienteFiltro.Name = "txtClienteFiltro";
+            this.txtClienteFiltro.Size = new System.Drawing.Size(592, 20);
+            this.txtClienteFiltro.TabIndex = 47;
+            // 
+            // btnFiltro
+            // 
+            this.btnFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnFiltro.Image = global::Custo.Properties.Resources.btnFiltro;
+            this.btnFiltro.Location = new System.Drawing.Point(649, 16);
+            this.btnFiltro.Name = "btnFiltro";
+            this.btnFiltro.Size = new System.Drawing.Size(30, 25);
+            this.btnFiltro.TabIndex = 46;
+            this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 13);
+            this.label7.TabIndex = 44;
+            this.label7.Text = "Cliente:";
+            // 
+            // btnNoFiltro
+            // 
+            this.btnNoFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnNoFiltro.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
+            this.btnNoFiltro.Location = new System.Drawing.Point(681, 16);
+            this.btnNoFiltro.Name = "btnNoFiltro";
+            this.btnNoFiltro.Size = new System.Drawing.Size(30, 25);
+            this.btnNoFiltro.TabIndex = 45;
+            this.btnNoFiltro.UseVisualStyleBackColor = true;
+            this.btnNoFiltro.Click += new System.EventHandler(this.btnNoFiltro_Click);
+            // 
+            // btnSair
+            // 
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(587, 355);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(62, 27);
+            this.btnSair.TabIndex = 13;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnNovoCliente
             // 
@@ -118,10 +194,10 @@
             this.TelefoneCliente,
             this.Email,
             this.EnderecoCliente});
-            this.grdDados2.Location = new System.Drawing.Point(6, 6);
+            this.grdDados2.Location = new System.Drawing.Point(6, 61);
             this.grdDados2.Name = "grdDados2";
             this.grdDados2.ReadOnly = true;
-            this.grdDados2.Size = new System.Drawing.Size(711, 343);
+            this.grdDados2.Size = new System.Drawing.Size(711, 288);
             this.grdDados2.TabIndex = 0;
             this.grdDados2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDados2_CellDoubleClick);
             this.grdDados2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.grdDados2_PreviewKeyDown);
@@ -157,9 +233,9 @@
             // EnderecoCliente
             // 
             this.EnderecoCliente.DataPropertyName = "Endereco";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.EnderecoCliente.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.EnderecoCliente.DefaultCellStyle = dataGridViewCellStyle1;
             this.EnderecoCliente.HeaderText = "Endereço";
             this.EnderecoCliente.Name = "EnderecoCliente";
             this.EnderecoCliente.ReadOnly = true;
@@ -319,32 +395,24 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Nome:";
             // 
-            // btnSair
-            // 
-            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.Image = global::Custo.Properties.Resources.if_cross_16189;
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(587, 355);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(62, 27);
-            this.btnSair.TabIndex = 13;
-            this.btnSair.Text = "Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
-            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 443);
             this.Controls.Add(this.tabControlCliente);
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Clientes";
             this.Load += new System.EventHandler(this.frmClientes_Load);
             this.tabControlCliente.ResumeLayout(false);
             this.tabPageFormulario.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDados2)).EndInit();
             this.tabPageLista.ResumeLayout(false);
             this.tabPageLista.PerformLayout();
@@ -379,5 +447,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnderecoCliente;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.TextBox txtClienteFiltro;
+        private System.Windows.Forms.Button btnFiltro;
+        private System.Windows.Forms.Button btnNoFiltro;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

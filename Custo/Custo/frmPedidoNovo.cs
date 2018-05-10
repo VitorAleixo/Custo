@@ -23,11 +23,12 @@ namespace Custo
             }
         }
 
-        void CarregarCombos()
+        public void CarregarCombos()
         {
             cmbCliente.DataSource = null;
             cmbCliente.DataSource = Cliente.BuscarTodos().ToList();
             cmbCliente.DisplayMember = "Nome";
+            cmbCliente.ValueMember = "Id";
 
             cmbProduto.DataSource = null;
             cmbProduto.DataSource = Produto.BuscarTodos().Where(p => p.Tipo == "Produto Final").ToList();
@@ -43,14 +44,16 @@ namespace Custo
             lblCustoTotal.Text = $"Custo Total: R$ 0,00";
 
 
-            var pedido = PedidoItem.TabelaBuscarTodos();//.Where(c => c.IdProduto == ((Produto)cmbProduto.SelectedItem).Id).FirstOrDefault();
+            var pedido = PedidoItem.TabelaBuscarTodos();
             var produto = Produto.BuscarTodos().Where(f => f.Id == ((Produto)cmbProduto.SelectedItem).Id).FirstOrDefault();
 
             if (pedido != null)
             {
-
-                //var lst = PedidoItem.BuscarTodos().Where(i => i.IdPedido == pedido.Id).ToList();
+                int idPed = int.Parse(txtId.Text);
                 var lst = PedidoItem.TabelaBuscarTodos().Where(i => i.IdPedido == 0).ToList();
+                var lst2 = PedidoItem.BuscarTodos().Where(x => x.IdPedido == idPed).ToList();
+
+                lst.AddRange(lst2);
 
                 var custo = lst.Sum(i => i.CustoTotal);
 
@@ -72,12 +75,11 @@ namespace Custo
             lblCustoTotal.Text = $"Custo Total: R$ 0,00";
 
 
-            var pedido = PedidoItem.TabelaBuscarTodos();//.Where(c => c.IdProduto == ((Produto)cmbProduto.SelectedItem).Id).FirstOrDefault();
-            //SELECT PRODUTO
+            var pedido = PedidoItem.TabelaBuscarTodos();
+
             if (pedido != null)
             {
 
-                //AQUI!!!!
                 Pedido p = new Pedido();
                 var _Id = int.Parse(txtId.Text);
                 var lst = PedidoItem.BuscarTodos().Where(i => i.IdPedido == _Id || i.IdPedido == 0).ToList();
@@ -97,10 +99,7 @@ namespace Custo
         {
             try
             {
-                CarregarCombos();
-
-                cmbCliente.SelectedIndex = -1;
-                cmbProduto.SelectedIndex = -1;
+                cmbProduto.SelectedIndex = 0;
 
                 CarregarItensEditar();
             }
@@ -122,8 +121,8 @@ namespace Custo
 
         private void LimparCampos()
         {
-            txtQuantidade.Text = "0";
-            txtObservacao.Text = "0";
+            txtQuantidade.Text = "";
+            txtObservacao.Text = "";
             txtData.Text = "";
             cmbCliente.SelectedIndex = 0;
             cmbProduto.SelectedIndex = 0;
@@ -131,8 +130,8 @@ namespace Custo
 
         private void LimparCampos2()
         {
-            txtQuantidade.Text = "0";
-            txtObservacao.Text = "0";
+            txtQuantidade.Text = "";
+            txtObservacao.Text = "";
             cmbProduto.SelectedIndex = 0;
         }
 
@@ -143,8 +142,8 @@ namespace Custo
             {
                 if (cmbProduto.Text != "" && cmbCliente.Text != "")
                 {
-
-
+                    if(txtQuantidade.Text != "")
+                    { 
                     var item = new PedidoItem();
                     frmPedidos f = new frmPedidos();
 
@@ -168,23 +167,28 @@ namespace Custo
 
                         pedido = Pedido.BuscarTodos().Where(c => c.IdCliente == ((Cliente)cmbCliente.SelectedItem).Id).FirstOrDefault();
 
-                        //pedidoInserir.Inserir();
-                        // item.IdPedido = pedido.Id;
                     }
 
                     item.Inserir();
 
-                    MessageBox.Show("Item inserido com sucesso!", "Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Item inserido com sucesso!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     LimparCampos2();
 
                     CarregarItens();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Quantidade não Preenchida!", "Confirmação", MessageBoxButtons.OK);
+                    }
+
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show("Produto ou Cliente não Preenchidos!", "Confirmacão", MessageBoxButtons.OK);
+                    DialogResult dialogResult = MessageBox.Show("Produto ou Cliente não Preenchidos!", "Confirmação", MessageBoxButtons.OK);
                 }
-        }
+
+            }
 
             catch (Exception ex)
             {
@@ -217,7 +221,7 @@ namespace Custo
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show("Produto ou Cliente não Preenchidos!", "Confirmacão", MessageBoxButtons.OK);
+                    DialogResult dialogResult = MessageBox.Show("Produto ou Cliente não Preenchidos!", "Confirmação", MessageBoxButtons.OK);
                 }
             }
             catch (Exception ex)
@@ -232,41 +236,53 @@ namespace Custo
            
             try
             {
+                int dia = Int32.Parse(txtData.Text.Substring(0, 2));
+                int mes = Int32.Parse(txtData.Text.Substring(3, 2));
+                int ano = Int32.Parse(txtData.Text.Substring(6, 4));
                 if (cmbProduto.Text != "" && cmbCliente.Text != "")
                 {
-                    var pedidoInserir = new Pedido();
-
-                pedidoInserir.Id = int.Parse(txtId.Text);
-                pedidoInserir.IdCliente = ((Cliente)cmbCliente.SelectedItem).Id;
-                pedidoInserir.Data = txtData.Text;
-
-                var pedido = Pedido.BuscarTodos().Where(c => c.IdCliente == ((Cliente)cmbCliente.SelectedItem).Id).FirstOrDefault();
-                
-                    if (pedidoInserir.Id == 0)
+                    if (txtData.Text != "  /  /" && txtData.Text.Length == 10 && txtData.Text.Substring(0,2) != "00" && txtData.Text.Substring(3, 2) != "00" && txtData.Text.Substring(6, 4) != "0000" && dia <= 32 &&  mes <=  12 && ano < 2100 && ano >= 2000)
                     {
-                        if (grdNovoPedido.Rows.Count > 0)
+
+                        var pedidoInserir = new Pedido();
+
+                        pedidoInserir.Id = int.Parse(txtId.Text);
+                        pedidoInserir.IdCliente = ((Cliente)cmbCliente.SelectedItem).Id;
+                        pedidoInserir.Data = txtData.Text;
+
+
+                        var pedido = Pedido.BuscarTodos().Where(c => c.IdCliente == ((Cliente)cmbCliente.SelectedItem).Id).FirstOrDefault();
+
+                        if (pedidoInserir.Id == 0)
                         {
-                            pedidoInserir.Inserir();
-                            MessageBox.Show("Pedido inserido com sucesso!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (grdNovoPedido.Rows.Count > 0)
+                            {
+                                pedidoInserir.Inserir();
+                                MessageBox.Show("Pedido inserido com sucesso!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                return;
+                            }
                         }
                         else
                         {
-                            return;
+                            pedidoInserir.Atualizar();
+                            MessageBox.Show("Pedido Atualizado com sucesso!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            frmPedidos f = new frmPedidos();
                         }
+
+
+                        this.Close();
                     }
                     else
                     {
-                        pedidoInserir.Atualizar();
-                        MessageBox.Show("Pedido Atualizado com sucesso!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        frmPedidos f = new frmPedidos();
+                        DialogResult dialogResult = MessageBox.Show("Data Incorreta ou não Preenchida!", "Confirmação", MessageBoxButtons.OK);
                     }
-
-
-                    this.Close();
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show("Produto ou Cliente não Preenchidos!", "Confirmacão", MessageBoxButtons.OK);
+                    DialogResult dialogResult = MessageBox.Show("Produto ou Cliente não Preenchidos!", "Confirmação", MessageBoxButtons.OK);
                 }
 
             }
@@ -280,7 +296,7 @@ namespace Custo
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Tem certeza que deseja Sair?\nSe houver dados digitados, os mesmos serão perdidos!", "Confirmacão", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Tem certeza que deseja Sair?\nSe houver dados digitados, os mesmos serão perdidos!", "Confirmação", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 Pedido pedido = new Pedido();

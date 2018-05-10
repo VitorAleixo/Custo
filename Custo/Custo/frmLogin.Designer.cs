@@ -65,7 +65,7 @@ namespace Custo
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Image = global::Custo.Properties.Resources.if_cross_16189;
+            this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSair.Location = new System.Drawing.Point(130, 185);
             this.btnSair.Name = "btnSair";
@@ -99,6 +99,7 @@ namespace Custo
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(200, 20);
             this.txtSenha.TabIndex = 5;
+            this.txtSenha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSenha_KeyDown);
             // 
             // txtUsuario
             // 
@@ -107,6 +108,7 @@ namespace Custo
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(200, 20);
             this.txtUsuario.TabIndex = 6;
+            this.txtUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsuario_KeyDown);
             // 
             // frmLogin
             // 
@@ -120,9 +122,13 @@ namespace Custo
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
-            this.Text = "Sistema de Custos - Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Custo";
             this.ResumeLayout(false);
             this.PerformLayout();
 

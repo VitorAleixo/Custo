@@ -1,4 +1,5 @@
-﻿namespace Custo
+﻿using System.Windows.Forms;
+namespace Custo
 {
     partial class frmPedidoNovo
     {
@@ -50,10 +51,12 @@
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblCustoTotal = new System.Windows.Forms.Label();
-            this.btnIncluir = new System.Windows.Forms.Button();
             this.txtData = new System.Windows.Forms.MaskedTextBox();
-            this.btnSalvar = new System.Windows.Forms.Button();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnSair = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnIncluir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdNovoPedido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,6 +102,7 @@
             // 
             this.cmbCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCliente.FormattingEnabled = true;
             this.cmbCliente.Location = new System.Drawing.Point(86, 58);
             this.cmbCliente.Name = "cmbCliente";
@@ -109,6 +113,7 @@
             // 
             this.cmbProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbProduto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProduto.FormattingEnabled = true;
             this.cmbProduto.Location = new System.Drawing.Point(86, 96);
             this.cmbProduto.Name = "cmbProduto";
@@ -213,8 +218,9 @@
             this.txtObservacao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtObservacao.Location = new System.Drawing.Point(86, 133);
+            this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(717, 20);
+            this.txtObservacao.Size = new System.Drawing.Size(365, 52);
             this.txtObservacao.TabIndex = 29;
             // 
             // label5
@@ -237,44 +243,38 @@
             this.lblCustoTotal.TabIndex = 30;
             this.lblCustoTotal.Text = "Custo Total:";
             // 
-            // btnIncluir
-            // 
-            this.btnIncluir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnIncluir.Image = ((System.Drawing.Image)(resources.GetObject("btnIncluir.Image")));
-            this.btnIncluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIncluir.Location = new System.Drawing.Point(384, 159);
-            this.btnIncluir.Name = "btnIncluir";
-            this.btnIncluir.Size = new System.Drawing.Size(67, 27);
-            this.btnIncluir.TabIndex = 31;
-            this.btnIncluir.Text = "Incluir";
-            this.btnIncluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnIncluir.UseVisualStyleBackColor = true;
-            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
-            // 
             // txtData
             // 
-            this.txtData.Location = new System.Drawing.Point(538, 58);
+            this.txtData.Location = new System.Drawing.Point(540, 58);
             this.txtData.Mask = "00/00/0000";
             this.txtData.Name = "txtData";
-            this.txtData.Size = new System.Drawing.Size(262, 20);
-            this.txtData.TabIndex = 32;
+            this.txtData.Size = new System.Drawing.Size(263, 20);
+            this.txtData.TabIndex = 35;
             this.txtData.ValidatingType = typeof(System.DateTime);
             // 
-            // btnSalvar
+            // cmbStatus
             // 
-            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
-            this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvar.Location = new System.Drawing.Point(747, 427);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(66, 23);
-            this.btnSalvar.TabIndex = 33;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            this.cmbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "INCOMPLETO",
+            "PRODUÇÃO",
+            "COMPLETO"});
+            this.cmbStatus.Location = new System.Drawing.Point(540, 128);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(261, 21);
+            this.cmbStatus.TabIndex = 37;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(466, 131);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 13);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Status:";
             // 
             // btnSair
             // 
@@ -291,14 +291,46 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
+            this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalvar.Location = new System.Drawing.Point(747, 427);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(66, 23);
+            this.btnSalvar.TabIndex = 33;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // btnIncluir
+            // 
+            this.btnIncluir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnIncluir.Image = ((System.Drawing.Image)(resources.GetObject("btnIncluir.Image")));
+            this.btnIncluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIncluir.Location = new System.Drawing.Point(734, 158);
+            this.btnIncluir.Name = "btnIncluir";
+            this.btnIncluir.Size = new System.Drawing.Size(67, 27);
+            this.btnIncluir.TabIndex = 31;
+            this.btnIncluir.Text = "Incluir";
+            this.btnIncluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnIncluir.UseVisualStyleBackColor = true;
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
+            // 
             // frmPedidoNovo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 457);
+            this.Controls.Add(this.cmbStatus);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtData);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnSalvar);
-            this.Controls.Add(this.txtData);
             this.Controls.Add(this.btnIncluir);
             this.Controls.Add(this.lblCustoTotal);
             this.Controls.Add(this.txtObservacao);
@@ -313,9 +345,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label6);
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPedidoNovo";
-            this.Text = "Adicionar Pedidos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Adicionar/Alterar Pedidos";
             this.Load += new System.EventHandler(this.frmPedidoNovo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdNovoPedido)).EndInit();
             this.ResumeLayout(false);
@@ -339,7 +375,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblCustoTotal;
         private System.Windows.Forms.Button btnIncluir;
-        public System.Windows.Forms.MaskedTextBox txtData;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustoUnitario;
@@ -347,5 +382,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Observacoes;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnSair;
+        public System.Windows.Forms.MaskedTextBox txtData;
+        public ComboBox cmbStatus;
+        private Label label7;
     }
 }

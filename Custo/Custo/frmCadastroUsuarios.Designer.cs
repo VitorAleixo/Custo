@@ -1,4 +1,5 @@
-﻿namespace Custo
+﻿using System.Windows.Forms;
+namespace Custo
 {
     partial class frmCadastroUsuarios
     {
@@ -28,19 +29,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastroUsuarios));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabCadastroCliente = new System.Windows.Forms.TabControl();
             this.tabPageFormulario = new System.Windows.Forms.TabPage();
-            this.btnSair = new System.Windows.Forms.Button();
-            this.btnNovoCliente = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbTipoContaFiltro = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtUsuarioFiltro = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.grdClientes = new System.Windows.Forms.DataGridView();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TelefoneCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EnderecoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageLista = new System.Windows.Forms.TabPage();
+            this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtTelefone = new System.Windows.Forms.TextBox();
             this.txtCpf = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -50,41 +62,38 @@
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnSalvar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TelefoneCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EnderecoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFiltro = new System.Windows.Forms.Button();
+            this.btnNoFiltro = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnNovoCliente = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.tabCadastroCliente.SuspendLayout();
             this.tabPageFormulario.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClientes)).BeginInit();
             this.tabPageLista.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabCadastroCliente
             // 
-            this.tabCadastroCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabCadastroCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabCadastroCliente.Controls.Add(this.tabPageFormulario);
             this.tabCadastroCliente.Controls.Add(this.tabPageLista);
             this.tabCadastroCliente.Location = new System.Drawing.Point(-1, 12);
             this.tabCadastroCliente.Name = "tabCadastroCliente";
             this.tabCadastroCliente.SelectedIndex = 0;
-            this.tabCadastroCliente.Size = new System.Drawing.Size(731, 399);
+            this.tabCadastroCliente.Size = new System.Drawing.Size(731, 432);
             this.tabCadastroCliente.TabIndex = 2;
             // 
             // tabPageFormulario
             // 
+            this.tabPageFormulario.Controls.Add(this.groupBox1);
             this.tabPageFormulario.Controls.Add(this.btnSair);
             this.tabPageFormulario.Controls.Add(this.btnNovoCliente);
             this.tabPageFormulario.Controls.Add(this.grdClientes);
@@ -93,38 +102,66 @@
             this.tabPageFormulario.Name = "tabPageFormulario";
             this.tabPageFormulario.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageFormulario.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPageFormulario.Size = new System.Drawing.Size(723, 403);
+            this.tabPageFormulario.Size = new System.Drawing.Size(723, 406);
             this.tabPageFormulario.TabIndex = 0;
             this.tabPageFormulario.Text = "Lista";
             this.tabPageFormulario.UseVisualStyleBackColor = true;
             // 
-            // btnSair
+            // groupBox1
             // 
-            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.Image = global::Custo.Properties.Resources.if_cross_16189;
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(587, 374);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(62, 27);
-            this.btnSair.TabIndex = 12;
-            this.btnSair.Text = "Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.cmbTipoContaFiltro);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.txtUsuarioFiltro);
+            this.groupBox1.Controls.Add(this.btnFiltro);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.btnNoFiltro);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(711, 44);
+            this.groupBox1.TabIndex = 49;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtro";
             // 
-            // btnNovoCliente
+            // cmbTipoContaFiltro
             // 
-            this.btnNovoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNovoCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnNovoCliente.Image")));
-            this.btnNovoCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovoCliente.Location = new System.Drawing.Point(655, 374);
-            this.btnNovoCliente.Name = "btnNovoCliente";
-            this.btnNovoCliente.Size = new System.Drawing.Size(62, 27);
-            this.btnNovoCliente.TabIndex = 11;
-            this.btnNovoCliente.Text = "Novo";
-            this.btnNovoCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNovoCliente.UseVisualStyleBackColor = true;
-            this.btnNovoCliente.Click += new System.EventHandler(this.btnNovoCliente_Click);
+            this.cmbTipoContaFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoContaFiltro.FormattingEnabled = true;
+            this.cmbTipoContaFiltro.Items.AddRange(new object[] {
+            "ADMIN",
+            "USUARIO"});
+            this.cmbTipoContaFiltro.Location = new System.Drawing.Point(297, 19);
+            this.cmbTipoContaFiltro.Name = "cmbTipoContaFiltro";
+            this.cmbTipoContaFiltro.Size = new System.Drawing.Size(151, 21);
+            this.cmbTipoContaFiltro.TabIndex = 49;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(228, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(62, 13);
+            this.label11.TabIndex = 48;
+            this.label11.Text = "Tipo Conta:";
+            // 
+            // txtUsuarioFiltro
+            // 
+            this.txtUsuarioFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUsuarioFiltro.Location = new System.Drawing.Point(51, 17);
+            this.txtUsuarioFiltro.Name = "txtUsuarioFiltro";
+            this.txtUsuarioFiltro.Size = new System.Drawing.Size(151, 20);
+            this.txtUsuarioFiltro.TabIndex = 47;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(46, 13);
+            this.label10.TabIndex = 44;
+            this.label10.Text = "Usuario:";
             // 
             // grdClientes
             // 
@@ -144,21 +181,81 @@
             this.Email,
             this.TelefoneCliente,
             this.EnderecoCliente});
-            this.grdClientes.Location = new System.Drawing.Point(6, 6);
+            this.grdClientes.Location = new System.Drawing.Point(6, 60);
             this.grdClientes.Name = "grdClientes";
             this.grdClientes.ReadOnly = true;
-            this.grdClientes.Size = new System.Drawing.Size(711, 362);
+            this.grdClientes.Size = new System.Drawing.Size(711, 312);
             this.grdClientes.TabIndex = 0;
             this.grdClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdClientes_CellDoubleClick);
             this.grdClientes.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.grdClientes_PreviewKeyDown);
             // 
+            // Usuario
+            // 
+            this.Usuario.DataPropertyName = "Usuario";
+            this.Usuario.HeaderText = "Usuario";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
+            // 
+            // Senha
+            // 
+            this.Senha.DataPropertyName = "Senha";
+            this.Senha.HeaderText = "Senha";
+            this.Senha.Name = "Senha";
+            this.Senha.ReadOnly = true;
+            this.Senha.Visible = false;
+            // 
+            // TipoConta
+            // 
+            this.TipoConta.DataPropertyName = "TipoConta";
+            this.TipoConta.HeaderText = "Tipo Conta";
+            this.TipoConta.Name = "TipoConta";
+            this.TipoConta.ReadOnly = true;
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            // 
+            // Cpf
+            // 
+            this.Cpf.DataPropertyName = "Cpf";
+            this.Cpf.HeaderText = "CPF / CNPJ";
+            this.Cpf.Name = "Cpf";
+            this.Cpf.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // TelefoneCliente
+            // 
+            this.TelefoneCliente.DataPropertyName = "Telefone";
+            this.TelefoneCliente.HeaderText = "Telefone";
+            this.TelefoneCliente.Name = "TelefoneCliente";
+            this.TelefoneCliente.ReadOnly = true;
+            // 
+            // EnderecoCliente
+            // 
+            this.EnderecoCliente.DataPropertyName = "Endereco";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.EnderecoCliente.DefaultCellStyle = dataGridViewCellStyle1;
+            this.EnderecoCliente.HeaderText = "Endereço";
+            this.EnderecoCliente.Name = "EnderecoCliente";
+            this.EnderecoCliente.ReadOnly = true;
+            // 
             // tabPageLista
             // 
+            this.tabPageLista.Controls.Add(this.txtSenha);
             this.tabPageLista.Controls.Add(this.txtEmail);
             this.tabPageLista.Controls.Add(this.txtTelefone);
             this.tabPageLista.Controls.Add(this.txtCpf);
             this.tabPageLista.Controls.Add(this.txtNome);
-            this.tabPageLista.Controls.Add(this.txtSenha);
             this.tabPageLista.Controls.Add(this.txtUsuario);
             this.tabPageLista.Controls.Add(this.label8);
             this.tabPageLista.Controls.Add(this.label9);
@@ -168,19 +265,27 @@
             this.tabPageLista.Controls.Add(this.txtEndereco);
             this.tabPageLista.Controls.Add(this.txtId);
             this.tabPageLista.Controls.Add(this.label6);
-            this.tabPageLista.Controls.Add(this.btnCancelar);
-            this.tabPageLista.Controls.Add(this.btnSalvar);
             this.tabPageLista.Controls.Add(this.label5);
             this.tabPageLista.Controls.Add(this.label4);
             this.tabPageLista.Controls.Add(this.label3);
             this.tabPageLista.Controls.Add(this.label2);
+            this.tabPageLista.Controls.Add(this.btnCancelar);
+            this.tabPageLista.Controls.Add(this.btnSalvar);
             this.tabPageLista.Location = new System.Drawing.Point(4, 22);
             this.tabPageLista.Name = "tabPageLista";
             this.tabPageLista.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLista.Size = new System.Drawing.Size(723, 373);
+            this.tabPageLista.Size = new System.Drawing.Size(723, 406);
             this.tabPageLista.TabIndex = 1;
             this.tabPageLista.Text = "Formulário";
             this.tabPageLista.UseVisualStyleBackColor = true;
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Location = new System.Drawing.Point(112, 60);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
+            this.txtSenha.Size = new System.Drawing.Size(606, 20);
+            this.txtSenha.TabIndex = 29;
             // 
             // txtEmail
             // 
@@ -209,13 +314,6 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(606, 20);
             this.txtNome.TabIndex = 25;
-            // 
-            // txtSenha
-            // 
-            this.txtSenha.Location = new System.Drawing.Point(112, 60);
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(606, 20);
-            this.txtSenha.TabIndex = 24;
             // 
             // txtUsuario
             // 
@@ -246,6 +344,7 @@
             // 
             this.cmbTipoConta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbTipoConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoConta.FormattingEnabled = true;
             this.cmbTipoConta.Items.AddRange(new object[] {
             "ADMIN",
@@ -301,34 +400,6 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Id:";
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(561, 344);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 7;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
-            this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvar.Location = new System.Drawing.Point(642, 344);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 6;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -365,77 +436,102 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Nome:";
             // 
-            // Usuario
+            // btnFiltro
             // 
-            this.Usuario.DataPropertyName = "Usuario";
-            this.Usuario.HeaderText = "Usuario";
-            this.Usuario.Name = "Usuario";
-            this.Usuario.ReadOnly = true;
+            this.btnFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnFiltro.Image = global::Custo.Properties.Resources.btnFiltro;
+            this.btnFiltro.Location = new System.Drawing.Point(646, 14);
+            this.btnFiltro.Name = "btnFiltro";
+            this.btnFiltro.Size = new System.Drawing.Size(30, 25);
+            this.btnFiltro.TabIndex = 46;
+            this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
             // 
-            // Senha
+            // btnNoFiltro
             // 
-            this.Senha.DataPropertyName = "Senha";
-            this.Senha.HeaderText = "Senha";
-            this.Senha.Name = "Senha";
-            this.Senha.ReadOnly = true;
+            this.btnNoFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnNoFiltro.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
+            this.btnNoFiltro.Location = new System.Drawing.Point(678, 14);
+            this.btnNoFiltro.Name = "btnNoFiltro";
+            this.btnNoFiltro.Size = new System.Drawing.Size(30, 25);
+            this.btnNoFiltro.TabIndex = 45;
+            this.btnNoFiltro.UseVisualStyleBackColor = true;
+            this.btnNoFiltro.Click += new System.EventHandler(this.btnNoFiltro_Click);
             // 
-            // TipoConta
+            // btnSair
             // 
-            this.TipoConta.DataPropertyName = "TipoConta";
-            this.TipoConta.HeaderText = "Tipo Conta";
-            this.TipoConta.Name = "TipoConta";
-            this.TipoConta.ReadOnly = true;
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(587, 378);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(62, 27);
+            this.btnSair.TabIndex = 12;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // Nome
+            // btnNovoCliente
             // 
-            this.Nome.DataPropertyName = "Nome";
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
+            this.btnNovoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNovoCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnNovoCliente.Image")));
+            this.btnNovoCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNovoCliente.Location = new System.Drawing.Point(655, 378);
+            this.btnNovoCliente.Name = "btnNovoCliente";
+            this.btnNovoCliente.Size = new System.Drawing.Size(62, 27);
+            this.btnNovoCliente.TabIndex = 11;
+            this.btnNovoCliente.Text = "Novo";
+            this.btnNovoCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNovoCliente.UseVisualStyleBackColor = true;
+            this.btnNovoCliente.Click += new System.EventHandler(this.btnNovoCliente_Click);
             // 
-            // Cpf
+            // btnCancelar
             // 
-            this.Cpf.DataPropertyName = "Cpf";
-            this.Cpf.HeaderText = "CPF / CNPJ";
-            this.Cpf.Name = "Cpf";
-            this.Cpf.ReadOnly = true;
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelar.Location = new System.Drawing.Point(561, 364);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // Email
+            // btnSalvar
             // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // TelefoneCliente
-            // 
-            this.TelefoneCliente.DataPropertyName = "Telefone";
-            this.TelefoneCliente.HeaderText = "Telefone";
-            this.TelefoneCliente.Name = "TelefoneCliente";
-            this.TelefoneCliente.ReadOnly = true;
-            // 
-            // EnderecoCliente
-            // 
-            this.EnderecoCliente.DataPropertyName = "Endereco";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.EnderecoCliente.DefaultCellStyle = dataGridViewCellStyle2;
-            this.EnderecoCliente.HeaderText = "Endereço";
-            this.EnderecoCliente.Name = "EnderecoCliente";
-            this.EnderecoCliente.ReadOnly = true;
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
+            this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalvar.Location = new System.Drawing.Point(642, 364);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 6;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // frmCadastroUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 443);
+            this.ClientSize = new System.Drawing.Size(729, 450);
             this.Controls.Add(this.tabCadastroCliente);
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCadastroUsuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Usuarios";
             this.Load += new System.EventHandler(this.frmCadastroUsuarios_Load);
             this.tabCadastroCliente.ResumeLayout(false);
             this.tabPageFormulario.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClientes)).EndInit();
             this.tabPageLista.ResumeLayout(false);
             this.tabPageLista.PerformLayout();
@@ -465,12 +561,12 @@
         private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.TextBox txtCpf;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Senha;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoConta;
@@ -479,5 +575,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn TelefoneCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnderecoCliente;
+        private GroupBox groupBox1;
+        private ComboBox cmbTipoContaFiltro;
+        private Label label11;
+        private TextBox txtUsuarioFiltro;
+        private Button btnFiltro;
+        private Label label10;
+        private Button btnNoFiltro;
     }
 }
