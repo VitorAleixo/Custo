@@ -27,8 +27,8 @@ namespace Custo
         public void LimparItens()
         {
             cmbCliente.SelectedIndex = -1;
-            txtDataAte.Text = "";
-            txtDataDe.Text = "";
+            txtDataAte.Text = "01/01/2001";
+            txtDataDe.Text = "01/01/2001";
             cmbStatusFiltro.SelectedIndex = -1;
         }
 
@@ -106,9 +106,9 @@ namespace Custo
                 frmPedidoNovo f = new frmPedidoNovo();
                 f.txtId.Text = obj.Id.ToString();
                 f.txtData.Text = obj.Data.ToString();
-    
+                
                 f.CarregarCombos();
- 
+                f.cmbStatus.SelectedItem = obj.Status;
                 f.cmbCliente.SelectedValue = obj.IdCliente;
                 this.Close();
                 f.ShowDialog();
@@ -129,6 +129,9 @@ namespace Custo
         private void frmPedidos_Load(object sender, EventArgs e)
         {
             CarregarCombos();
+
+            txtDataAte.Text = "01/01/2001";
+            txtDataDe.Text = "01/01/2001";
         }
 
         private void btnFiltro_Click(object sender, EventArgs e)
@@ -136,7 +139,7 @@ namespace Custo
             try
             {
                 //POR DATA
-                if (cmbCliente.Text == "" && txtDataDe.Text != "  /  /" && txtDataAte.Text != "  /  /" && cmbStatusFiltro.Text == "")
+                if (cmbCliente.Text == "" && txtDataDe.Text != "01/01/2001" && txtDataAte.Text != "01/01/2001" && cmbStatusFiltro.Text == "")
                 {
                     Filtro.dataDe = txtDataDe.Text;
                     Filtro.dataAte = txtDataAte.Text;
@@ -153,7 +156,7 @@ namespace Custo
                     lblCustoTotal.Text = $"Valor Total dos Pedidos: R$ {valorTotal.ToString("N2")}";
                 }
                 //POR DATA E NOME
-                else if (cmbCliente.Text != "" && txtDataDe.Text != "  /  /" && txtDataAte.Text != "  /  /" && cmbStatusFiltro.Text == "")
+                else if (cmbCliente.Text != "" && txtDataDe.Text != "01/01/2001" && txtDataAte.Text != "01/01/2001" && cmbStatusFiltro.Text == "")
                 {
                     Filtro.dataDe = txtDataDe.Text;
                     Filtro.dataAte = txtDataAte.Text;
@@ -172,7 +175,7 @@ namespace Custo
                     lblCustoTotal.Text = $"Valor Total dos Pedidos: R$ {valorTotal.ToString("N2")}";
                 }
                 //POR NOME
-                else if (cmbCliente.Text != "" && txtDataDe.Text == "  /  /" && txtDataAte.Text == "  /  /" && cmbStatusFiltro.Text == "")
+                else if (cmbCliente.Text != "" && txtDataDe.Text == "01/01/2001" && txtDataAte.Text == "01/01/2001" && cmbStatusFiltro.Text == "")
                 {
                     Filtro.IdCliente = cmbCliente.SelectedValue.ToString();
                     grdDadosPedido.AutoGenerateColumns = false;
@@ -189,7 +192,7 @@ namespace Custo
                     lblCustoTotal.Text = $"Valor Total dos Pedidos: R$ {valorTotal.ToString("N2")}";
                 }
                 //POR NOME E STATUS
-                else if (cmbCliente.Text != "" && txtDataDe.Text == "  /  /" && txtDataAte.Text == "  /  /" && cmbStatusFiltro.Text != "")
+                else if (cmbCliente.Text != "" && txtDataDe.Text == "01/01/2001" && txtDataAte.Text == "01/01/2001" && cmbStatusFiltro.Text != "")
                 {
                     Filtro.IdCliente = cmbCliente.SelectedValue.ToString();
                     Filtro.statusPedido = cmbStatusFiltro.SelectedItem.ToString();
@@ -207,7 +210,7 @@ namespace Custo
                     lblCustoTotal.Text = $"Valor Total dos Pedidos: R$ {valorTotal.ToString("N2")}";
                 }
                 //POR DATA E STATUS
-                else if (cmbCliente.Text == "" && txtDataDe.Text != "  /  /" && txtDataAte.Text != "  /  /" && cmbStatusFiltro.Text != "")
+                else if (cmbCliente.Text == "" && txtDataDe.Text != "01/01/2001" && txtDataAte.Text != "01/01/2001" && cmbStatusFiltro.Text != "")
                 {
                     Filtro.statusPedido = cmbStatusFiltro.SelectedItem.ToString();
                     Filtro.dataDe = txtDataDe.Text;
@@ -226,7 +229,7 @@ namespace Custo
                     lblCustoTotal.Text = $"Valor Total dos Pedidos: R$ {valorTotal.ToString("N2")}";
                 }
                 //POR DATA, NOME E STATUS
-                else if (cmbCliente.Text != "" && txtDataDe.Text != "  /  /" && txtDataAte.Text != "  /  /" && cmbStatusFiltro.Text != "")
+                else if (cmbCliente.Text != "" && txtDataDe.Text != "01/01/2001" && txtDataAte.Text != "01/01/2001" && cmbStatusFiltro.Text != "")
                 {
                     Filtro.IdCliente = cmbCliente.SelectedValue.ToString();
                     Filtro.dataDe = txtDataDe.Text;
@@ -246,7 +249,7 @@ namespace Custo
                     lblCustoTotal.Text = $"Valor Total dos Pedidos: R$ {valorTotal.ToString("N2")}";
                 }
                 //POR STATUS
-                else if (cmbCliente.Text == "" && txtDataDe.Text == "  /  /" && txtDataAte.Text == "  /  /" && cmbStatusFiltro.Text != "")
+                else if (cmbCliente.Text == "" && txtDataDe.Text == "01/01/2001" && txtDataAte.Text == "01/01/2001" && cmbStatusFiltro.Text != "")
                 {
                     Filtro.statusPedido = cmbStatusFiltro.SelectedItem.ToString();
                     grdDadosPedido.AutoGenerateColumns = false;
@@ -263,17 +266,21 @@ namespace Custo
                     lblCustoTotal.Text = $"Valor Total dos Pedidos: R$ {valorTotal.ToString("N2")}";
                 }
 
-                else if (cmbCliente.Text == "" && txtDataDe.Text == "  /  /" && txtDataAte.Text == "  /  /")
+                else if (cmbCliente.Text == "" && txtDataDe.Text == "01/01/2001" && txtDataAte.Text == "01/01/2001")
                 {
                     DialogResult dialogResult = MessageBox.Show("Não se pode fazer filtro de dados nulos!", "Confirmação", MessageBoxButtons.OK);
                 }
-                else if (txtDataDe.Text != "  /  /" && txtDataAte.Text == "  /  /")
+                else if (txtDataDe.Text != "01/01/2001" && txtDataAte.Text == "01/01/2001")
                 {
                     DialogResult dialogResult = MessageBox.Show("Não se pode fazer filtro apenas com a Data Inicial!", "Confirmação", MessageBoxButtons.OK);
                 }
-                else if (txtDataDe.Text == "  /  /" && txtDataAte.Text != "  /  /")
+                else if (txtDataDe.Text == "01/01/2001" && txtDataAte.Text != "01/01/2001")
                 {
                     DialogResult dialogResult = MessageBox.Show("Não se pode fazer filtro apenas com a Data Final!", "Confirmação", MessageBoxButtons.OK);
+                }
+                else if (txtDataDe.Text == "01/01/2001" && txtDataAte.Text == "01/01/2001")
+                {
+                    DialogResult dialogResult = MessageBox.Show("Não se pode fazer filtro desta Data!", "Confirmação", MessageBoxButtons.OK);
                 }
             }
             catch (Exception ex)

@@ -12,6 +12,7 @@ namespace Custo
 {
     public partial class frmComposicao : Form
     {
+        
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
@@ -22,13 +23,16 @@ namespace Custo
                 return myCp;
             }
         }
-
+        string Verificacao;
         void CarregarCombos()
         {
             cmbComposicao.DataSource = null;
             cmbComposicao.DataSource = Produto.BuscarTodos().Where(p => p.Tipo == "Produto Final").ToList();
-            cmbComposicao.DisplayMember = "Descricao";            
-
+            cmbComposicao.DisplayMember = "Descricao";
+            cmbComposicao.Enabled = true;
+            Verificacao = "Ok";
+            cmbComposicao.SelectedIndex = -1;
+            
             cmbProduto.DataSource = null;
             cmbProduto.DataSource = Produto.BuscarTodos().Where(p => p.Tipo == "Matéria Prima").ToList();
             cmbProduto.DisplayMember = "Descricao";            
@@ -42,9 +46,14 @@ namespace Custo
             var composicao = Composicao.BuscarTodos().Where(c => c.IdProduto == ((Produto)cmbComposicao.SelectedItem).Id).FirstOrDefault();
             var produto = Produto.BuscarTodos().Where(f => f.Id == ((Produto)cmbComposicao.SelectedItem).Id).FirstOrDefault();
 
-            lblCustoTotal.Text = $"Custo Total: R$ 0,00";
-            lblCustoProduto.Text = $"Custo do Produto: R$ 0,00";
-            lblLucro.Text =  $"Lucro: R$ 0,00";
+            lblCustoTotal.Text = $"Custo Total: R$";
+            lblCustoTotalProduto.Text = $"0,00";
+            lblCustoProduto.Text = $"Custo de Mercado: R$ 0,00";
+            lblEconomia.Text =  $"Economia: R$ 0,00";
+
+            lblPrecoVenda.Text = $"Preço de Venda: R$ 0,00";
+            lblLucroTotal.Text = $"Lucro: R$";
+            lblLucro.Text = $"0,00";
 
             if (composicao != null)
             {
@@ -52,14 +61,29 @@ namespace Custo
 
                 var custo = lst.Sum(i => i.Custo);
 
-                lblCustoTotal.Text = $"Custo Total: R$ {custo.ToString("N2")}";
+                lblCustoTotal.Text = $"Custo Total: R$";
+                lblCustoTotalProduto.Text = custo.ToString("N2");
 
+                double custovalor = custo;
                 var lst2 = Produto.BuscarTodos().Where(i => i.Id == produto.Id).ToList();
-                var custo2 = produto.PrecoCompra;
-                lblCustoProduto.Text = $"Custo do Produto: R$ {custo2.ToString("N2")}";
+                var custoProduto = produto.PrecoCompra;
+                lblCustoProduto.Text = $"Custo de Mercado: R$ {custoProduto.ToString("N2")}";
 
-                var lucro = custo2 - custo;
-                lblLucro.Text = $"Lucro: R$ {lucro.ToString("N2")}";
+                var economia = custoProduto - custo;
+                lblEconomia.Text = $"Economia: R$ {economia.ToString("N2")}";
+
+                Composicao c = new Composicao();
+                c.IdProduto = ((Produto)cmbComposicao.SelectedItem).Id;
+                c.VerificarVenda();
+
+                var precoVenda = c.CustoVenda;
+                lblPrecoVenda.Text = $"Preço de Venda: R$ {precoVenda.ToString("N2") }";
+                
+
+                var lucro = economia + (precoVenda - custoProduto);
+                lblLucroTotal.Text = $"Lucro: R$";
+                lblLucro.Text = lucro.ToString("N2");
+
                 grdDados.DataSource = lst;
             }
 
@@ -88,15 +112,7 @@ namespace Custo
 
         private void cmbComposicao_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                CarregarItens();
-            }
-            catch (Exception ex)
-            {
 
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -118,11 +134,10 @@ namespace Custo
                     }
                     else
                     {
+
                         var compInserir = new Composicao();
 
                         compInserir.IdProduto = ((Produto)cmbComposicao.SelectedItem).Id;
-                        compInserir.CustoTotal = 0;
-
                         compInserir.Inserir();
 
                         composicao = Composicao.BuscarTodos().Where(c => c.IdProduto == ((Produto)cmbComposicao.SelectedItem).Id).FirstOrDefault();
@@ -133,10 +148,19 @@ namespace Custo
                     item.Inserir();
 
                     MessageBox.Show("Item inserido com sucesso!", "Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                 
                     LimparCampos();
 
                     CarregarItens();
+
+                    Composicao com = new Composicao();
+                    com.CustoTotal = Double.Parse(lblCustoTotalProduto.Text.Replace(".", ","));
+                    com.IdProduto = ((Produto)cmbComposicao.SelectedItem).Id;
+                    com.GravarCusto();
+
+
+                    com.Lucro = Double.Parse(lblLucro.Text.Replace(".", ","));
+                    com.GravarLucro();
                 }
                 else
                 {
@@ -156,6 +180,7 @@ namespace Custo
         {
             txtQuantidade.Text = "0";
             cmbProduto.SelectedIndex = 0;
+            txtValorVenda.Text = "";
         }
 
         private void grdDados_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -183,14 +208,98 @@ namespace Custo
             }
         }
 
-        private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSair_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                Composicao c = new Composicao();
+                if (cmbComposicao.SelectedIndex != -1)
+                {
+                    c.IdProduto = ((Produto)cmbComposicao.SelectedItem).Id;
+                    c.VerificarVenda();
+                    if (c.CustoVenda != 0)
+                    {
+
+                        c.Lucro = Double.Parse(lblLucro.Text.Replace(".", ","));
+                        c.GravarLucro();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Valor de VENDA Não inserido! Favor adicionar!", "Confirmação", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    this.Close();
+                }
+             
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnInserirVenda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Composicao c = new Composicao();
+                c.CustoVenda = Double.Parse(txtValorVenda.Text.Replace(".",","));
+                c.IdProduto = ((Produto)cmbComposicao.SelectedItem).Id;
+               
+                c.GravarVenda();
+
+                MessageBox.Show("Valor de VENDA Incluido!", "Confirmação", MessageBoxButtons.OK);
+                CarregarItens();
+
+                c.Lucro = Double.Parse(lblLucro.Text.Replace(".", ","));
+                c.GravarLucro();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbComposicao_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbComposicao.SelectedIndex != -1)
+            {
+                cmbComposicao.Enabled = false;
+                var composicao = Composicao.BuscarTodos().Where(c => c.IdProduto == ((Produto)cmbComposicao.SelectedItem).Id).FirstOrDefault();
+                if (Verificacao == "Ok")
+                {
+                    CarregarItens();
+                }
+            }
+        }
+
+        private void btnConcluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Composicao c = new Composicao();
+                c.IdProduto = ((Produto)cmbComposicao.SelectedItem).Id;
+                c.VerificarVenda();
+                if (c.CustoVenda != 0)
+                {
+                    cmbComposicao.Enabled = true;
+                    c.Lucro = Double.Parse(lblLucro.Text.Replace(".", ","));
+                    c.GravarLucro();
+                    txtValorVenda.Text = "";
+                    MessageBox.Show("Produto para selecionar Desbloqueado!", "Confirmação", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Valor de VENDA Não inserido! Favor adicionar!", "Confirmação", MessageBoxButtons.OK);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

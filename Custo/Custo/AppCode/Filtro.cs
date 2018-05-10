@@ -412,7 +412,8 @@ namespace Custo.AppCode
                                 Descricao = dr.GetString(2),
                                 UM = dr.GetString(3),
                                 Tipo = dr.GetString(4),
-                                PrecoCompra = dr.GetDouble(5)
+                                PrecoCompra = dr.GetDouble(5),
+                                PrecoVenda = dr.GetDouble(6)
                             });
                         }
                         cmd.Dispose();
@@ -451,7 +452,8 @@ namespace Custo.AppCode
                                 Descricao = dr.GetString(2),
                                 UM = dr.GetString(3),
                                 Tipo = dr.GetString(4),
-                                PrecoCompra = dr.GetDouble(5)
+                                PrecoCompra = dr.GetDouble(5),
+                                PrecoVenda = dr.GetDouble(6)
                             });
                         }
                         cmd.Dispose();
@@ -490,7 +492,8 @@ namespace Custo.AppCode
                                 Descricao = dr.GetString(2),
                                 UM = dr.GetString(3),
                                 Tipo = dr.GetString(4),
-                                PrecoCompra = dr.GetDouble(5)
+                                PrecoCompra = dr.GetDouble(5),
+                                PrecoVenda = dr.GetDouble(6)
                             });
                         }
                         cmd.Dispose();
@@ -528,7 +531,8 @@ namespace Custo.AppCode
                                 Descricao = dr.GetString(2),
                                 UM = dr.GetString(3),
                                 Tipo = dr.GetString(4),
-                                PrecoCompra = dr.GetDouble(5)
+                                PrecoCompra = dr.GetDouble(5),
+                                PrecoVenda = dr.GetDouble(6)
                             });
                         }
                         cmd.Dispose();
@@ -566,7 +570,8 @@ namespace Custo.AppCode
                                 Descricao = dr.GetString(2),
                                 UM = dr.GetString(3),
                                 Tipo = dr.GetString(4),
-                                PrecoCompra = dr.GetDouble(5)
+                                PrecoCompra = dr.GetDouble(5),
+                                PrecoVenda = dr.GetDouble(6)
                             });
                         }
                         cmd.Dispose();
@@ -604,7 +609,8 @@ namespace Custo.AppCode
                                 Descricao = dr.GetString(2),
                                 UM = dr.GetString(3),
                                 Tipo = dr.GetString(4),
-                                PrecoCompra = dr.GetDouble(5)
+                                PrecoCompra = dr.GetDouble(5),
+                                PrecoVenda = dr.GetDouble(6)
                             });
                         }
                         cmd.Dispose();
@@ -643,7 +649,8 @@ namespace Custo.AppCode
                                 Descricao = dr.GetString(2),
                                 UM = dr.GetString(3),
                                 Tipo = dr.GetString(4),
-                                PrecoCompra = dr.GetDouble(5)
+                                PrecoCompra = dr.GetDouble(5),
+                                PrecoVenda = dr.GetDouble(6)
                             });
                         }
                         cmd.Dispose();

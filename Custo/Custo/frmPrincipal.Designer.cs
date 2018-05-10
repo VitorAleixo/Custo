@@ -118,8 +118,8 @@ namespace Custo
             // lucrosToolStripMenuItem
             // 
             this.lucrosToolStripMenuItem.Name = "lucrosToolStripMenuItem";
-            this.lucrosToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.lucrosToolStripMenuItem.Text = "Lucro";
+            this.lucrosToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.lucrosToolStripMenuItem.Text = "Vendas";
             this.lucrosToolStripMenuItem.Click += new System.EventHandler(this.lucrosToolStripMenuItem_Click);
             // 
             // ajudaToolStripMenuItem

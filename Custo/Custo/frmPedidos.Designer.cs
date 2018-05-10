@@ -32,22 +32,22 @@ namespace Custo
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedidos));
             this.grdDadosPedido = new System.Windows.Forms.DataGridView();
-            this.lblCustoTotal = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbCliente = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtDataAte = new System.Windows.Forms.MaskedTextBox();
-            this.txtDataDe = new System.Windows.Forms.MaskedTextBox();
-            this.cmbStatusFiltro = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.Cliente2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblCustoTotal = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDataAte = new System.Windows.Forms.DateTimePicker();
+            this.txtDataDe = new System.Windows.Forms.DateTimePicker();
+            this.cmbStatusFiltro = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnFiltro = new System.Windows.Forms.Button();
             this.btnNoFiltro = new System.Windows.Forms.Button();
+            this.cmbCliente = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -75,129 +75,6 @@ namespace Custo
             this.grdDadosPedido.ReadOnly = true;
             this.grdDadosPedido.Size = new System.Drawing.Size(721, 306);
             this.grdDadosPedido.TabIndex = 3;
-            // 
-            // lblCustoTotal
-            // 
-            this.lblCustoTotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCustoTotal.AutoSize = true;
-            this.lblCustoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustoTotal.Location = new System.Drawing.Point(8, 371);
-            this.lblCustoTotal.Name = "lblCustoTotal";
-            this.lblCustoTotal.Size = new System.Drawing.Size(250, 25);
-            this.lblCustoTotal.TabIndex = 31;
-            this.lblCustoTotal.Text = "Valor Total dos Pedidos:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.cmbStatusFiltro);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnFiltro);
-            this.groupBox1.Controls.Add(this.btnNoFiltro);
-            this.groupBox1.Controls.Add(this.cmbCliente);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtDataAte);
-            this.groupBox1.Controls.Add(this.txtDataDe);
-            this.groupBox1.Location = new System.Drawing.Point(13, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(720, 51);
-            this.groupBox1.TabIndex = 35;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtro";
-            // 
-            // cmbCliente
-            // 
-            this.cmbCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCliente.FormattingEnabled = true;
-            this.cmbCliente.Items.AddRange(new object[] {
-            "Buscar Todos"});
-            this.cmbCliente.Location = new System.Drawing.Point(54, 22);
-            this.cmbCliente.Name = "cmbCliente";
-            this.cmbCliente.Size = new System.Drawing.Size(190, 21);
-            this.cmbCliente.TabIndex = 39;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 25);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 13);
-            this.label4.TabIndex = 37;
-            this.label4.Text = "Cliente:";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(385, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "Até:";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(285, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 13);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "De:";
-            // 
-            // txtDataAte
-            // 
-            this.txtDataAte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDataAte.Location = new System.Drawing.Point(411, 22);
-            this.txtDataAte.Mask = "00/00/0000";
-            this.txtDataAte.Name = "txtDataAte";
-            this.txtDataAte.Size = new System.Drawing.Size(67, 20);
-            this.txtDataAte.TabIndex = 34;
-            this.txtDataAte.ValidatingType = typeof(System.DateTime);
-            // 
-            // txtDataDe
-            // 
-            this.txtDataDe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDataDe.Location = new System.Drawing.Point(309, 22);
-            this.txtDataDe.Mask = "00/00/0000";
-            this.txtDataDe.Name = "txtDataDe";
-            this.txtDataDe.Size = new System.Drawing.Size(67, 20);
-            this.txtDataDe.TabIndex = 33;
-            this.txtDataDe.ValidatingType = typeof(System.DateTime);
-            // 
-            // cmbStatusFiltro
-            // 
-            this.cmbStatusFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbStatusFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStatusFiltro.FormattingEnabled = true;
-            this.cmbStatusFiltro.Items.AddRange(new object[] {
-            "INCOMPLETO",
-            "PRODUÇÃO",
-            "COMPLETO"});
-            this.cmbStatusFiltro.Location = new System.Drawing.Point(531, 22);
-            this.cmbStatusFiltro.Name = "cmbStatusFiltro";
-            this.cmbStatusFiltro.Size = new System.Drawing.Size(115, 21);
-            this.cmbStatusFiltro.TabIndex = 45;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(485, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "Status:";
             // 
             // Cliente2
             // 
@@ -229,6 +106,89 @@ namespace Custo
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
             // 
+            // lblCustoTotal
+            // 
+            this.lblCustoTotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCustoTotal.AutoSize = true;
+            this.lblCustoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustoTotal.Location = new System.Drawing.Point(8, 371);
+            this.lblCustoTotal.Name = "lblCustoTotal";
+            this.lblCustoTotal.Size = new System.Drawing.Size(250, 25);
+            this.lblCustoTotal.TabIndex = 31;
+            this.lblCustoTotal.Text = "Valor Total dos Pedidos:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtDataAte);
+            this.groupBox1.Controls.Add(this.txtDataDe);
+            this.groupBox1.Controls.Add(this.cmbStatusFiltro);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnFiltro);
+            this.groupBox1.Controls.Add(this.btnNoFiltro);
+            this.groupBox1.Controls.Add(this.cmbCliente);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(13, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(720, 51);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtro";
+            // 
+            // txtDataAte
+            // 
+            this.txtDataAte.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDataAte.CustomFormat = "";
+            this.txtDataAte.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDataAte.Location = new System.Drawing.Point(396, 22);
+            this.txtDataAte.Name = "txtDataAte";
+            this.txtDataAte.Size = new System.Drawing.Size(83, 20);
+            this.txtDataAte.TabIndex = 47;
+            this.txtDataAte.Value = new System.DateTime(2018, 2, 14, 8, 50, 16, 0);
+            // 
+            // txtDataDe
+            // 
+            this.txtDataDe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDataDe.CustomFormat = "";
+            this.txtDataDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDataDe.Location = new System.Drawing.Point(273, 22);
+            this.txtDataDe.Name = "txtDataDe";
+            this.txtDataDe.Size = new System.Drawing.Size(87, 20);
+            this.txtDataDe.TabIndex = 46;
+            this.txtDataDe.Value = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);
+            // 
+            // cmbStatusFiltro
+            // 
+            this.cmbStatusFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbStatusFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStatusFiltro.FormattingEnabled = true;
+            this.cmbStatusFiltro.Items.AddRange(new object[] {
+            "INCOMPLETO",
+            "PRODUÇÃO",
+            "COMPLETO"});
+            this.cmbStatusFiltro.Location = new System.Drawing.Point(531, 22);
+            this.cmbStatusFiltro.Name = "cmbStatusFiltro";
+            this.cmbStatusFiltro.Size = new System.Drawing.Size(115, 21);
+            this.cmbStatusFiltro.TabIndex = 45;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(485, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Status:";
+            // 
             // btnFiltro
             // 
             this.btnFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -250,6 +210,50 @@ namespace Custo
             this.btnNoFiltro.TabIndex = 42;
             this.btnNoFiltro.UseVisualStyleBackColor = true;
             this.btnNoFiltro.Click += new System.EventHandler(this.btnNoFiltro_Click);
+            // 
+            // cmbCliente
+            // 
+            this.cmbCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCliente.FormattingEnabled = true;
+            this.cmbCliente.Items.AddRange(new object[] {
+            "Buscar Todos"});
+            this.cmbCliente.Location = new System.Drawing.Point(54, 22);
+            this.cmbCliente.Name = "cmbCliente";
+            this.cmbCliente.Size = new System.Drawing.Size(190, 21);
+            this.cmbCliente.TabIndex = 39;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "Cliente:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(364, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "Até:";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(250, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "De:";
             // 
             // btnSair
             // 
@@ -319,10 +323,10 @@ namespace Custo
             this.Controls.Add(this.lblCustoTotal);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.grdDadosPedido);
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmPedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de Pedidos";
@@ -350,13 +354,13 @@ namespace Custo
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.MaskedTextBox txtDataAte;
-        public System.Windows.Forms.MaskedTextBox txtDataDe;
         private ComboBox cmbStatusFiltro;
         private Label label1;
         private DataGridViewTextBoxColumn Cliente2;
         private DataGridViewTextBoxColumn Data;
         private DataGridViewTextBoxColumn ValorTotal;
         private DataGridViewTextBoxColumn Status;
+        private DateTimePicker txtDataAte;
+        private DateTimePicker txtDataDe;
     }
 }

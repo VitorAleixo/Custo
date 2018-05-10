@@ -29,15 +29,19 @@ namespace Custo
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastroUsuarios));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabCadastroCliente = new System.Windows.Forms.TabControl();
             this.tabPageFormulario = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbTipoContaFiltro = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtUsuarioFiltro = new System.Windows.Forms.TextBox();
+            this.btnFiltro = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnNoFiltro = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnNovoCliente = new System.Windows.Forms.Button();
             this.grdClientes = new System.Windows.Forms.DataGridView();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,10 +70,6 @@ namespace Custo
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnFiltro = new System.Windows.Forms.Button();
-            this.btnNoFiltro = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
-            this.btnNovoCliente = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.tabCadastroCliente.SuspendLayout();
@@ -132,7 +132,7 @@ namespace Custo
             this.cmbTipoContaFiltro.Items.AddRange(new object[] {
             "ADMIN",
             "USUARIO"});
-            this.cmbTipoContaFiltro.Location = new System.Drawing.Point(297, 19);
+            this.cmbTipoContaFiltro.Location = new System.Drawing.Point(297, 17);
             this.cmbTipoContaFiltro.Name = "cmbTipoContaFiltro";
             this.cmbTipoContaFiltro.Size = new System.Drawing.Size(151, 21);
             this.cmbTipoContaFiltro.TabIndex = 49;
@@ -154,6 +154,17 @@ namespace Custo
             this.txtUsuarioFiltro.Size = new System.Drawing.Size(151, 20);
             this.txtUsuarioFiltro.TabIndex = 47;
             // 
+            // btnFiltro
+            // 
+            this.btnFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnFiltro.Image = global::Custo.Properties.Resources.btnFiltro;
+            this.btnFiltro.Location = new System.Drawing.Point(646, 14);
+            this.btnFiltro.Name = "btnFiltro";
+            this.btnFiltro.Size = new System.Drawing.Size(30, 25);
+            this.btnFiltro.TabIndex = 46;
+            this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -162,6 +173,45 @@ namespace Custo
             this.label10.Size = new System.Drawing.Size(46, 13);
             this.label10.TabIndex = 44;
             this.label10.Text = "Usuario:";
+            // 
+            // btnNoFiltro
+            // 
+            this.btnNoFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnNoFiltro.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
+            this.btnNoFiltro.Location = new System.Drawing.Point(678, 14);
+            this.btnNoFiltro.Name = "btnNoFiltro";
+            this.btnNoFiltro.Size = new System.Drawing.Size(30, 25);
+            this.btnNoFiltro.TabIndex = 45;
+            this.btnNoFiltro.UseVisualStyleBackColor = true;
+            this.btnNoFiltro.Click += new System.EventHandler(this.btnNoFiltro_Click);
+            // 
+            // btnSair
+            // 
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(587, 378);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(62, 27);
+            this.btnSair.TabIndex = 12;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // btnNovoCliente
+            // 
+            this.btnNovoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNovoCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnNovoCliente.Image")));
+            this.btnNovoCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNovoCliente.Location = new System.Drawing.Point(655, 378);
+            this.btnNovoCliente.Name = "btnNovoCliente";
+            this.btnNovoCliente.Size = new System.Drawing.Size(62, 27);
+            this.btnNovoCliente.TabIndex = 11;
+            this.btnNovoCliente.Text = "Novo";
+            this.btnNovoCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNovoCliente.UseVisualStyleBackColor = true;
+            this.btnNovoCliente.Click += new System.EventHandler(this.btnNovoCliente_Click);
             // 
             // grdClientes
             // 
@@ -436,56 +486,6 @@ namespace Custo
             this.label2.TabIndex = 2;
             this.label2.Text = "Nome:";
             // 
-            // btnFiltro
-            // 
-            this.btnFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnFiltro.Image = global::Custo.Properties.Resources.btnFiltro;
-            this.btnFiltro.Location = new System.Drawing.Point(646, 14);
-            this.btnFiltro.Name = "btnFiltro";
-            this.btnFiltro.Size = new System.Drawing.Size(30, 25);
-            this.btnFiltro.TabIndex = 46;
-            this.btnFiltro.UseVisualStyleBackColor = true;
-            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
-            // 
-            // btnNoFiltro
-            // 
-            this.btnNoFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnNoFiltro.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
-            this.btnNoFiltro.Location = new System.Drawing.Point(678, 14);
-            this.btnNoFiltro.Name = "btnNoFiltro";
-            this.btnNoFiltro.Size = new System.Drawing.Size(30, 25);
-            this.btnNoFiltro.TabIndex = 45;
-            this.btnNoFiltro.UseVisualStyleBackColor = true;
-            this.btnNoFiltro.Click += new System.EventHandler(this.btnNoFiltro_Click);
-            // 
-            // btnSair
-            // 
-            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(587, 378);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(62, 27);
-            this.btnSair.TabIndex = 12;
-            this.btnSair.Text = "Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
-            // 
-            // btnNovoCliente
-            // 
-            this.btnNovoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNovoCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnNovoCliente.Image")));
-            this.btnNovoCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovoCliente.Location = new System.Drawing.Point(655, 378);
-            this.btnNovoCliente.Name = "btnNovoCliente";
-            this.btnNovoCliente.Size = new System.Drawing.Size(62, 27);
-            this.btnNovoCliente.TabIndex = 11;
-            this.btnNovoCliente.Text = "Novo";
-            this.btnNovoCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNovoCliente.UseVisualStyleBackColor = true;
-            this.btnNovoCliente.Click += new System.EventHandler(this.btnNovoCliente_Click);
-            // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -520,10 +520,10 @@ namespace Custo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(729, 450);
             this.Controls.Add(this.tabCadastroCliente);
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCadastroUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Usuarios";

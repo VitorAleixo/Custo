@@ -25,17 +25,12 @@ namespace Custo
 
         void LimparItens()
         {
-            frmTotalLucros f = new frmTotalLucros();
-            f.txtDiaD.Text = "";
+            frmTotalVendas f = new frmTotalVendas();
+ 
+            f.cmbAnoM.SelectedIndex = 0;
+            f.cmbMesM.SelectedIndex = 0;
 
-            f.txtAnoM.Text = "";
-            f.txtMesM.Text = "";
-
-            f.txtAnoA.Text = "";
-            
-            f.txtDeT.Text = "";
-            f.txtAteT.Text = "";
-
+            f.cmbAnoA.SelectedIndex = 0;         
         }
 
         public frmLucros()
@@ -45,17 +40,23 @@ namespace Custo
  
         private void btnDiario_Click(object sender, EventArgs e)
         {
-            frmTotalLucros f = new frmTotalLucros();
+            frmTotalVendas f = new frmTotalVendas();
+
+            f.cmbAnoM.SelectedIndex = 0;
+            f.cmbMesM.SelectedIndex = 0;
+
+            f.cmbAnoA.SelectedIndex = 0;
+
             f.grdLucro.ResumeLayout();
             f.gbDiario.Enabled = true;
             f.txtDiaD.Enabled = true;
 
             f.gbMensal.Enabled = false;
-            f.txtAnoM.Enabled = false;
-            f.txtMesM.Enabled = false;
+            f.cmbAnoM.Enabled = false;
+            f.cmbMesM.Enabled = false;
 
             f.gbAnual.Enabled = false;
-            f.txtAnoA.Enabled = false;
+            f.cmbAnoA.Enabled = false;
 
             f.gbTodos.Enabled = false;
             f.txtDeT.Enabled = false;
@@ -68,17 +69,23 @@ namespace Custo
 
         private void btnMensal_Click(object sender, EventArgs e)
         {
-            frmTotalLucros f = new frmTotalLucros();
+            frmTotalVendas f = new frmTotalVendas();
+
+            f.cmbAnoM.SelectedIndex = 0;
+            f.cmbMesM.SelectedIndex = 0;
+
+            f.cmbAnoA.SelectedIndex = 0;
+            
             f.grdLucro.ResumeLayout();
             f.gbDiario.Enabled = false;
             f.txtDiaD.Enabled = false;
 
             f.gbMensal.Enabled = true;
-            f.txtAnoM.Enabled = true;
-            f.txtMesM.Enabled = true;
+            f.cmbAnoM.Enabled = true;
+            f.cmbMesM.Enabled = true;
 
             f.gbAnual.Enabled = false;
-            f.txtAnoA.Enabled = false;
+            f.cmbAnoA.Enabled = false;
 
             f.gbTodos.Enabled = false;
             f.txtDeT.Enabled = false;
@@ -91,17 +98,23 @@ namespace Custo
 
         private void btnAnual_Click(object sender, EventArgs e)
         {
-            frmTotalLucros f = new frmTotalLucros();
+            frmTotalVendas f = new frmTotalVendas();
+
+            f.cmbAnoM.SelectedIndex = 0;
+            f.cmbMesM.SelectedIndex = 0;
+
+            f.cmbAnoA.SelectedIndex = 0;
+
             f.grdLucro.ResumeLayout();
             f.gbDiario.Enabled = false;
             f.txtDiaD.Enabled = false;
 
             f.gbMensal.Enabled = false;
-            f.txtAnoM.Enabled = false;
-            f.txtMesM.Enabled = false;
+            f.cmbAnoM.Enabled = false;
+            f.cmbMesM.Enabled = false;
 
             f.gbAnual.Enabled = true;
-            f.txtAnoA.Enabled = true;
+            f.cmbAnoA.Enabled = true;
 
             f.gbTodos.Enabled = false;
             f.txtDeT.Enabled = false;
@@ -114,17 +127,23 @@ namespace Custo
 
         private void btnTodos_Click(object sender, EventArgs e)
         {
-            frmTotalLucros f = new frmTotalLucros();
+            frmTotalVendas f = new frmTotalVendas();
+
+            f.cmbAnoM.SelectedIndex = 0;
+            f.cmbMesM.SelectedIndex = 0;
+
+            f.cmbAnoA.SelectedIndex = 0;
+
             f.grdLucro.ResumeLayout();
             f.gbDiario.Enabled = false;
             f.txtDiaD.Enabled = false;
 
             f.gbMensal.Enabled = false;
-            f.txtAnoM.Enabled = false;
-            f.txtMesM.Enabled = false;
+            f.cmbAnoM.Enabled = false;
+            f.cmbMesM.Enabled = false;
 
             f.gbAnual.Enabled = false;
-            f.txtAnoA.Enabled = false;
+            f.cmbAnoA.Enabled = false;
 
             f.gbTodos.Enabled = true;
             f.txtDeT.Enabled = true;

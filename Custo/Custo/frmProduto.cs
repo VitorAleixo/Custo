@@ -27,7 +27,7 @@ namespace Custo
         {
             grdDados.AutoGenerateColumns = false;
             grdDados.DataSource = null;
-            grdDados.DataSource = Produto.BuscarTodos();
+            grdDados.DataSource = Produto.BuscarTodosComVenda();
             grdDados.Show();
         }
 
@@ -64,6 +64,7 @@ namespace Custo
                     obj.UM = cmbUnidadeMedida.SelectedItem.ToString();
                     obj.Tipo = cmbTipo.SelectedItem.ToString();
                     obj.PrecoCompra = Convert.ToDouble(txtPrecoCompra.Text);
+                    
 
                     if (obj.Codigo.Length > 0 && obj.Tipo.Length > 0 && obj.Descricao.Length > 0 && obj.UM.Length > 0)
                     {
@@ -200,7 +201,7 @@ namespace Custo
             {
                 grdDados.AutoGenerateColumns = false;
                 grdDados.DataSource = null;
-                grdDados.DataSource = Produto.BuscarTodos();
+                grdDados.DataSource = Produto.BuscarTodosComVenda();
                 grdDados.Show();
                 LimparItens();
             }

@@ -51,12 +51,12 @@ namespace Custo
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblCustoTotal = new System.Windows.Forms.Label();
-            this.txtData = new System.Windows.Forms.MaskedTextBox();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnIncluir = new System.Windows.Forms.Button();
+            this.txtData = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.grdNovoPedido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,7 +142,7 @@ namespace Custo
             // 
             this.txtQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuantidade.Location = new System.Drawing.Point(538, 98);
+            this.txtQuantidade.Location = new System.Drawing.Point(538, 96);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(263, 20);
             this.txtQuantidade.TabIndex = 24;
@@ -243,15 +243,6 @@ namespace Custo
             this.lblCustoTotal.TabIndex = 30;
             this.lblCustoTotal.Text = "Custo Total:";
             // 
-            // txtData
-            // 
-            this.txtData.Location = new System.Drawing.Point(540, 58);
-            this.txtData.Mask = "00/00/0000";
-            this.txtData.Name = "txtData";
-            this.txtData.Size = new System.Drawing.Size(263, 20);
-            this.txtData.TabIndex = 35;
-            this.txtData.ValidatingType = typeof(System.DateTime);
-            // 
             // cmbStatus
             // 
             this.cmbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -262,9 +253,9 @@ namespace Custo
             "INCOMPLETO",
             "PRODUÇÃO",
             "COMPLETO"});
-            this.cmbStatus.Location = new System.Drawing.Point(540, 128);
+            this.cmbStatus.Location = new System.Drawing.Point(538, 128);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(261, 21);
+            this.cmbStatus.Size = new System.Drawing.Size(263, 21);
             this.cmbStatus.TabIndex = 37;
             // 
             // label7
@@ -321,14 +312,23 @@ namespace Custo
             this.btnIncluir.UseVisualStyleBackColor = true;
             this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
+            // txtData
+            // 
+            this.txtData.CustomFormat = "dd/MM/yyyy";
+            this.txtData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtData.Location = new System.Drawing.Point(538, 59);
+            this.txtData.Name = "txtData";
+            this.txtData.Size = new System.Drawing.Size(263, 20);
+            this.txtData.TabIndex = 38;
+            // 
             // frmPedidoNovo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 457);
+            this.Controls.Add(this.txtData);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtData);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnIncluir);
@@ -345,10 +345,10 @@ namespace Custo
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label6);
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmPedidoNovo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar/Alterar Pedidos";
@@ -382,8 +382,8 @@ namespace Custo
         private System.Windows.Forms.DataGridViewTextBoxColumn Observacoes;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnSair;
-        public System.Windows.Forms.MaskedTextBox txtData;
         public ComboBox cmbStatus;
         private Label label7;
+        public DateTimePicker txtData;
     }
 }

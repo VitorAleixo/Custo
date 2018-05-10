@@ -14,7 +14,7 @@ namespace Custo.AppCode
         public string UM { get; set; }
         public string Tipo { get; set; }
         public double PrecoCompra { get; set; }
-
+        public double PrecoVenda { get; set; }
         public Produto()
         {
 
@@ -30,12 +30,13 @@ namespace Custo.AppCode
                 var sql = new StringBuilder();
 
                 sql.AppendLine("INSERT INTO Produto ");
-                sql.AppendLine("(Codigo, Descricao, UM, Tipo, PrecoCompra) VALUES ");
+                sql.AppendLine("(Codigo, Descricao, UM, Tipo, PrecoCompra, PrecoVenda) VALUES ");
                 sql.AppendLine($"('{this.Codigo}'");
                 sql.AppendLine($",'{this.Descricao}'");
                 sql.AppendLine($",'{this.UM}'");
                 sql.AppendLine($",'{this.Tipo}'");
-                sql.AppendLine($",{this.PrecoCompra.ToString().Replace(",", ".")})");
+                sql.AppendLine($",{this.PrecoCompra.ToString().Replace(",", ".")} ");
+                sql.AppendLine($",'0')");
 
                 using (var cmd = conn.CreateCommand())
                 {
@@ -62,6 +63,7 @@ namespace Custo.AppCode
                 sql.AppendLine($"  , UM = '{this.UM}' ");
                 sql.AppendLine($"  , Tipo = '{this.Tipo}' ");
                 sql.AppendLine($"  , PrecoCompra = {this.PrecoCompra.ToString().Replace(",", ".")} ");
+                sql.AppendLine($"  , PrecoVenda = '0' ");
                 sql.AppendLine($"WHERE Id = {this.Id};");
 
                 using (var cmd = conn.CreateCommand())
@@ -121,7 +123,46 @@ namespace Custo.AppCode
                                 Descricao = dr.GetString(2),
                                 UM = dr.GetString(3),
                                 Tipo = dr.GetString(4),
-                                PrecoCompra = dr.GetDouble(5)
+                                PrecoCompra = dr.GetDouble(5),
+                                
+                            });
+                        }
+                        cmd.Dispose();
+                    }
+                    cmd.Dispose();
+                }
+                conn.Close();
+            }
+            return lst;
+        }
+
+        public static List<Produto> BuscarTodosComVenda()
+        {
+            var lst = new List<Produto>();
+
+            using (var conn =
+                new SQLiteConnection("Data Source=DB.sqlite"))
+            {
+                conn.Open();
+                var sql = new StringBuilder();
+                sql.AppendLine("SELECT * FROM Produto;");
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = sql.ToString();
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lst.Add(new Produto
+                            {
+                                Id = dr.GetInt32(0),
+                                Codigo = dr.GetString(1),
+                                Descricao = dr.GetString(2),
+                                UM = dr.GetString(3),
+                                Tipo = dr.GetString(4),
+                                PrecoCompra = dr.GetDouble(5),
+                                PrecoVenda = dr.GetDouble(6),
                             });
                         }
                         cmd.Dispose();

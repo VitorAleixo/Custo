@@ -105,11 +105,11 @@
     <Compile Include="frmCadastroUsuarios.Designer.cs">
       <DependentUpon>frmCadastroUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLucros.cs">
+    <Compile Include="frmVendas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLucros.Designer.cs">
-      <DependentUpon>frmLucros.cs</DependentUpon>
+    <Compile Include="frmVendas.Designer.cs">
+      <DependentUpon>frmVendas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPedidos.cs">
       <SubType>Form</SubType>
@@ -154,11 +154,11 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTotalLucros.cs">
+    <Compile Include="frmTotalVendas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTotalLucros.Designer.cs">
-      <DependentUpon>frmTotalLucros.cs</DependentUpon>
+    <Compile Include="frmTotalVendas.Designer.cs">
+      <DependentUpon>frmTotalVendas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,8 +168,8 @@
     <EmbeddedResource Include="frmCadastroUsuarios.resx">
       <DependentUpon>frmCadastroUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLucros.resx">
-      <DependentUpon>frmLucros.cs</DependentUpon>
+    <EmbeddedResource Include="frmVendas.resx">
+      <DependentUpon>frmVendas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPedidos.resx">
       <DependentUpon>frmPedidos.cs</DependentUpon>
@@ -192,8 +192,8 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTotalLucros.resx">
-      <DependentUpon>frmTotalLucros.cs</DependentUpon>
+    <EmbeddedResource Include="frmTotalVendas.resx">
+      <DependentUpon>frmTotalVendas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

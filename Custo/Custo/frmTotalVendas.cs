@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Custo
 {
-    public partial class frmTotalLucros : Form
+    public partial class frmTotalVendas : Form
     {
-        public frmTotalLucros()
+        public frmTotalVendas()
         {
             InitializeComponent();
         }
@@ -37,7 +37,7 @@ namespace Custo
         {
             try
             {
-                if (txtDiaD.Text != "  /  /" && txtMesM.Text == "" && txtAnoM.Text == "" && txtAnoA.Text == "" && txtDeT.Text == "  /  /" && txtAteT.Text == "  /  /" && txtDiaD.TextLength == 10 && txtDiaD.Text.Substring(0, 2) != "00" && txtDiaD.Text.Substring(3, 2) != "00" && txtDiaD.Text.Substring(6, 4) != "0000")
+                if (txtDiaD.Enabled == true && cmbMesM.Enabled == false && cmbAnoM.Enabled == false && cmbAnoA.Enabled == false && txtDeT.Enabled == false && txtAteT.Enabled == false)
                 {
                     //BUSCA POR DIA
                     Filtro.dataDia = txtDiaD.Text;
@@ -49,15 +49,15 @@ namespace Custo
                     decimal valorTotal = 0;
                     foreach (DataGridViewRow col in grdLucro.Rows)
                     {
-                        valorTotal = valorTotal + Convert.ToDecimal(col.Cells[2].Value);
+                        valorTotal = valorTotal + Convert.ToDecimal(col.Cells[3].Value);
                     }
-                    lblCustoTotal.Text = $"Total: R$ {valorTotal.ToString("N2")}";
+                    lblCustoTotal.Text = $"Total de Vendas: R$ {valorTotal.ToString("N2")}";
                 }
-                else if (txtDiaD.Text == "  /  /" && txtMesM.Text != "" && txtAnoM.Text != "" && txtAnoA.Text == "" && txtDeT.Text == "  /  /" && txtAteT.Text == "  /  /" && txtAnoM.TextLength == 4 && txtMesM.TextLength == 2 && txtAnoM.Text.Substring(0, 4) != "0000" && txtMesM.Text.Substring(0, 2) != "00")
+                else if (txtDiaD.Enabled == false && cmbMesM.Enabled == true && cmbAnoM.Enabled == true && cmbAnoA.Enabled == false && txtDeT.Enabled == false && txtAteT.Enabled == false)
                 {
                     //BUSCA POR MES
-                    Filtro.dataMes = txtMesM.Text;
-                    Filtro.dataAno = txtAnoM.Text;
+                    Filtro.dataMes = cmbMesM.Text;
+                    Filtro.dataAno = cmbAnoM.Text;
                     grdLucro.AutoGenerateColumns = false;
                     grdLucro.DataSource = null;
                     grdLucro.DataSource = Filtro.lucroFiltrarPorMes();
@@ -66,14 +66,14 @@ namespace Custo
                     decimal valorTotal = 0;
                     foreach (DataGridViewRow col in grdLucro.Rows)
                     {
-                        valorTotal = valorTotal + Convert.ToDecimal(col.Cells[2].Value);
+                        valorTotal = valorTotal + Convert.ToDecimal(col.Cells[3].Value);
                     }
-                    lblCustoTotal.Text = $"Total: R$ {valorTotal.ToString("N2")}";
+                    lblCustoTotal.Text = $"Total de Vendas: R$ {valorTotal.ToString("N2")}";
                 }
-                else if (txtDiaD.Text == "  /  /" && txtMesM.Text == "" && txtAnoM.Text == "" && txtAnoA.Text != "" && txtDeT.Text == "  /  /" && txtAteT.Text == "  /  /" && txtAnoA.TextLength == 4 && txtAnoA.Text.Substring(0, 4) != "0000")
+                else if (txtDiaD.Enabled == false && cmbMesM.Enabled == false && cmbAnoM.Enabled == false && cmbAnoA.Enabled == true && txtDeT.Enabled == false && txtAteT.Enabled == false)
                 {
                     //BUSCA POR ANO
-                    Filtro.dataAno = txtAnoA.Text;
+                    Filtro.dataAno = cmbAnoA.Text;
                     grdLucro.AutoGenerateColumns = false;
                     grdLucro.DataSource = null;
                     grdLucro.DataSource = Filtro.lucroFiltrarPorAno();
@@ -82,11 +82,11 @@ namespace Custo
                     decimal valorTotal = 0;
                     foreach (DataGridViewRow col in grdLucro.Rows)
                     {
-                        valorTotal = valorTotal + Convert.ToDecimal(col.Cells[2].Value);
+                        valorTotal = valorTotal + Convert.ToDecimal(col.Cells[3].Value);
                     }
-                    lblCustoTotal.Text = $"Total: R$ {valorTotal.ToString("N2")}";
+                    lblCustoTotal.Text = $"Total de Vendas: R$ {valorTotal.ToString("N2")}";
                 }
-                else if (txtDiaD.Text == "  /  /" && txtMesM.Text == "" && txtAnoM.Text == "" && txtAnoA.Text == "" && txtDeT.Text != "  /  /" && txtAteT.Text != "  /  /" && txtDeT.TextLength == 10 && txtDiaD.Text.Substring(0, 2) != "00" && txtDeT.Text.Substring(3, 2) != "00" && txtDeT.Text.Substring(6, 4) != "0000" && txtDeT.TextLength == 10 && txtAteT.Text.Substring(0, 2) != "00" && txtAteT.Text.Substring(3, 2) != "00" && txtAteT.Text.Substring(6, 4) != "0000")
+                else if (txtDiaD.Enabled == false && cmbMesM.Enabled == false && cmbAnoM.Enabled == false && cmbAnoA.Enabled == false && txtDeT.Enabled == true && txtAteT.Enabled == true)
                 {
                     //BUSCA POR TUDO
                     Filtro.dataDeLucro = txtDeT.Text;
@@ -99,18 +99,45 @@ namespace Custo
                     decimal valorTotal = 0;
                     foreach (DataGridViewRow col in grdLucro.Rows)
                     {
-                        valorTotal = valorTotal + Convert.ToDecimal(col.Cells[2].Value);
+                        valorTotal = valorTotal + Convert.ToDecimal(col.Cells[3].Value);
                     }
-                    lblCustoTotal.Text = $"Total: R$ {valorTotal.ToString("N2")}";
-                }
-                else if (txtDiaD.Text == "  /  /" && txtMesM.Text == "" && txtAnoM.Text == "" && txtAnoA.Text == "" && txtDeT.Text == "  /  /" && txtAteT.Text == "  /  /")
-                {
-                    DialogResult dialogResult = MessageBox.Show("Não é possivel buscar dados Nulos!\nOu algum dado informado Incorretamente", "Confirmação", MessageBoxButtons.OK);
+                    lblCustoTotal.Text = $"Total de Vendas: R$ {valorTotal.ToString("N2")}";
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void frmTotalLucros_Load(object sender, EventArgs e)
+        {
+            txtDeT.Text = "01/01/2001"; 
+            txtAteT.Text = "01/01/2001"; 
+            txtDiaD.Text = "01/01/2001";
+        }
+
+        private void txtDiaD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscar.PerformClick();
+            }
+        }
+
+        private void txtDeT_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscar.PerformClick();
+            }
+        }
+
+        private void txtAteT_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscar.PerformClick();
             }
         }
     }

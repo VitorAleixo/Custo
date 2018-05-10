@@ -123,7 +123,7 @@ namespace Custo.AppCode
                     {
                         while (dr.Read())
                         {
-                            var produto = Produto.BuscarTodos().Where(p => p.Id == dr.GetInt32(2)).FirstOrDefault();
+                            var produto = Produto.BuscarTodosComVenda().Where(p => p.Id == dr.GetInt32(2)).FirstOrDefault();
 
                             lst.Add(new PedidoItem
                             {
@@ -131,8 +131,8 @@ namespace Custo.AppCode
                                 IdPedido = dr.GetInt32(1),
                                 IdProduto = dr.GetInt32(2),
                                 Quantidade = dr.GetDouble(3),
-                                CustoUnitario = produto.PrecoCompra,
-                                CustoTotal = dr.GetDouble(3) * produto.PrecoCompra,
+                                CustoUnitario = produto.PrecoVenda,
+                                CustoTotal = dr.GetDouble(3) * produto.PrecoVenda,
                                 Descricao = produto.Codigo + " - " + produto.Descricao,
                                 Observacoes = dr.GetString(4)
                                 

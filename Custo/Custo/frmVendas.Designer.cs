@@ -73,9 +73,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 146);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 13);
+            this.label1.Size = new System.Drawing.Size(227, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Selecione o modo de visualização dos Lucros";
+            this.label1.Text = "Selecione o modo de visualização das Vendas";
             // 
             // btnSair
             // 
@@ -117,7 +117,7 @@
             this.btnTodos.Name = "btnTodos";
             this.btnTodos.Size = new System.Drawing.Size(97, 56);
             this.btnTodos.TabIndex = 5;
-            this.btnTodos.Text = "TODOS";
+            this.btnTodos.Text = "DATA";
             this.btnTodos.UseVisualStyleBackColor = true;
             this.btnTodos.Click += new System.EventHandler(this.btnTodos_Click);
             // 
@@ -132,12 +132,12 @@
             this.Controls.Add(this.btnAnual);
             this.Controls.Add(this.btnMensal);
             this.Controls.Add(this.btnDiario);
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLucros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Lucros";
+            this.Text = "Vendas";
             this.ResumeLayout(false);
             this.PerformLayout();
 

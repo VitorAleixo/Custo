@@ -33,14 +33,14 @@ namespace Custo
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='Produto' and type='table'";
             if (_novoBanco || cmd.ExecuteScalar() == null)
             { 
-                cmd.CommandText = "CREATE TABLE Produto ([Id] INTEGER PRIMARY KEY, [Codigo] VARCHAR(100),[Descricao] VARCHAR(100), [UM] VARCHAR(100), [Tipo] VARCHAR(100), [PrecoCompra] FLOAT);";
+                cmd.CommandText = "CREATE TABLE Produto ([Id] INTEGER PRIMARY KEY, [Codigo] VARCHAR(100),[Descricao] VARCHAR(100), [UM] VARCHAR(100), [Tipo] VARCHAR(100), [PrecoCompra] FLOAT,[PrecoVenda] FLOAT);";
                 cmd.ExecuteNonQuery();
             }
 
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='Composicao' and type='table'";
             if (_novoBanco || cmd.ExecuteScalar() == null)
             {
-                cmd.CommandText = "CREATE TABLE Composicao ([Id] INTEGER PRIMARY KEY, [IdProduto] INTEGER, [CustoTotal] FLOAT);";
+                cmd.CommandText = "CREATE TABLE Composicao ([Id] INTEGER PRIMARY KEY, [IdProduto] INTEGER, [CustoTotal] FLOAT, [CustoVenda] FLOAT, [Lucro]);";
                 cmd.ExecuteNonQuery();
             }
 

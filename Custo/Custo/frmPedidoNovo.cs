@@ -33,6 +33,8 @@ namespace Custo
             cmbProduto.DataSource = null;
             cmbProduto.DataSource = Produto.BuscarTodos().Where(p => p.Tipo == "Produto Final").ToList();
             cmbProduto.DisplayMember = "Descricao";
+
+            cmbStatus.SelectedItem = "INCOMPLETO";
         }
 
         void CarregarItens()
@@ -241,7 +243,7 @@ namespace Custo
                 int ano = Int32.Parse(txtData.Text.Substring(6, 4));
                 if (cmbProduto.Text != "" && cmbCliente.Text != "")
                 {
-                    if (txtData.Text != "  /  /" && txtData.Text.Length == 10 && txtData.Text.Substring(0,2) != "00" && txtData.Text.Substring(3, 2) != "00" && txtData.Text.Substring(6, 4) != "0000" && dia <= 32 &&  mes <=  12 && ano < 2100 && ano >= 2000)
+                    if (txtData.Text != "  /  /" && txtData.Text.Length == 10 && txtData.Text.Substring(0,2) != "00" && txtData.Text.Substring(3, 2) != "00" && txtData.Text.Substring(6, 4) != "0000" && dia <= 32 &&  mes <=  12 && ano < 2100 && ano >= 2000 && cmbStatus.SelectedItem.ToString() != "")
                     {
 
                         var pedidoInserir = new Pedido();
@@ -249,6 +251,7 @@ namespace Custo
                         pedidoInserir.Id = int.Parse(txtId.Text);
                         pedidoInserir.IdCliente = ((Cliente)cmbCliente.SelectedItem).Id;
                         pedidoInserir.Data = txtData.Text;
+                        pedidoInserir.Status = cmbStatus.SelectedItem.ToString();
 
 
                         var pedido = Pedido.BuscarTodos().Where(c => c.IdCliente == ((Cliente)cmbCliente.SelectedItem).Id).FirstOrDefault();

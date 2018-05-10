@@ -29,23 +29,22 @@ namespace Custo
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProduto));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlProduto = new System.Windows.Forms.TabControl();
             this.tabPageFormulario = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnFiltro = new System.Windows.Forms.Button();
+            this.btnNoFiltro = new System.Windows.Forms.Button();
             this.cmbTipoFiltro = new System.Windows.Forms.ComboBox();
             this.txtDescricaoFiltro = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtCodigoProdutoFiltro = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
             this.grdDados = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecoCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageLista = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
@@ -60,12 +59,14 @@ namespace Custo
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnFiltro = new System.Windows.Forms.Button();
-            this.btnNoFiltro = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecoCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecoVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlProduto.SuspendLayout();
             this.tabPageFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -120,6 +121,28 @@ namespace Custo
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
+            // 
+            // btnFiltro
+            // 
+            this.btnFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnFiltro.Image = global::Custo.Properties.Resources.btnFiltro;
+            this.btnFiltro.Location = new System.Drawing.Point(643, 13);
+            this.btnFiltro.Name = "btnFiltro";
+            this.btnFiltro.Size = new System.Drawing.Size(30, 25);
+            this.btnFiltro.TabIndex = 48;
+            this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
+            // 
+            // btnNoFiltro
+            // 
+            this.btnNoFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnNoFiltro.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
+            this.btnNoFiltro.Location = new System.Drawing.Point(675, 13);
+            this.btnNoFiltro.Name = "btnNoFiltro";
+            this.btnNoFiltro.Size = new System.Drawing.Size(30, 25);
+            this.btnNoFiltro.TabIndex = 47;
+            this.btnNoFiltro.UseVisualStyleBackColor = true;
+            this.btnNoFiltro.Click += new System.EventHandler(this.btnNoFiltro_Click);
             // 
             // cmbTipoFiltro
             // 
@@ -182,6 +205,34 @@ namespace Custo
             this.label8.TabIndex = 15;
             this.label8.Text = "Código do Produto:";
             // 
+            // btnSair
+            // 
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(587, 355);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(62, 27);
+            this.btnSair.TabIndex = 14;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNovo.Image = global::Custo.Properties.Resources.btnIncluir;
+            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNovo.Location = new System.Drawing.Point(655, 355);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(62, 27);
+            this.btnNovo.TabIndex = 11;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
             // grdDados
             // 
             this.grdDados.AllowUserToAddRows = false;
@@ -196,7 +247,8 @@ namespace Custo
             this.Descricao,
             this.UM,
             this.Tipo,
-            this.PrecoCompra});
+            this.PrecoCompra,
+            this.PrecoVenda});
             this.grdDados.Location = new System.Drawing.Point(6, 57);
             this.grdDados.Name = "grdDados";
             this.grdDados.ReadOnly = true;
@@ -204,44 +256,6 @@ namespace Custo
             this.grdDados.TabIndex = 0;
             this.grdDados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDados_CellDoubleClick);
             this.grdDados.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.grdDados_PreviewKeyDown);
-            // 
-            // Codigo
-            // 
-            this.Codigo.DataPropertyName = "Codigo";
-            this.Codigo.HeaderText = "Código do Produto";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // Descricao
-            // 
-            this.Descricao.DataPropertyName = "Descricao";
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            // 
-            // UM
-            // 
-            this.UM.DataPropertyName = "UM";
-            this.UM.HeaderText = "Unidade de Medida";
-            this.UM.Name = "UM";
-            this.UM.ReadOnly = true;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo do Produto";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            // 
-            // PrecoCompra
-            // 
-            this.PrecoCompra.DataPropertyName = "PrecoCompra";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.PrecoCompra.DefaultCellStyle = dataGridViewCellStyle1;
-            this.PrecoCompra.HeaderText = "Preço de Compra";
-            this.PrecoCompra.Name = "PrecoCompra";
-            this.PrecoCompra.ReadOnly = true;
             // 
             // tabPageLista
             // 
@@ -401,56 +415,6 @@ namespace Custo
             this.label1.TabIndex = 0;
             this.label1.Text = "Código do Produto:";
             // 
-            // btnFiltro
-            // 
-            this.btnFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnFiltro.Image = global::Custo.Properties.Resources.btnFiltro;
-            this.btnFiltro.Location = new System.Drawing.Point(643, 13);
-            this.btnFiltro.Name = "btnFiltro";
-            this.btnFiltro.Size = new System.Drawing.Size(30, 25);
-            this.btnFiltro.TabIndex = 48;
-            this.btnFiltro.UseVisualStyleBackColor = true;
-            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
-            // 
-            // btnNoFiltro
-            // 
-            this.btnNoFiltro.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnNoFiltro.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
-            this.btnNoFiltro.Location = new System.Drawing.Point(675, 13);
-            this.btnNoFiltro.Name = "btnNoFiltro";
-            this.btnNoFiltro.Size = new System.Drawing.Size(30, 25);
-            this.btnNoFiltro.TabIndex = 47;
-            this.btnNoFiltro.UseVisualStyleBackColor = true;
-            this.btnNoFiltro.Click += new System.EventHandler(this.btnNoFiltro_Click);
-            // 
-            // btnSair
-            // 
-            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(587, 355);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(62, 27);
-            this.btnSair.TabIndex = 14;
-            this.btnSair.Text = "Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNovo.Image = global::Custo.Properties.Resources.btnIncluir;
-            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(655, 355);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(62, 27);
-            this.btnNovo.TabIndex = 11;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -479,16 +443,61 @@ namespace Custo
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "Codigo";
+            this.Codigo.HeaderText = "Código do Produto";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Descricao
+            // 
+            this.Descricao.DataPropertyName = "Descricao";
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            // 
+            // UM
+            // 
+            this.UM.DataPropertyName = "UM";
+            this.UM.HeaderText = "Unidade de Medida";
+            this.UM.Name = "UM";
+            this.UM.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo do Produto";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // PrecoCompra
+            // 
+            this.PrecoCompra.DataPropertyName = "PrecoCompra";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.PrecoCompra.DefaultCellStyle = dataGridViewCellStyle1;
+            this.PrecoCompra.HeaderText = "Preço de Compra";
+            this.PrecoCompra.Name = "PrecoCompra";
+            this.PrecoCompra.ReadOnly = true;
+            // 
+            // PrecoVenda
+            // 
+            this.PrecoVenda.DataPropertyName = "PrecoVenda";
+            this.PrecoVenda.HeaderText = "Preço de Venda";
+            this.PrecoVenda.Name = "PrecoVenda";
+            this.PrecoVenda.ReadOnly = true;
+            // 
             // frmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(755, 432);
             this.Controls.Add(this.tabControlProduto);
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Produtos";
@@ -525,11 +534,6 @@ namespace Custo
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecoCompra;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -541,5 +545,11 @@ namespace Custo
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnFiltro;
         private System.Windows.Forms.Button btnNoFiltro;
+        private DataGridViewTextBoxColumn Codigo;
+        private DataGridViewTextBoxColumn Descricao;
+        private DataGridViewTextBoxColumn UM;
+        private DataGridViewTextBoxColumn Tipo;
+        private DataGridViewTextBoxColumn PrecoCompra;
+        private DataGridViewTextBoxColumn PrecoVenda;
     }
 }
