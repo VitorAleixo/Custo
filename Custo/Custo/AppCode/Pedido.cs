@@ -17,6 +17,9 @@ namespace Custo.AppCode
         public string Status{ get; set; }
 
         public string nomeCliente { get; set; }
+        public static string IdCli { get; set; }
+        public static bool verificacao { get; set; }
+        public static int verif { get; set; }
         public Pedido()
         {
 
@@ -91,8 +94,19 @@ namespace Custo.AppCode
                     sql.Clear();
                 }
 
+                sql.AppendLine("UPDATE TabelaPedidoItem ");
+                sql.AppendLine ($"SET IdCliente = {this.IdCliente}");
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = sql.ToString();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    sql.Clear();
+                }
+
                 sql.AppendLine("INSERT into PedidoItem ");
-                sql.AppendLine("SELECT Id, IdPedido, IdProduto, Quantidade, Observacoes FROM TabelaPedidoItem");
+                sql.AppendLine("SELECT Id, IdPedido, IdProduto, Quantidade, Observacoes, IdCliente FROM TabelaPedidoItem");
 
                 using (var cmd = conn.CreateCommand())
                 {
@@ -149,9 +163,6 @@ namespace Custo.AppCode
                     sql.Clear();
                 }
 
-               
-
-
                 sql.AppendLine("UPDATE TabelaPedidoItem ");
                 sql.AppendLine($"SET IdPedido = {this.Id};");
 
@@ -163,8 +174,19 @@ namespace Custo.AppCode
                     sql.Clear();
                 }
 
+                sql.AppendLine("UPDATE TabelaPedidoItem ");
+                sql.AppendLine($"SET IdCliente = {this.IdCliente}");
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = sql.ToString();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    sql.Clear();
+                }
+
                 sql.AppendLine("INSERT into PedidoItem ");
-                sql.AppendLine("SELECT Id, IdPedido, IdProduto, Quantidade, Observacoes FROM TabelaPedidoItem");
+                sql.AppendLine("SELECT Id, IdPedido, IdProduto, Quantidade, Observacoes, IdCliente FROM TabelaPedidoItem");
 
                 using (var cmd = conn.CreateCommand())
                 {
@@ -258,6 +280,45 @@ namespace Custo.AppCode
                 conn.Close();
             }
             return lst;
+        }
+
+        public static List<Pedido> VerificarPedido()
+        {
+            var lst = new List<Pedido>();
+
+            using (var conn =
+                new SQLiteConnection("Data Source=DB.sqlite"))
+            {
+                conn.Open();
+                var sql = new StringBuilder();
+                sql.AppendLine("SELECT COUNT(*) FROM ");
+                sql.AppendLine($"Pedido WHERE IdCliente = {IdCli}");
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = sql.ToString();
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            verif = dr.GetInt32(0);
+                        }
+                       
+                        cmd.Dispose();
+                    }
+                    cmd.Dispose();
+                }
+                conn.Close();
+            }
+            if (verif > 0)
+            {
+                verificacao = false;
+            }
+            else
+            {
+                verificacao = true;
+            }
+            return lst;          
         }
     }
 }

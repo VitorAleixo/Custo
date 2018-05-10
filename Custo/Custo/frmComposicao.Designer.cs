@@ -30,9 +30,9 @@ namespace Custo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComposicao));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbComposicao = new System.Windows.Forms.ComboBox();
@@ -53,6 +53,7 @@ namespace Custo
             this.lblEconomia = new System.Windows.Forms.Label();
             this.btnSair = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblLucroTotal = new System.Windows.Forms.Label();
             this.btnConcluir = new System.Windows.Forms.Button();
             this.lblLucro = new System.Windows.Forms.Label();
             this.lblPrecoVenda = new System.Windows.Forms.Label();
@@ -61,7 +62,6 @@ namespace Custo
             this.btnInserirVenda = new System.Windows.Forms.Button();
             this.txtValorVenda = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblLucroTotal = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.gbFormulario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDados)).BeginInit();
@@ -100,7 +100,7 @@ namespace Custo
             this.cmbComposicao.Location = new System.Drawing.Point(6, 35);
             this.cmbComposicao.Name = "cmbComposicao";
             this.cmbComposicao.Size = new System.Drawing.Size(744, 21);
-            this.cmbComposicao.TabIndex = 0;
+            this.cmbComposicao.TabIndex = 1;
             this.cmbComposicao.SelectedValueChanged += new System.EventHandler(this.cmbComposicao_SelectedValueChanged);
             // 
             // gbFormulario
@@ -157,7 +157,7 @@ namespace Custo
             this.cmbProduto.Location = new System.Drawing.Point(9, 41);
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(187, 21);
-            this.cmbProduto.TabIndex = 1;
+            this.cmbProduto.TabIndex = 2;
             // 
             // label1
             // 
@@ -206,9 +206,9 @@ namespace Custo
             // Quantidade
             // 
             this.Quantidade.DataPropertyName = "Quantidade";
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle1;
             this.Quantidade.HeaderText = "Quantidade";
             this.Quantidade.Name = "Quantidade";
             this.Quantidade.ReadOnly = true;
@@ -216,9 +216,9 @@ namespace Custo
             // PrecoUnitario
             // 
             this.PrecoUnitario.DataPropertyName = "PrecoUnitario";
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.PrecoUnitario.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.PrecoUnitario.DefaultCellStyle = dataGridViewCellStyle2;
             this.PrecoUnitario.HeaderText = "Preço Unitário";
             this.PrecoUnitario.Name = "PrecoUnitario";
             this.PrecoUnitario.ReadOnly = true;
@@ -226,9 +226,9 @@ namespace Custo
             // Custo
             // 
             this.Custo.DataPropertyName = "Custo";
-            dataGridViewCellStyle6.Format = "C2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.Custo.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Custo.DefaultCellStyle = dataGridViewCellStyle3;
             this.Custo.HeaderText = "Custo";
             this.Custo.Name = "Custo";
             this.Custo.ReadOnly = true;
@@ -269,12 +269,13 @@ namespace Custo
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(595, 86);
+            this.btnSair.Location = new System.Drawing.Point(678, 86);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(72, 27);
-            this.btnSair.TabIndex = 13;
+            this.btnSair.TabIndex = 8;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
@@ -300,15 +301,26 @@ namespace Custo
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Total de Custos";
             // 
+            // lblLucroTotal
+            // 
+            this.lblLucroTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblLucroTotal.AutoSize = true;
+            this.lblLucroTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLucroTotal.Location = new System.Drawing.Point(446, 37);
+            this.lblLucroTotal.Name = "lblLucroTotal";
+            this.lblLucroTotal.Size = new System.Drawing.Size(105, 25);
+            this.lblLucroTotal.TabIndex = 19;
+            this.lblLucroTotal.Text = "Lucro: R$";
+            // 
             // btnConcluir
             // 
             this.btnConcluir.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnConcluir.Image = global::Custo.Properties.Resources.btnAplicar;
             this.btnConcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConcluir.Location = new System.Drawing.Point(673, 86);
+            this.btnConcluir.Location = new System.Drawing.Point(600, 86);
             this.btnConcluir.Name = "btnConcluir";
             this.btnConcluir.Size = new System.Drawing.Size(72, 27);
-            this.btnConcluir.TabIndex = 17;
+            this.btnConcluir.TabIndex = 7;
             this.btnConcluir.Text = "Concluir";
             this.btnConcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnConcluir.UseVisualStyleBackColor = true;
@@ -369,7 +381,7 @@ namespace Custo
             this.btnInserirVenda.Location = new System.Drawing.Point(201, 37);
             this.btnInserirVenda.Name = "btnInserirVenda";
             this.btnInserirVenda.Size = new System.Drawing.Size(98, 27);
-            this.btnInserirVenda.TabIndex = 4;
+            this.btnInserirVenda.TabIndex = 6;
             this.btnInserirVenda.Text = "Inserir/Alterar";
             this.btnInserirVenda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInserirVenda.UseVisualStyleBackColor = true;
@@ -380,7 +392,7 @@ namespace Custo
             this.txtValorVenda.Location = new System.Drawing.Point(9, 42);
             this.txtValorVenda.Name = "txtValorVenda";
             this.txtValorVenda.Size = new System.Drawing.Size(147, 20);
-            this.txtValorVenda.TabIndex = 3;
+            this.txtValorVenda.TabIndex = 5;
             this.txtValorVenda.Text = "0";
             // 
             // label4
@@ -391,17 +403,6 @@ namespace Custo
             this.label4.Size = new System.Drawing.Size(87, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "Preço de Venda:";
-            // 
-            // lblLucroTotal
-            // 
-            this.lblLucroTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblLucroTotal.AutoSize = true;
-            this.lblLucroTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLucroTotal.Location = new System.Drawing.Point(446, 37);
-            this.lblLucroTotal.Name = "lblLucroTotal";
-            this.lblLucroTotal.Size = new System.Drawing.Size(105, 25);
-            this.lblLucroTotal.TabIndex = 19;
-            this.lblLucroTotal.Text = "Lucro: R$";
             // 
             // frmComposicao
             // 

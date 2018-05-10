@@ -205,13 +205,14 @@ namespace Custo
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
+            this.btnSair.Image = global::Custo.Properties.Resources.btnSair;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(909, 608);
+            this.btnSair.Location = new System.Drawing.Point(920, 608);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(75, 23);
+            this.btnSair.Size = new System.Drawing.Size(64, 23);
             this.btnSair.TabIndex = 0;
-            this.btnSair.Text = "Sair";
+            this.btnSair.Text = "Logoff";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
@@ -264,7 +265,7 @@ namespace Custo
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel txtUsuario;
+        public System.Windows.Forms.ToolStripStatusLabel txtUsuario;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel txtData;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;

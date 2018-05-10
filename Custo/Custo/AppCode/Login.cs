@@ -125,8 +125,10 @@ namespace Custo.AppCode
             {
                 conn.Open();
                 var sql = new StringBuilder();
+                Criptografia c = new Criptografia();
+                string senhaCriptografada = c.SHA256(this.Senha);
                 sql.AppendLine("SELECT Usuario, Senha FROM ContaCliente");
-                sql.AppendLine($" WHERE Usuario = '{this.Usuario}' AND Senha = '{this.Senha}' ");
+                sql.AppendLine($" WHERE Usuario = '{this.Usuario}' AND Senha = '{senhaCriptografada}' ");
 
                 using (var cmd = conn.CreateCommand())
                 {
@@ -135,7 +137,7 @@ namespace Custo.AppCode
                     {
                         while (dr.Read())
                         {
-                            if (this.Usuario == dr["Usuario"].ToString() && this.Senha == dr["Senha"].ToString())
+                            if (this.Usuario == dr["Usuario"].ToString() && senhaCriptografada == dr["Senha"].ToString())
                             {
                                 Validar = true;
                             }

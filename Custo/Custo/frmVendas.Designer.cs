@@ -47,7 +47,7 @@
             this.btnMensal.Location = new System.Drawing.Point(139, 12);
             this.btnMensal.Name = "btnMensal";
             this.btnMensal.Size = new System.Drawing.Size(97, 56);
-            this.btnMensal.TabIndex = 1;
+            this.btnMensal.TabIndex = 2;
             this.btnMensal.Text = "MENSAL";
             this.btnMensal.UseVisualStyleBackColor = true;
             this.btnMensal.Click += new System.EventHandler(this.btnMensal_Click);
@@ -62,7 +62,7 @@
             this.btnAnual.Location = new System.Drawing.Point(12, 87);
             this.btnAnual.Name = "btnAnual";
             this.btnAnual.Size = new System.Drawing.Size(97, 56);
-            this.btnAnual.TabIndex = 2;
+            this.btnAnual.TabIndex = 3;
             this.btnAnual.Text = "ANUAL";
             this.btnAnual.UseVisualStyleBackColor = true;
             this.btnAnual.Click += new System.EventHandler(this.btnAnual_Click);
@@ -82,12 +82,11 @@
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(98, 164);
+            this.btnSair.Location = new System.Drawing.Point(87, 164);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(50, 27);
-            this.btnSair.TabIndex = 3;
+            this.btnSair.Size = new System.Drawing.Size(71, 27);
+            this.btnSair.TabIndex = 5;
             this.btnSair.Text = "Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
@@ -101,7 +100,7 @@
             this.btnDiario.Location = new System.Drawing.Point(12, 12);
             this.btnDiario.Name = "btnDiario";
             this.btnDiario.Size = new System.Drawing.Size(97, 56);
-            this.btnDiario.TabIndex = 0;
+            this.btnDiario.TabIndex = 1;
             this.btnDiario.Text = "DIARIO";
             this.btnDiario.UseVisualStyleBackColor = true;
             this.btnDiario.Click += new System.EventHandler(this.btnDiario_Click);
@@ -116,7 +115,7 @@
             this.btnTodos.Location = new System.Drawing.Point(139, 87);
             this.btnTodos.Name = "btnTodos";
             this.btnTodos.Size = new System.Drawing.Size(97, 56);
-            this.btnTodos.TabIndex = 5;
+            this.btnTodos.TabIndex = 4;
             this.btnTodos.Text = "DATA";
             this.btnTodos.UseVisualStyleBackColor = true;
             this.btnTodos.Click += new System.EventHandler(this.btnTodos_Click);

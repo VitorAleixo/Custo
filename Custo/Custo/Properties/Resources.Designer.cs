@@ -123,6 +123,16 @@ namespace Custo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnCliente {
+            get {
+                object obj = ResourceManager.GetObject("btnCliente", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnEditar {
             get {
                 object obj = ResourceManager.GetObject("btnEditar", resourceCulture);
@@ -156,6 +166,36 @@ namespace Custo.Properties {
         internal static System.Drawing.Bitmap btnIncluir {
             get {
                 object obj = ResourceManager.GetObject("btnIncluir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnProduto {
+            get {
+                object obj = ResourceManager.GetObject("btnProduto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnRanking {
+            get {
+                object obj = ResourceManager.GetObject("btnRanking", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnSair {
+            get {
+                object obj = ResourceManager.GetObject("btnSair", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

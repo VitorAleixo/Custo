@@ -8,15 +8,18 @@ using System.Windows.Forms;
 
 namespace Custo
 {
+
     static class Program
     {
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            var _novoBanco = false;
+            
+        var _novoBanco = false;
 
             if (!File.Exists("DB.sqlite"))
             {
@@ -68,28 +71,28 @@ namespace Custo
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='PedidoItem' and type='table'";
             if (cmd.ExecuteScalar() == null)
             {
-                cmd.CommandText = "CREATE TABLE PedidoItem ([Id] INTEGER PRIMARY KEY, [IdPedido] INTEGER , [IdProduto] INTEGER,  [Quantidade] FLOAT, [Observacoes] VARCHAR(1000));";
+                cmd.CommandText = "CREATE TABLE PedidoItem ([Id] INTEGER PRIMARY KEY, [IdPedido] INTEGER , [IdProduto] INTEGER,  [Quantidade] FLOAT, [Observacoes] VARCHAR(1000), [IdCliente] INTEGER);";
                 cmd.ExecuteNonQuery();
             }
 
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='TabelaPedidoItem' and type='table'";
             if (cmd.ExecuteScalar() == null)
             {
-                cmd.CommandText = "CREATE TABLE TabelaPedidoItem ([Id] INTEGER PRIMARY KEY AUTOINCREMENT, [IdPedido] INTEGER , [IdProduto] INTEGER,  [Quantidade] FLOAT, [Observacoes] VARCHAR(1000));";
+                cmd.CommandText = "CREATE TABLE TabelaPedidoItem ([Id] INTEGER PRIMARY KEY AUTOINCREMENT, [IdPedido] INTEGER , [IdProduto] INTEGER,  [Quantidade] FLOAT, [Observacoes] VARCHAR(1000), [IdCliente] INTEGER);";
                 cmd.ExecuteNonQuery();
             }
 
             cmd.CommandText = "SELECT '1' FROM sqlite_master WHERE name ='ContaCliente' and type='table'";
             if (cmd.ExecuteScalar() == null)
             {
-                cmd.CommandText = "CREATE TABLE ContaCliente ([Id] INTEGER PRIMARY KEY AUTOINCREMENT, [Usuario] VARCHAR(50), [Senha] VARCHAR(50), [Nome] VARCHAR(50),[Cpf] VARCHAR(20), [Email] VARCHAR(50), [Telefone] VARCHAR(100), [Endereco] VARCHAR(1000), [TipoConta] VARCHAR(20), [Status] VARCHAR(10));";
+                cmd.CommandText = "CREATE TABLE ContaCliente ([Id] INTEGER PRIMARY KEY AUTOINCREMENT, [Usuario] VARCHAR(50), [Senha] VARCHAR(150), [Nome] VARCHAR(50),[Cpf] VARCHAR(20), [Email] VARCHAR(50), [Telefone] VARCHAR(100), [Endereco] VARCHAR(1000), [TipoConta] VARCHAR(20), [Status] VARCHAR(10));";
                 cmd.ExecuteNonQuery();
             }
 
             cmd.CommandText = "SELECT * FROM ContaCliente WHERE Usuario='ADMIN';";
             if (cmd.ExecuteScalar() == null)
             {
-                cmd.CommandText = "INSERT INTO ContaCliente (Usuario, Senha, Nome, CPF, Email, Telefone, Endereco, TipoCOnta, Status) VALUES ('ADMIN', '12qw!@QW', 'Vitor Aleixo', 'ADMIN', 'ADMIN', 'ADMIN', 'ADMIN', 'ADMIN', '0'); ";
+                cmd.CommandText = "INSERT INTO ContaCliente (Usuario, Senha, Nome, CPF, Email, Telefone, Endereco, TipoCOnta, Status) VALUES ('ADMIN', '8f7957e71c2b39d1ee8d93cf9eaf44b09f7cd207711f5c0273951b358713efda', 'Vitor Aleixo', 'ADMIN', 'ADMIN', 'ADMIN', 'ADMIN', 'ADMIN', '0'); ";
                 cmd.ExecuteNonQuery();
             }
 
@@ -102,14 +105,18 @@ namespace Custo
             Application.SetCompatibleTextRenderingDefault(false);
 
             frmLogin f = new frmLogin();
-
-            f.ShowDialog();
-
-            if (f.Validar)
+           
+            while (f.variavel != 0)
             {
-                Application.Run(new frmPrincipal());
-            }
+                f.ShowDialog();
 
+                if (f.Validar)
+                {
+                    Application.Run(new frmPrincipal());
+                }
+
+                f.LimparCampos();
+            }
 
         }
     }

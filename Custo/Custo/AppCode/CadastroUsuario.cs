@@ -206,7 +206,7 @@ namespace Custo.AppCode
                 var sql = new StringBuilder();
 
                 sql.AppendLine("SELECT TipoConta FROM ContaCliente ");
-                sql.AppendLine($"WHERE Usuario = '{this.Usuario}'");
+                sql.AppendLine($"WHERE Status = '1'");
 
                 using (var cmd = conn.CreateCommand())
                 {

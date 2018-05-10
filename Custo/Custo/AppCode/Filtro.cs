@@ -839,7 +839,7 @@ namespace Custo.AppCode
                 conn.Open();
                 var sql = new StringBuilder();
                 sql.AppendLine("SELECT * FROM Pedido ");
-                sql.AppendLine($"WHERE Data LIKE '%{dataAno + "-" + dataMes}%'");
+                sql.AppendLine($"WHERE Data LIKE '%{dataAno + "-" +dataMes}%'");
                 sql.AppendLine($"AND Status = 'COMPLETO' ");
                 using (var cmd = conn.CreateCommand())
                 {

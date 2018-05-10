@@ -152,7 +152,7 @@ namespace Custo
                     item.IdProduto = ((Produto)cmbProduto.SelectedItem).Id;
                     item.Quantidade = Convert.ToDouble(txtQuantidade.Text);
                     item.Observacoes = txtObservacao.Text;
-
+                    
 
                     var pedido = Pedido.BuscarTodos().Where(c => c.IdCliente == ((Cliente)cmbCliente.SelectedItem).Id).FirstOrDefault();
 
@@ -262,6 +262,7 @@ namespace Custo
                             {
                                 pedidoInserir.Inserir();
                                 MessageBox.Show("Pedido inserido com sucesso!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.Close();
                             }
                             else
                             {
@@ -272,11 +273,10 @@ namespace Custo
                         {
                             pedidoInserir.Atualizar();
                             MessageBox.Show("Pedido Atualizado com sucesso!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            frmPedidos f = new frmPedidos();
+                            this.Close();
                         }
-
-
                         this.Close();
+                       
                     }
                     else
                     {
@@ -287,14 +287,17 @@ namespace Custo
                 {
                     DialogResult dialogResult = MessageBox.Show("Produto ou Cliente não Preenchidos!", "Confirmação", MessageBoxButtons.OK);
                 }
-
+             
             }
+          
+
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
- 
+            //  frmPedidos f = new frmPedidos();
+            //   f.ShowDialog();
         }
 
         private void btnSair_Click(object sender, EventArgs e)

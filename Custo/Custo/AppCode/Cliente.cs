@@ -15,9 +15,58 @@ namespace Custo.AppCode
         public string Endereco { get; set; }
         public string Email { get; set; }
 
+        public bool CheckUser { get; set; }
         public Cliente()
         {
 
+        }
+
+        public void ChecarUsuarioInserir()
+        {
+            using (var conn =
+           new SQLiteConnection("Data Source=DB.sqlite"))
+            {
+                conn.Open();
+
+                SQLiteCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM Clientes WHERE Nome = '" + this.Nome + "';";
+
+                if (cmd.ExecuteScalar() == null)
+                {
+                    CheckUser = true;
+                    cmd.Dispose();
+                }
+                else
+                {
+                    CheckUser = false;
+                    cmd.Dispose();
+                }
+                conn.Close();
+            }
+        }
+
+        public void ChecarUsuarioAtualizar()
+        {
+            using (var conn =
+           new SQLiteConnection("Data Source=DB.sqlite"))
+            {
+                conn.Open();
+
+                SQLiteCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM Clientes WHERE Nome = '" + this.Nome+ "';";
+
+                if (cmd.ExecuteScalar() == null)
+                {
+                    CheckUser = false;
+                    cmd.Dispose();
+                }
+                else
+                {
+                    CheckUser = true;
+                    cmd.Dispose();
+                }
+                conn.Close();
+            }
         }
 
         public void Inserir()
@@ -81,7 +130,7 @@ namespace Custo.AppCode
                 conn.Open();
 
                 var sql = new StringBuilder();
-
+                
                 sql.AppendLine("DELETE FROM Clientes ");
                 sql.AppendLine($"WHERE Id = {this.Id};");
 
@@ -91,6 +140,27 @@ namespace Custo.AppCode
                     cmd.ExecuteNonQuery();
                     cmd.Dispose();
                 }
+
+                sql.AppendLine("DELETE FROM Pedido ");
+                sql.AppendLine($"WHERE IdCliente = {this.Id};");
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = sql.ToString();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                }
+
+                sql.AppendLine("DELETE FROM PedidoItem ");
+                sql.AppendLine($"WHERE IdCliente = {this.Id};");
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = sql.ToString();
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                }
+
                 conn.Close();
             }
         }
@@ -131,5 +201,7 @@ namespace Custo.AppCode
             }
             return lst;
         }
+
+
     }
 }

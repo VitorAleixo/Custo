@@ -56,7 +56,7 @@ namespace Custo
             txtUsuario.Text = "";
             txtSenha.Text = "";
             txtNome.Text = "";
-            txtCpf.Text = "";
+            txtCPF.Text = "";
             txtEmail.Text = "";
             txtTelefone.Text = "";
             cmbTipoConta.SelectedIndex = -1;
@@ -69,12 +69,13 @@ namespace Custo
             try
             {
                 var obj = new CadastroUsuario();
-
+                Criptografia c = new Criptografia();
                 obj.Id = int.Parse(txtId.Text);
                 obj.Usuario = txtUsuario.Text;
-                obj.Senha = txtSenha.Text;
+                string senhaCriptografada = c.SHA256(txtSenha.Text);
+                obj.Senha = senhaCriptografada;
                 obj.Nome = txtNome.Text;
-                obj.Cpf = txtCpf.Text;
+                obj.Cpf = txtCPF.Text;
                 obj.Telefone = txtTelefone.Text;
                 obj.Email = txtEmail.Text;
                 obj.Endereco = txtEndereco.Text;
@@ -147,6 +148,7 @@ namespace Custo
         private void btnNovoCliente_Click(object sender, EventArgs e)
         {
             tabCadastroCliente.SelectedIndex = 1;
+            txtCPF.Text = "NÃO POSSUI";
             LimparCampos();
             txtUsuario.Enabled = true;
         }
@@ -183,15 +185,34 @@ namespace Custo
 
                 txtId.Text = obj.Id.ToString();
                 txtUsuario.Text = obj.Usuario;
-                txtSenha.Text = obj.Senha;
+                txtSenha.Text = "";
                 txtNome.Text = obj.Nome;
-                txtCpf.Text = obj.Cpf.ToString();
+                txtCPF.Text = obj.Cpf.ToString();
                 txtTelefone.Text = obj.Telefone;
                 txtEmail.Text = obj.Email;
                 txtEndereco.Text = obj.Endereco;
                 cmbTipoConta.SelectedItem = obj.TipoConta;
                 txtUsuario.Enabled = false;
                 tabCadastroCliente.SelectedIndex = 1;
+
+                if (obj.Cpf.ToString().Length == 14)
+                {
+                    cmbCPF.SelectedItem = "CPF";
+                    txtCPF.Text = obj.Cpf.ToString();
+                    txtCPF.Enabled = true;
+                }
+                else if (obj.Cpf.ToString().Length == 18)
+                {
+                    cmbCPF.SelectedItem = "CNPJ";
+                    txtCPF.Text = obj.Cpf.ToString();
+                    txtCPF.Enabled = true;
+                }
+                else if (obj.Cpf.ToString().Length == 0)
+                {
+                    cmbCPF.SelectedItem = "NÃO POSSUI";
+                    txtCPF.Text = obj.Cpf.ToString();
+                    txtCPF.Enabled = false;
+                }
 
             }
             catch (Exception ex)
@@ -214,9 +235,14 @@ namespace Custo
 
         private void btnNoFiltro_Click(object sender, EventArgs e)
         {
+            SortableBindingList<CadastroUsuario> _lst = new SortableBindingList<CadastroUsuario>();
+            var lst = CadastroUsuario.BuscarTodos();
+            foreach (var item in lst)
+                _lst.Add(item);
+
             grdClientes.AutoGenerateColumns = false;
             grdClientes.DataSource = null;
-            grdClientes.DataSource = CadastroUsuario.BuscarTodos();
+            grdClientes.DataSource = _lst;
             grdClientes.Show();
             LimparItens();
         }
@@ -229,25 +255,44 @@ namespace Custo
                 {
                     Filtro.Usuario = txtUsuarioFiltro.Text;
                     Filtro.TipoConta = cmbTipoContaFiltro.SelectedItem.ToString();
+
+                    SortableBindingList<CadastroUsuario> _lst = new SortableBindingList<CadastroUsuario>();
+                    var lst = Filtro.clienteadminBuscarPorUsuarioTipoConta();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdClientes.AutoGenerateColumns = false;
                     grdClientes.DataSource = null;
-                    grdClientes.DataSource = Filtro.clienteadminBuscarPorUsuarioTipoConta();
+                    grdClientes.DataSource = _lst;
                     grdClientes.Show();
                 }
                 else if (txtUsuarioFiltro.Text != "" && cmbTipoContaFiltro.Text == "")
                 {
                     Filtro.Usuario = txtUsuarioFiltro.Text;
+
+                    SortableBindingList<CadastroUsuario> _lst = new SortableBindingList<CadastroUsuario>();
+                    var lst = Filtro.clienteadminBuscarPorUsuario();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdClientes.AutoGenerateColumns = false;
                     grdClientes.DataSource = null;
-                    grdClientes.DataSource = Filtro.clienteadminBuscarPorUsuario();
+                    grdClientes.DataSource = _lst;
                     grdClientes.Show();
                 }
                 else if (txtUsuarioFiltro.Text == "" && cmbTipoContaFiltro.Text != "")
                 {
+
                     Filtro.TipoConta = cmbTipoContaFiltro.SelectedItem.ToString();
+
+                    SortableBindingList<CadastroUsuario> _lst = new SortableBindingList<CadastroUsuario>();
+                    var lst = Filtro.clienteadminBuscarPorTipoConta();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdClientes.AutoGenerateColumns = false;
                     grdClientes.DataSource = null;
-                    grdClientes.DataSource = Filtro.clienteadminBuscarPorTipoConta();
+                    grdClientes.DataSource = _lst;
                     grdClientes.Show();
                 }
                 else if (txtUsuarioFiltro.Text == "" && cmbTipoConta.Text == "")
@@ -258,6 +303,54 @@ namespace Custo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void grdClientes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+                try
+                {
+                    foreach (DataGridViewRow row in grdClientes.Rows)
+                    { 
+                        string RowType = row.Cells[2].Value.ToString();
+
+                        if (RowType == "ADMIN")
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                            row.DefaultCellStyle.ForeColor = Color.Black;
+                        }
+                        else if (RowType == "USUARIO")
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                            row.DefaultCellStyle.ForeColor = Color.Black;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+        }
+
+        private void cmbCPF_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbCPF.SelectedItem.ToString() == "CPF")
+            {
+                txtCPF.Text = "";
+                txtCPF.Enabled = true;
+                txtCPF.Mask = "000.000.000-00";
+            }
+            else if (cmbCPF.SelectedItem.ToString() == "CNPJ")
+            {
+                txtCPF.Text = "";
+                txtCPF.Enabled = true;
+                txtCPF.Mask = "00.000.000/0000-00";
+            }
+            else if (cmbCPF.SelectedItem.ToString() == "NÃO POSSUI")
+            {
+                txtCPF.Text = "";
+                txtCPF.Enabled = false;
+                txtCPF.Mask = "";
             }
         }
     }

@@ -30,9 +30,11 @@ namespace Custo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastroUsuarios));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabCadastroCliente = new System.Windows.Forms.TabControl();
             this.tabPageFormulario = new System.Windows.Forms.TabPage();
+            this.lblAdmin = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbTipoContaFiltro = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -55,7 +57,6 @@ namespace Custo
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtTelefone = new System.Windows.Forms.TextBox();
-            this.txtCpf = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -72,8 +73,11 @@ namespace Custo
             this.label2 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
+            this.cmbCPF = new System.Windows.Forms.ComboBox();
             this.tabCadastroCliente.SuspendLayout();
             this.tabPageFormulario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClientes)).BeginInit();
             this.tabPageLista.SuspendLayout();
@@ -89,10 +93,12 @@ namespace Custo
             this.tabCadastroCliente.Name = "tabCadastroCliente";
             this.tabCadastroCliente.SelectedIndex = 0;
             this.tabCadastroCliente.Size = new System.Drawing.Size(731, 432);
-            this.tabCadastroCliente.TabIndex = 2;
+            this.tabCadastroCliente.TabIndex = 11;
             // 
             // tabPageFormulario
             // 
+            this.tabPageFormulario.Controls.Add(this.lblAdmin);
+            this.tabPageFormulario.Controls.Add(this.pictureBox1);
             this.tabPageFormulario.Controls.Add(this.groupBox1);
             this.tabPageFormulario.Controls.Add(this.btnSair);
             this.tabPageFormulario.Controls.Add(this.btnNovoCliente);
@@ -106,6 +112,25 @@ namespace Custo
             this.tabPageFormulario.TabIndex = 0;
             this.tabPageFormulario.Text = "Lista";
             this.tabPageFormulario.UseVisualStyleBackColor = true;
+            // 
+            // lblAdmin
+            // 
+            this.lblAdmin.AutoSize = true;
+            this.lblAdmin.Location = new System.Drawing.Point(37, 383);
+            this.lblAdmin.Name = "lblAdmin";
+            this.lblAdmin.Size = new System.Drawing.Size(42, 13);
+            this.lblAdmin.TabIndex = 51;
+            this.lblAdmin.Text = "ADMIN";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.Yellow;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 377);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 23);
+            this.pictureBox1.TabIndex = 50;
+            this.pictureBox1.TabStop = false;
             // 
             // groupBox1
             // 
@@ -135,7 +160,7 @@ namespace Custo
             this.cmbTipoContaFiltro.Location = new System.Drawing.Point(297, 17);
             this.cmbTipoContaFiltro.Name = "cmbTipoContaFiltro";
             this.cmbTipoContaFiltro.Size = new System.Drawing.Size(151, 21);
-            this.cmbTipoContaFiltro.TabIndex = 49;
+            this.cmbTipoContaFiltro.TabIndex = 2;
             // 
             // label11
             // 
@@ -152,7 +177,7 @@ namespace Custo
             this.txtUsuarioFiltro.Location = new System.Drawing.Point(51, 17);
             this.txtUsuarioFiltro.Name = "txtUsuarioFiltro";
             this.txtUsuarioFiltro.Size = new System.Drawing.Size(151, 20);
-            this.txtUsuarioFiltro.TabIndex = 47;
+            this.txtUsuarioFiltro.TabIndex = 1;
             // 
             // btnFiltro
             // 
@@ -161,7 +186,7 @@ namespace Custo
             this.btnFiltro.Location = new System.Drawing.Point(646, 14);
             this.btnFiltro.Name = "btnFiltro";
             this.btnFiltro.Size = new System.Drawing.Size(30, 25);
-            this.btnFiltro.TabIndex = 46;
+            this.btnFiltro.TabIndex = 3;
             this.btnFiltro.UseVisualStyleBackColor = true;
             this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
             // 
@@ -181,7 +206,7 @@ namespace Custo
             this.btnNoFiltro.Location = new System.Drawing.Point(678, 14);
             this.btnNoFiltro.Name = "btnNoFiltro";
             this.btnNoFiltro.Size = new System.Drawing.Size(30, 25);
-            this.btnNoFiltro.TabIndex = 45;
+            this.btnNoFiltro.TabIndex = 4;
             this.btnNoFiltro.UseVisualStyleBackColor = true;
             this.btnNoFiltro.Click += new System.EventHandler(this.btnNoFiltro_Click);
             // 
@@ -190,10 +215,10 @@ namespace Custo
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(587, 378);
+            this.btnSair.Location = new System.Drawing.Point(652, 376);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(62, 27);
-            this.btnSair.TabIndex = 12;
+            this.btnSair.TabIndex = 6;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
@@ -204,10 +229,10 @@ namespace Custo
             this.btnNovoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNovoCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnNovoCliente.Image")));
             this.btnNovoCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovoCliente.Location = new System.Drawing.Point(655, 378);
+            this.btnNovoCliente.Location = new System.Drawing.Point(584, 376);
             this.btnNovoCliente.Name = "btnNovoCliente";
             this.btnNovoCliente.Size = new System.Drawing.Size(62, 27);
-            this.btnNovoCliente.TabIndex = 11;
+            this.btnNovoCliente.TabIndex = 5;
             this.btnNovoCliente.Text = "Novo";
             this.btnNovoCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNovoCliente.UseVisualStyleBackColor = true;
@@ -237,6 +262,7 @@ namespace Custo
             this.grdClientes.Size = new System.Drawing.Size(711, 312);
             this.grdClientes.TabIndex = 0;
             this.grdClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdClientes_CellDoubleClick);
+            this.grdClientes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdClientes_CellFormatting);
             this.grdClientes.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.grdClientes_PreviewKeyDown);
             // 
             // Usuario
@@ -292,19 +318,20 @@ namespace Custo
             // EnderecoCliente
             // 
             this.EnderecoCliente.DataPropertyName = "Endereco";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.EnderecoCliente.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.EnderecoCliente.DefaultCellStyle = dataGridViewCellStyle3;
             this.EnderecoCliente.HeaderText = "Endereço";
             this.EnderecoCliente.Name = "EnderecoCliente";
             this.EnderecoCliente.ReadOnly = true;
             // 
             // tabPageLista
             // 
+            this.tabPageLista.Controls.Add(this.txtCPF);
+            this.tabPageLista.Controls.Add(this.cmbCPF);
             this.tabPageLista.Controls.Add(this.txtSenha);
             this.tabPageLista.Controls.Add(this.txtEmail);
             this.tabPageLista.Controls.Add(this.txtTelefone);
-            this.tabPageLista.Controls.Add(this.txtCpf);
             this.tabPageLista.Controls.Add(this.txtNome);
             this.tabPageLista.Controls.Add(this.txtUsuario);
             this.tabPageLista.Controls.Add(this.label8);
@@ -335,42 +362,35 @@ namespace Custo
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(606, 20);
-            this.txtSenha.TabIndex = 29;
+            this.txtSenha.TabIndex = 2;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(112, 159);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(606, 20);
-            this.txtEmail.TabIndex = 28;
+            this.txtEmail.TabIndex = 6;
             // 
             // txtTelefone
             // 
             this.txtTelefone.Location = new System.Drawing.Point(112, 136);
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(606, 20);
-            this.txtTelefone.TabIndex = 27;
-            // 
-            // txtCpf
-            // 
-            this.txtCpf.Location = new System.Drawing.Point(112, 112);
-            this.txtCpf.Name = "txtCpf";
-            this.txtCpf.Size = new System.Drawing.Size(606, 20);
-            this.txtCpf.TabIndex = 26;
+            this.txtTelefone.TabIndex = 5;
             // 
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(112, 86);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(606, 20);
-            this.txtNome.TabIndex = 25;
+            this.txtNome.TabIndex = 3;
             // 
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(112, 32);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(606, 20);
-            this.txtUsuario.TabIndex = 23;
+            this.txtUsuario.TabIndex = 1;
             // 
             // label8
             // 
@@ -402,7 +422,7 @@ namespace Custo
             this.cmbTipoConta.Location = new System.Drawing.Point(112, 183);
             this.cmbTipoConta.Name = "cmbTipoConta";
             this.cmbTipoConta.Size = new System.Drawing.Size(606, 21);
-            this.cmbTipoConta.TabIndex = 20;
+            this.cmbTipoConta.TabIndex = 7;
             // 
             // label7
             // 
@@ -428,7 +448,7 @@ namespace Custo
             this.txtEndereco.Multiline = true;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(607, 100);
-            this.txtEndereco.TabIndex = 16;
+            this.txtEndereco.TabIndex = 8;
             // 
             // txtId
             // 
@@ -438,7 +458,7 @@ namespace Custo
             this.txtId.Location = new System.Drawing.Point(112, 6);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(606, 20);
-            this.txtId.TabIndex = 13;
+            this.txtId.TabIndex = 12;
             this.txtId.Text = "0";
             // 
             // label6
@@ -491,10 +511,10 @@ namespace Custo
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(561, 364);
+            this.btnCancelar.Location = new System.Drawing.Point(642, 364);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -505,14 +525,36 @@ namespace Custo
             this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvar.Location = new System.Drawing.Point(642, 364);
+            this.btnSalvar.Location = new System.Drawing.Point(561, 364);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 6;
+            this.btnSalvar.TabIndex = 9;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // txtCPF
+            // 
+            this.txtCPF.Enabled = false;
+            this.txtCPF.Location = new System.Drawing.Point(252, 111);
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(466, 20);
+            this.txtCPF.TabIndex = 24;
+            // 
+            // cmbCPF
+            // 
+            this.cmbCPF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCPF.FormattingEnabled = true;
+            this.cmbCPF.Items.AddRange(new object[] {
+            "NÃO POSSUI",
+            "CPF",
+            "CNPJ"});
+            this.cmbCPF.Location = new System.Drawing.Point(112, 111);
+            this.cmbCPF.Name = "cmbCPF";
+            this.cmbCPF.Size = new System.Drawing.Size(135, 21);
+            this.cmbCPF.TabIndex = 23;
+            this.cmbCPF.SelectedValueChanged += new System.EventHandler(this.cmbCPF_SelectedValueChanged);
             // 
             // frmCadastroUsuarios
             // 
@@ -530,6 +572,8 @@ namespace Custo
             this.Load += new System.EventHandler(this.frmCadastroUsuarios_Load);
             this.tabCadastroCliente.ResumeLayout(false);
             this.tabPageFormulario.ResumeLayout(false);
+            this.tabPageFormulario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClientes)).EndInit();
@@ -559,7 +603,6 @@ namespace Custo
         private System.Windows.Forms.ComboBox cmbTipoConta;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtTelefone;
-        private System.Windows.Forms.TextBox txtCpf;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label label8;
@@ -582,5 +625,9 @@ namespace Custo
         private Button btnFiltro;
         private Label label10;
         private Button btnNoFiltro;
+        private Label lblAdmin;
+        private PictureBox pictureBox1;
+        private MaskedTextBox txtCPF;
+        private ComboBox cmbCPF;
     }
 }

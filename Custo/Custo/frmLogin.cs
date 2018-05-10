@@ -12,6 +12,7 @@ namespace Custo
 {
     public partial class frmLogin : Form
     {
+        public int variavel { get; set; } = 1;
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
@@ -23,6 +24,12 @@ namespace Custo
             }
         }
 
+        public void LimparCampos()
+        {
+            txtUsuario.Text = "";
+            txtSenha.Text = "";
+        }
+
         public frmLogin()
         {
             InitializeComponent();
@@ -31,6 +38,7 @@ namespace Custo
         private void btnSair_Click(object sender, EventArgs e)
         {
             Validar = false;
+            variavel = 0;
             this.Close();
         }
 
@@ -41,9 +49,10 @@ namespace Custo
             var obj = new Login();
             obj.Usuario = txtUsuario.Text;
             obj.Senha = txtSenha.Text;
-
+            Login l = new Login();
+            l.SetStatusSair();
             obj.Validacao();
-
+            variavel = 1;
             if (obj.Validar == true)
             {
                 Validar = true;

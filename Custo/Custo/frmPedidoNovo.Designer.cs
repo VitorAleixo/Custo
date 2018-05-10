@@ -68,7 +68,7 @@ namespace Custo
             this.txtId.Location = new System.Drawing.Point(86, 21);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(717, 20);
-            this.txtId.TabIndex = 15;
+            this.txtId.TabIndex = 0;
             this.txtId.Text = "0";
             // 
             // label6
@@ -107,7 +107,7 @@ namespace Custo
             this.cmbCliente.Location = new System.Drawing.Point(86, 58);
             this.cmbCliente.Name = "cmbCliente";
             this.cmbCliente.Size = new System.Drawing.Size(365, 21);
-            this.cmbCliente.TabIndex = 20;
+            this.cmbCliente.TabIndex = 1;
             // 
             // cmbProduto
             // 
@@ -118,7 +118,7 @@ namespace Custo
             this.cmbProduto.Location = new System.Drawing.Point(86, 96);
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(365, 21);
-            this.cmbProduto.TabIndex = 22;
+            this.cmbProduto.TabIndex = 3;
             // 
             // label3
             // 
@@ -145,7 +145,7 @@ namespace Custo
             this.txtQuantidade.Location = new System.Drawing.Point(538, 96);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(263, 20);
-            this.txtQuantidade.TabIndex = 24;
+            this.txtQuantidade.TabIndex = 4;
             // 
             // grdNovoPedido
             // 
@@ -221,7 +221,7 @@ namespace Custo
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
             this.txtObservacao.Size = new System.Drawing.Size(365, 52);
-            this.txtObservacao.TabIndex = 29;
+            this.txtObservacao.TabIndex = 5;
             // 
             // label5
             // 
@@ -256,7 +256,7 @@ namespace Custo
             this.cmbStatus.Location = new System.Drawing.Point(538, 128);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(263, 21);
-            this.cmbStatus.TabIndex = 37;
+            this.cmbStatus.TabIndex = 6;
             // 
             // label7
             // 
@@ -273,10 +273,10 @@ namespace Custo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnSair.Location = new System.Drawing.Point(674, 427);
+            this.btnSair.Location = new System.Drawing.Point(746, 427);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(67, 23);
-            this.btnSair.TabIndex = 34;
+            this.btnSair.TabIndex = 9;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
@@ -288,10 +288,10 @@ namespace Custo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvar.Location = new System.Drawing.Point(747, 427);
+            this.btnSalvar.Location = new System.Drawing.Point(674, 427);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(66, 23);
-            this.btnSalvar.TabIndex = 33;
+            this.btnSalvar.TabIndex = 8;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -306,7 +306,7 @@ namespace Custo
             this.btnIncluir.Location = new System.Drawing.Point(734, 158);
             this.btnIncluir.Name = "btnIncluir";
             this.btnIncluir.Size = new System.Drawing.Size(67, 27);
-            this.btnIncluir.TabIndex = 31;
+            this.btnIncluir.TabIndex = 7;
             this.btnIncluir.Text = "Incluir";
             this.btnIncluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIncluir.UseVisualStyleBackColor = true;
@@ -319,7 +319,7 @@ namespace Custo
             this.txtData.Location = new System.Drawing.Point(538, 59);
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(263, 20);
-            this.txtData.TabIndex = 38;
+            this.txtData.TabIndex = 2;
             // 
             // frmPedidoNovo
             // 

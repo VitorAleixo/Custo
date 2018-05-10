@@ -29,8 +29,8 @@ namespace Custo
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProduto));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProduto));
             this.tabControlProduto = new System.Windows.Forms.TabControl();
             this.tabPageFormulario = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -45,6 +45,12 @@ namespace Custo
             this.btnSair = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.grdDados = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecoCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecoVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageLista = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
@@ -61,17 +67,17 @@ namespace Custo
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecoCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecoVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label12 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblAdmin = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControlProduto.SuspendLayout();
             this.tabPageFormulario.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDados)).BeginInit();
             this.tabPageLista.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlProduto
@@ -85,10 +91,14 @@ namespace Custo
             this.tabControlProduto.Name = "tabControlProduto";
             this.tabControlProduto.SelectedIndex = 0;
             this.tabControlProduto.Size = new System.Drawing.Size(731, 410);
-            this.tabControlProduto.TabIndex = 0;
+            this.tabControlProduto.TabIndex = 8;
             // 
             // tabPageFormulario
             // 
+            this.tabPageFormulario.Controls.Add(this.label12);
+            this.tabPageFormulario.Controls.Add(this.pictureBox2);
+            this.tabPageFormulario.Controls.Add(this.lblAdmin);
+            this.tabPageFormulario.Controls.Add(this.pictureBox1);
             this.tabPageFormulario.Controls.Add(this.groupBox1);
             this.tabPageFormulario.Controls.Add(this.btnSair);
             this.tabPageFormulario.Controls.Add(this.btnNovo);
@@ -129,7 +139,7 @@ namespace Custo
             this.btnFiltro.Location = new System.Drawing.Point(643, 13);
             this.btnFiltro.Name = "btnFiltro";
             this.btnFiltro.Size = new System.Drawing.Size(30, 25);
-            this.btnFiltro.TabIndex = 48;
+            this.btnFiltro.TabIndex = 4;
             this.btnFiltro.UseVisualStyleBackColor = true;
             this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
             // 
@@ -140,7 +150,7 @@ namespace Custo
             this.btnNoFiltro.Location = new System.Drawing.Point(675, 13);
             this.btnNoFiltro.Name = "btnNoFiltro";
             this.btnNoFiltro.Size = new System.Drawing.Size(30, 25);
-            this.btnNoFiltro.TabIndex = 47;
+            this.btnNoFiltro.TabIndex = 5;
             this.btnNoFiltro.UseVisualStyleBackColor = true;
             this.btnNoFiltro.Click += new System.EventHandler(this.btnNoFiltro_Click);
             // 
@@ -155,7 +165,7 @@ namespace Custo
             this.cmbTipoFiltro.Location = new System.Drawing.Point(477, 16);
             this.cmbTipoFiltro.Name = "cmbTipoFiltro";
             this.cmbTipoFiltro.Size = new System.Drawing.Size(127, 21);
-            this.cmbTipoFiltro.TabIndex = 20;
+            this.cmbTipoFiltro.TabIndex = 3;
             // 
             // txtDescricaoFiltro
             // 
@@ -163,7 +173,7 @@ namespace Custo
             this.txtDescricaoFiltro.Location = new System.Drawing.Point(298, 16);
             this.txtDescricaoFiltro.Name = "txtDescricaoFiltro";
             this.txtDescricaoFiltro.Size = new System.Drawing.Size(136, 20);
-            this.txtDescricaoFiltro.TabIndex = 19;
+            this.txtDescricaoFiltro.TabIndex = 2;
             // 
             // label10
             // 
@@ -192,7 +202,7 @@ namespace Custo
             this.txtCodigoProdutoFiltro.Location = new System.Drawing.Point(110, 16);
             this.txtCodigoProdutoFiltro.Name = "txtCodigoProdutoFiltro";
             this.txtCodigoProdutoFiltro.Size = new System.Drawing.Size(118, 20);
-            this.txtCodigoProdutoFiltro.TabIndex = 16;
+            this.txtCodigoProdutoFiltro.TabIndex = 1;
             // 
             // label8
             // 
@@ -210,10 +220,10 @@ namespace Custo
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSair.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(587, 355);
+            this.btnSair.Location = new System.Drawing.Point(655, 354);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(62, 27);
-            this.btnSair.TabIndex = 14;
+            this.btnSair.TabIndex = 7;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
@@ -224,10 +234,10 @@ namespace Custo
             this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNovo.Image = global::Custo.Properties.Resources.btnIncluir;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(655, 355);
+            this.btnNovo.Location = new System.Drawing.Point(587, 354);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(62, 27);
-            this.btnNovo.TabIndex = 11;
+            this.btnNovo.TabIndex = 6;
             this.btnNovo.Text = "Novo";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNovo.UseVisualStyleBackColor = true;
@@ -255,7 +265,53 @@ namespace Custo
             this.grdDados.Size = new System.Drawing.Size(711, 292);
             this.grdDados.TabIndex = 0;
             this.grdDados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDados_CellDoubleClick);
+            this.grdDados.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdDados_CellFormatting);
             this.grdDados.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.grdDados_PreviewKeyDown);
+            // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "Codigo";
+            this.Codigo.HeaderText = "Código do Produto";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Descricao
+            // 
+            this.Descricao.DataPropertyName = "Descricao";
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            // 
+            // UM
+            // 
+            this.UM.DataPropertyName = "UM";
+            this.UM.HeaderText = "Unidade de Medida";
+            this.UM.Name = "UM";
+            this.UM.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo do Produto";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // PrecoCompra
+            // 
+            this.PrecoCompra.DataPropertyName = "PrecoCompra";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.PrecoCompra.DefaultCellStyle = dataGridViewCellStyle1;
+            this.PrecoCompra.HeaderText = "Preço de Compra";
+            this.PrecoCompra.Name = "PrecoCompra";
+            this.PrecoCompra.ReadOnly = true;
+            // 
+            // PrecoVenda
+            // 
+            this.PrecoVenda.DataPropertyName = "PrecoVenda";
+            this.PrecoVenda.HeaderText = "Preço de Venda";
+            this.PrecoVenda.Name = "PrecoVenda";
+            this.PrecoVenda.ReadOnly = true;
             // 
             // tabPageLista
             // 
@@ -331,7 +387,7 @@ namespace Custo
             this.txtId.Location = new System.Drawing.Point(112, 6);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(605, 20);
-            this.txtId.TabIndex = 13;
+            this.txtId.TabIndex = 9;
             this.txtId.Text = "0";
             // 
             // label6
@@ -420,7 +476,7 @@ namespace Custo
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelar.Image = global::Custo.Properties.Resources.btnSair_Cancelar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(560, 355);
+            this.btnCancelar.Location = new System.Drawing.Point(642, 355);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 7;
@@ -434,7 +490,7 @@ namespace Custo
             this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvar.Location = new System.Drawing.Point(641, 355);
+            this.btnSalvar.Location = new System.Drawing.Point(561, 355);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 6;
@@ -443,50 +499,43 @@ namespace Custo
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // Codigo
+            // label12
             // 
-            this.Codigo.DataPropertyName = "Codigo";
-            this.Codigo.HeaderText = "Código do Produto";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(147, 364);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(71, 13);
+            this.label12.TabIndex = 61;
+            this.label12.Text = "Matéria Prima";
             // 
-            // Descricao
+            // pictureBox2
             // 
-            this.Descricao.DataPropertyName = "Descricao";
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.BackColor = System.Drawing.Color.Yellow;
+            this.pictureBox2.Location = new System.Drawing.Point(116, 358);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(25, 23);
+            this.pictureBox2.TabIndex = 60;
+            this.pictureBox2.TabStop = false;
             // 
-            // UM
+            // lblAdmin
             // 
-            this.UM.DataPropertyName = "UM";
-            this.UM.HeaderText = "Unidade de Medida";
-            this.UM.Name = "UM";
-            this.UM.ReadOnly = true;
+            this.lblAdmin.AutoSize = true;
+            this.lblAdmin.Location = new System.Drawing.Point(37, 364);
+            this.lblAdmin.Name = "lblAdmin";
+            this.lblAdmin.Size = new System.Drawing.Size(69, 13);
+            this.lblAdmin.TabIndex = 59;
+            this.lblAdmin.Text = "Produto Final";
             // 
-            // Tipo
+            // pictureBox1
             // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo do Produto";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            // 
-            // PrecoCompra
-            // 
-            this.PrecoCompra.DataPropertyName = "PrecoCompra";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.PrecoCompra.DefaultCellStyle = dataGridViewCellStyle1;
-            this.PrecoCompra.HeaderText = "Preço de Compra";
-            this.PrecoCompra.Name = "PrecoCompra";
-            this.PrecoCompra.ReadOnly = true;
-            // 
-            // PrecoVenda
-            // 
-            this.PrecoVenda.DataPropertyName = "PrecoVenda";
-            this.PrecoVenda.HeaderText = "Preço de Venda";
-            this.PrecoVenda.Name = "PrecoVenda";
-            this.PrecoVenda.ReadOnly = true;
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.LightGreen;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 358);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 23);
+            this.pictureBox1.TabIndex = 58;
+            this.pictureBox1.TabStop = false;
             // 
             // frmProduto
             // 
@@ -504,11 +553,14 @@ namespace Custo
             this.Load += new System.EventHandler(this.frmProduto_Load);
             this.tabControlProduto.ResumeLayout(false);
             this.tabPageFormulario.ResumeLayout(false);
+            this.tabPageFormulario.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDados)).EndInit();
             this.tabPageLista.ResumeLayout(false);
             this.tabPageLista.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -551,5 +603,9 @@ namespace Custo
         private DataGridViewTextBoxColumn Tipo;
         private DataGridViewTextBoxColumn PrecoCompra;
         private DataGridViewTextBoxColumn PrecoVenda;
+        private Label label12;
+        private PictureBox pictureBox2;
+        private Label lblAdmin;
+        private PictureBox pictureBox1;
     }
 }

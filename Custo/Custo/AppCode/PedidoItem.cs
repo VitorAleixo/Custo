@@ -11,6 +11,7 @@ namespace Custo.AppCode
         public int Id { get; set; }
         public int IdPedido { get; set; }
         public int IdProduto { get; set; }
+        public int IdCliente { get; set; }
 
         public string Descricao { get; set; }
         public double Quantidade { get; set; }

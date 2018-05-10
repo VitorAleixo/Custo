@@ -55,14 +55,22 @@ namespace Custo
             this.Close();
 
             f.ShowDialog();
+
+            frmPedidos p = new frmPedidos();
+            p.ShowDialog();
         }
 
-     
+
         public void CarregarItens()
         {
+            SortableBindingList<Pedido> _lst = new SortableBindingList<Pedido>();
+            var lst = Pedido.BuscarTodos();
+            foreach (var item in lst)
+                _lst.Add(item);
+
             grdDadosPedido.AutoGenerateColumns = false;
             grdDadosPedido.DataSource = null;
-            grdDadosPedido.DataSource = Pedido.BuscarTodos();
+            grdDadosPedido.DataSource = _lst;
             grdDadosPedido.Show();
 
             decimal valorTotal = 0;
@@ -113,6 +121,9 @@ namespace Custo
                 this.Close();
                 f.ShowDialog();
 
+                frmPedidos p = new frmPedidos();
+                p.ShowDialog();
+
 
             }
             catch (Exception ex)
@@ -129,10 +140,23 @@ namespace Custo
         private void frmPedidos_Load(object sender, EventArgs e)
         {
             CarregarCombos();
-
+            CarregarItens();
             txtDataAte.Text = "01/01/2001";
             txtDataDe.Text = "01/01/2001";
-        }
+            
+            var obj2 = new CadastroUsuario();
+
+            obj2.CheckAdmin();
+
+            if (obj2.Checar == true)
+            {
+                btnExcluir.Visible = true;
+            }
+            else
+            {
+                btnExcluir.Visible = false;
+            }
+            }
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
@@ -144,9 +168,15 @@ namespace Custo
                     Filtro.dataDe = txtDataDe.Text;
                     Filtro.dataAte = txtDataAte.Text;
 
+
+                    SortableBindingList<Pedido> _lst = new SortableBindingList<Pedido>();
+                    var lst = Filtro.pedidoFiltrarPorData();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDadosPedido.AutoGenerateColumns = false;
                     grdDadosPedido.DataSource = null;
-                    grdDadosPedido.DataSource = Filtro.pedidoFiltrarPorData();
+                    grdDadosPedido.DataSource = _lst;
                     grdDadosPedido.Show();
                     decimal valorTotal = 0;
                     foreach (DataGridViewRow col in grdDadosPedido.Rows)
@@ -162,9 +192,14 @@ namespace Custo
                     Filtro.dataAte = txtDataAte.Text;
                     Filtro.IdCliente = cmbCliente.SelectedValue.ToString();
 
+                    SortableBindingList<Pedido> _lst = new SortableBindingList<Pedido>();
+                    var lst = Filtro.pedidoFiltrarPorNomeData();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDadosPedido.AutoGenerateColumns = false;
                     grdDadosPedido.DataSource = null;
-                    grdDadosPedido.DataSource = Filtro.pedidoFiltrarPorNomeData();
+                    grdDadosPedido.DataSource = _lst;
                     grdDadosPedido.Show();
 
                     decimal valorTotal = 0;
@@ -178,9 +213,15 @@ namespace Custo
                 else if (cmbCliente.Text != "" && txtDataDe.Text == "01/01/2001" && txtDataAte.Text == "01/01/2001" && cmbStatusFiltro.Text == "")
                 {
                     Filtro.IdCliente = cmbCliente.SelectedValue.ToString();
+
+                    SortableBindingList<Pedido> _lst = new SortableBindingList<Pedido>();
+                    var lst = Filtro.pedidoFiltrarPorNome();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+    
                     grdDadosPedido.AutoGenerateColumns = false;
                     grdDadosPedido.DataSource = null;
-                    grdDadosPedido.DataSource = Filtro.pedidoFiltrarPorNome();
+                    grdDadosPedido.DataSource = _lst;
                     grdDadosPedido.Show();
 
 
@@ -196,9 +237,15 @@ namespace Custo
                 {
                     Filtro.IdCliente = cmbCliente.SelectedValue.ToString();
                     Filtro.statusPedido = cmbStatusFiltro.SelectedItem.ToString();
+
+                    SortableBindingList<Pedido> _lst = new SortableBindingList<Pedido>();
+                    var lst = Filtro.pedidoFiltrarPorNomeStatus();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDadosPedido.AutoGenerateColumns = false;
                     grdDadosPedido.DataSource = null;
-                    grdDadosPedido.DataSource = Filtro.pedidoFiltrarPorNomeStatus();
+                    grdDadosPedido.DataSource = _lst;
                     grdDadosPedido.Show();
 
 
@@ -215,9 +262,15 @@ namespace Custo
                     Filtro.statusPedido = cmbStatusFiltro.SelectedItem.ToString();
                     Filtro.dataDe = txtDataDe.Text;
                     Filtro.dataAte = txtDataAte.Text;
+
+                    SortableBindingList<Pedido> _lst = new SortableBindingList<Pedido>();
+                    var lst = Filtro.pedidoFiltrarPorDataStatus();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDadosPedido.AutoGenerateColumns = false;
                     grdDadosPedido.DataSource = null;
-                    grdDadosPedido.DataSource = Filtro.pedidoFiltrarPorDataStatus();
+                    grdDadosPedido.DataSource = _lst;
                     grdDadosPedido.Show();
 
 
@@ -235,9 +288,15 @@ namespace Custo
                     Filtro.dataDe = txtDataDe.Text;
                     Filtro.dataAte = txtDataAte.Text;
                     Filtro.statusPedido = cmbStatusFiltro.SelectedItem.ToString();
+
+                    SortableBindingList<Pedido> _lst = new SortableBindingList<Pedido>();
+                    var lst = Filtro.pedidoFiltrarPorNomeDataStatus();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDadosPedido.AutoGenerateColumns = false;
                     grdDadosPedido.DataSource = null;
-                    grdDadosPedido.DataSource = Filtro.pedidoFiltrarPorNomeDataStatus();
+                    grdDadosPedido.DataSource = _lst;
                     grdDadosPedido.Show();
 
 
@@ -252,9 +311,15 @@ namespace Custo
                 else if (cmbCliente.Text == "" && txtDataDe.Text == "01/01/2001" && txtDataAte.Text == "01/01/2001" && cmbStatusFiltro.Text != "")
                 {
                     Filtro.statusPedido = cmbStatusFiltro.SelectedItem.ToString();
+
+                    SortableBindingList<Pedido> _lst = new SortableBindingList<Pedido>();
+                    var lst = Filtro.pedidoFiltrarPorStatus();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDadosPedido.AutoGenerateColumns = false;
                     grdDadosPedido.DataSource = null;
-                    grdDadosPedido.DataSource = Filtro.pedidoFiltrarPorStatus();
+                    grdDadosPedido.DataSource = _lst;
                     grdDadosPedido.Show();
 
 
@@ -293,9 +358,14 @@ namespace Custo
         {
             try
             {
+                SortableBindingList<Pedido> _lst = new SortableBindingList<Pedido>();
+                var lst = Pedido.BuscarTodos();
+                foreach (var item in lst)
+                    _lst.Add(item);
+
                 grdDadosPedido.AutoGenerateColumns = false;
                 grdDadosPedido.DataSource = null;
-                grdDadosPedido.DataSource = Pedido.BuscarTodos();
+                grdDadosPedido.DataSource = _lst;
                 grdDadosPedido.Show();
                 LimparItens();
 
@@ -312,6 +382,37 @@ namespace Custo
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void grdDadosPedido_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in grdDadosPedido.Rows)
+                {
+                    string RowType = row.Cells[3].Value.ToString();
+
+                    if (RowType == "COMPLETO")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType == "PRODUÇÃO")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType == "INCOMPLETO")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Salmon;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

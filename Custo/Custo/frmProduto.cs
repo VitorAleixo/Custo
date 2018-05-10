@@ -25,9 +25,14 @@ namespace Custo
 
         private void CarregarGrid()
         {
+            SortableBindingList<Produto> _lst = new SortableBindingList<Produto>();
+            var lst = Produto.BuscarTodosComVenda();
+            foreach (var item in lst)
+                _lst.Add(item);
+
             grdDados.AutoGenerateColumns = false;
             grdDados.DataSource = null;
-            grdDados.DataSource = Produto.BuscarTodosComVenda();
+            grdDados.DataSource = _lst;
             grdDados.Show();
         }
 
@@ -199,9 +204,14 @@ namespace Custo
         {
             try
             {
+                SortableBindingList<Produto> _lst = new SortableBindingList<Produto>();
+                var lst = Produto.BuscarTodosComVenda();
+                foreach (var item in lst)
+                    _lst.Add(item);
+
                 grdDados.AutoGenerateColumns = false;
                 grdDados.DataSource = null;
-                grdDados.DataSource = Produto.BuscarTodosComVenda();
+                grdDados.DataSource = _lst;
                 grdDados.Show();
                 LimparItens();
             }
@@ -221,9 +231,15 @@ namespace Custo
                     Filtro.Cod = txtCodigoProdutoFiltro.Text;
                     Filtro.Desc = txtDescricaoFiltro.Text;
                     Filtro.Tipo = cmbTipoFiltro.SelectedItem.ToString();
+
+                    SortableBindingList<Produto> _lst = new SortableBindingList<Produto>();
+                    var lst = Filtro.produtoFiltrarPorCodDescTipo();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDados.AutoGenerateColumns = false;
                     grdDados.DataSource = null;
-                    grdDados.DataSource = Filtro.produtoFiltrarPorCodDescTipo();
+                    grdDados.DataSource = _lst;
                     grdDados.Show();
                 }
                 else if (txtCodigoProdutoFiltro.Text != "" && txtDescricaoFiltro.Text != "" && cmbTipoFiltro.Text == "")
@@ -231,9 +247,15 @@ namespace Custo
                     //BUSCA COD, DESC;
                     Filtro.Cod = txtCodigoProdutoFiltro.Text;
                     Filtro.Desc = txtDescricaoFiltro.Text;
+
+                    SortableBindingList<Produto> _lst = new SortableBindingList<Produto>();
+                    var lst = Filtro.produtoFiltrarPorCodDesc();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDados.AutoGenerateColumns = false;
                     grdDados.DataSource = null;
-                    grdDados.DataSource = Filtro.produtoFiltrarPorCodDesc();
+                    grdDados.DataSource = _lst;
                     grdDados.Show();
                 }
                 else if (txtCodigoProdutoFiltro.Text != "" && txtDescricaoFiltro.Text == "" && cmbTipoFiltro.Text != "")
@@ -241,18 +263,30 @@ namespace Custo
                     // BUSCA COD TIPO;
                     Filtro.Cod = txtCodigoProdutoFiltro.Text;
                     Filtro.Tipo = cmbTipoFiltro.SelectedItem.ToString();
+
+                    SortableBindingList<Produto> _lst = new SortableBindingList<Produto>();
+                    var lst = Filtro.produtoFiltrarPorCodTipo();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDados.AutoGenerateColumns = false;
                     grdDados.DataSource = null;
-                    grdDados.DataSource = Filtro.produtoFiltrarPorCodTipo();
+                    grdDados.DataSource = _lst;
                     grdDados.Show();
                 }
                 else if (txtCodigoProdutoFiltro.Text != "" && txtDescricaoFiltro.Text == "" && cmbTipoFiltro.Text == "")
                 {
                     //  BUSCA COD;  
                     Filtro.Cod = txtCodigoProdutoFiltro.Text;
+
+                    SortableBindingList<Produto> _lst = new SortableBindingList<Produto>();
+                    var lst = Filtro.produtoFiltrarPorCod();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDados.AutoGenerateColumns = false;
                     grdDados.DataSource = null;
-                    grdDados.DataSource = Filtro.produtoFiltrarPorCod();
+                    grdDados.DataSource = _lst;
                     grdDados.Show();
                 }
                 else if (txtCodigoProdutoFiltro.Text == "" && txtDescricaoFiltro.Text != "" && cmbTipoFiltro.Text != "")
@@ -260,27 +294,45 @@ namespace Custo
                     // BUSCA DESC TIPO;
                     Filtro.Desc = txtDescricaoFiltro.Text;
                     Filtro.Tipo = cmbTipoFiltro.SelectedItem.ToString();
+
+                    SortableBindingList<Produto> _lst = new SortableBindingList<Produto>();
+                    var lst = Filtro.produtoFiltrarPorDescTipo();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDados.AutoGenerateColumns = false;
                     grdDados.DataSource = null;
-                    grdDados.DataSource = Filtro.produtoFiltrarPorDescTipo();
+                    grdDados.DataSource = _lst;
                     grdDados.Show();
                 }
                 else if (txtCodigoProdutoFiltro.Text == "" && txtDescricaoFiltro.Text != "" && cmbTipoFiltro.Text == "")
                 {
                     // BUSCA DESC;
                     Filtro.Desc = txtDescricaoFiltro.Text;
+
+                    SortableBindingList<Produto> _lst = new SortableBindingList<Produto>();
+                    var lst = Filtro.produtoFiltrarPorDesc();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDados.AutoGenerateColumns = false;
                     grdDados.DataSource = null;
-                    grdDados.DataSource = Filtro.produtoFiltrarPorDesc();
+                    grdDados.DataSource = _lst;
                     grdDados.Show();
                 }
                 else if (txtCodigoProdutoFiltro.Text == "" && txtDescricaoFiltro.Text == "" && cmbTipoFiltro.Text != "")
                 {
                     // BUSCA TIPO;
                     Filtro.Tipo = cmbTipoFiltro.SelectedItem.ToString();
+
+                    SortableBindingList<Produto> _lst = new SortableBindingList<Produto>();
+                    var lst = Filtro.produtoFiltrarPorTipo();
+                    foreach (var item in lst)
+                        _lst.Add(item);
+
                     grdDados.AutoGenerateColumns = false;
                     grdDados.DataSource = null;
-                    grdDados.DataSource = Filtro.produtoFiltrarPorTipo();
+                    grdDados.DataSource = _lst;
                     grdDados.Show();
                 }
                 else if (txtCodigoProdutoFiltro.Text == "" && txtDescricaoFiltro.Text == "" && cmbTipoFiltro.Text == "")
@@ -294,6 +346,32 @@ namespace Custo
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void grdDados_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in grdDados.Rows)
+                {
+                    string RowType = row.Cells[3].Value.ToString();
+
+                    if (RowType == "Produto Final")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType == "Matéria Prima")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

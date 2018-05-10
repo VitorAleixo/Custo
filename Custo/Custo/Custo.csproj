@@ -93,6 +93,9 @@
     <Compile Include="AppCode\Login.cs" />
     <Compile Include="AppCode\Pedido.cs" />
     <Compile Include="AppCode\PedidoItem.cs" />
+    <Compile Include="AppCode\PropertyComparer.cs" />
+    <Compile Include="AppCode\Criptografia.cs" />
+    <Compile Include="AppCode\SortableBindingList.cs" />
     <Compile Include="frmAjuda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +222,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Custo.ico" />
+    <None Include="Resources\btnSair.png" />
+    <None Include="Resources\btnProduto.png" />
+    <None Include="Resources\btnCliente.png" />
+    <None Include="Resources\btnRanking.png" />
     <None Include="Resources\Background.jpg" />
     <None Include="Resources\btnBuscar.png" />
     <None Include="Resources\btnFiltro.ico" />

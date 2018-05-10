@@ -47,7 +47,7 @@ namespace Custo
             this.label1.Location = new System.Drawing.Point(76, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 24);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 5;
             this.label1.Text = "Usuário:";
             // 
             // label3
@@ -58,7 +58,7 @@ namespace Custo
             this.label3.Location = new System.Drawing.Point(76, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 24);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 6;
             this.label3.Text = "Senha:";
             // 
             // btnSair
@@ -70,7 +70,7 @@ namespace Custo
             this.btnSair.Location = new System.Drawing.Point(130, 185);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(82, 41);
-            this.btnSair.TabIndex = 3;
+            this.btnSair.TabIndex = 4;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
@@ -85,7 +85,7 @@ namespace Custo
             this.btnLogin.Location = new System.Drawing.Point(12, 185);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(82, 41);
-            this.btnLogin.TabIndex = 4;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@ namespace Custo
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(200, 20);
-            this.txtSenha.TabIndex = 5;
+            this.txtSenha.TabIndex = 2;
             this.txtSenha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSenha_KeyDown);
             // 
             // txtUsuario
@@ -107,7 +107,7 @@ namespace Custo
             this.txtUsuario.Location = new System.Drawing.Point(12, 54);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(200, 20);
-            this.txtUsuario.TabIndex = 6;
+            this.txtUsuario.TabIndex = 1;
             this.txtUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsuario_KeyDown);
             // 
             // frmLogin
@@ -122,10 +122,10 @@ namespace Custo
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Custo";
